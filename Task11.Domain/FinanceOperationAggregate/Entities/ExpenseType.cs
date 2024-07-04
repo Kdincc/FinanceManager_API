@@ -7,11 +7,11 @@ using Task11.Domain.FinanceOperationAggregate.ValueObjects;
 
 namespace Task11.Domain.FinanceOperationAggregate.Entities
 {
-    public sealed class IncomeType(IncomeTypeId id,
+    public sealed class ExpenseType(ExpenseTypeId id,
                                    string name,
                                    string description,
-                                   string sender) : OperationType<IncomeTypeId>(id, name, description)
+                                   string target) : OperationType<ExpenseTypeId>(id, name, description)
     {
-        public string Sender { get; private set; } = sender;
+        public string Target { get; private set; } = target;
     }
 }
