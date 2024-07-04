@@ -9,9 +9,7 @@ namespace Task11.Domain.FinanceOperationAggregate.Entities
 {
     public sealed class ExpenseType(ExpenseTypeId id,
                                    string name,
-                                   string description,
-                                   string target) : OperationType<ExpenseTypeId>(id, name, description)
+                                   string description) : OperationType<ExpenseTypeId>(id, name, description)
     {
-        public string Target { get; private set; } = target;
     }
 }

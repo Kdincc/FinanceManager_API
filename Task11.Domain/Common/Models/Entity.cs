@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task11.Domain.Common.Models
 {
-    public abstract class Entity<TId>(TId id) : IEquatable<Entity<TId>> where TId : notnull
+    public abstract class Entity<TId>(TId id) : IEquatable<Entity<TId>> where TId : notnull, ValueObject
     {
         public TId Id { get; protected set; }
 

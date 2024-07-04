@@ -9,9 +9,7 @@ namespace Task11.Domain.FinanceOperationAggregate.Entities
 {
     public sealed class IncomeType(IncomeTypeId id,
                                    string name,
-                                   string description,
-                                   string sender) : OperationType<IncomeTypeId>(id, name, description)
+                                   string description) : OperationType<IncomeTypeId>(id, name, description)
     {
-        public string Sender { get; private set; } = sender;
     }
 }
