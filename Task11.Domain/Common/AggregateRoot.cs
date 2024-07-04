@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task11.Domain.Common
 {
-    public abstract class AggregateRoot
+    public abstract class AggregateRoot<TId>(TId id) : Entity<TId>(id) where TId : notnull
     {
     }
 }
