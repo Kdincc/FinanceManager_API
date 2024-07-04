@@ -7,16 +7,16 @@ using Task11.Domain.Common.Models;
 
 namespace Task11.Domain.FinanceOperationAggregate.ValueObjects
 {
-    public class IncomeTypeId : ValueObject
+    public sealed class ExpenseTypeId : ValueObject
     {
-        private IncomeTypeId(Guid value)
+        private ExpenseTypeId(Guid value)
         {
             Value = value;
         }
 
         public Guid Value { get; private set; }
 
-        public static IncomeTypeId CreateUniq() => new(Guid.NewGuid());
+        public static ExpenseTypeId CreateUniq() => new(Guid.NewGuid());
 
         public override IEnumerable<object> GetEqualityComponents()
         {
