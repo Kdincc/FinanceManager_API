@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task11.Domain.Common
+namespace Task11.Domain.Common.Models
 {
     public abstract class ValueObject : IEquatable<ValueObject>
     {
@@ -30,7 +30,7 @@ namespace Task11.Domain.Common
             return isEqualityComponentsEqual;
         }
 
-        public static bool operator ==(ValueObject lhs, ValueObject rhs) 
+        public static bool operator ==(ValueObject lhs, ValueObject rhs)
         {
             return lhs.Equals(rhs);
         }
