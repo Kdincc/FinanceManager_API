@@ -13,7 +13,7 @@ namespace Task11.Domain.Common
 
         public bool Equals(ValueObject other)
         {
-            throw new NotImplementedException();
+            return Equals(other as object);
         }
 
         public override bool Equals(object obj)
@@ -28,6 +28,16 @@ namespace Task11.Domain.Common
             bool isEqualityComponentsEqual = GetEqualityComponents().SequenceEqual(valueObject.GetEqualityComponents());
 
             return isEqualityComponentsEqual;
+        }
+
+        public static bool operator ==(ValueObject lhs, ValueObject rhs) 
+        {
+            return lhs.Equals(rhs);
+        }
+
+        public static bool operator !=(ValueObject lhs, ValueObject rhs)
+        {
+            return !lhs.Equals(rhs);
         }
     }
 }
