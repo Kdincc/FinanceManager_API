@@ -17,7 +17,7 @@ namespace Task11.Domain.Common
 
         public override bool Equals(object obj)
         {
-            if (obj is null || obj is not Entity<TId>)
+            if (obj is null or not Entity<TId>)
             {
                 return false;
             }
