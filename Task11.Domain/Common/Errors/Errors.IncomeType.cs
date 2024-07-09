@@ -17,8 +17,8 @@ namespace Task11.Domain.Common.Errors
                 description: "Income type with that id not found!");
 
             public static Error DuplicateIncomeType => Error.Conflict(
-                code: "IncomeType.DuplicateIncomeType", 
-                description: "Income type with same name and description already exists!")
+                code: "IncomeType.DuplicateIncomeType",
+                description: "Income type with same name and description already exists!");
         }
             
     }
