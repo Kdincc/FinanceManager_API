@@ -9,12 +9,12 @@ namespace Task11.Application.Common.Persistance
 {
     public interface IRepository<T> where T : notnull
     {
-        public IReadOnlyCollection<T> GetAll();
+        public Task<IReadOnlyCollection<T>> GetAllAsync(CancellationToken cancellationToken);
 
-        public void Add(T entity);
+        public Task AddAsync(T entity, CancellationToken cancellationToken);
 
-        public void Update(T entity);
+        public Task UpdateAsync(T entity, CancellationToken cancellationToken);
 
-        public void Delete(T entity);
+        public Task DeleteAsync(T entity, CancellationToken cancellationToken);
     }
 }
