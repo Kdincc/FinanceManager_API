@@ -33,9 +33,9 @@ namespace Task11.Infrastructure.Persistence.Repos
             return await _dbContext.IncomeTypes.ToListAsync(cancellationToken);
         }
 
-        public async Task<IncomeType> GetById(IncomeTypeId id)
+        public async Task<IncomeType> GetByIdAsync(IncomeTypeId id, CancellationToken cancellationToken)
         {
-            IncomeType incomeType = await _dbContext.IncomeTypes.FirstOrDefaultAsync(i => i.Id == id);
+            IncomeType incomeType = await _dbContext.IncomeTypes.FirstOrDefaultAsync(i => i.Id == id, cancellationToken);
 
             return incomeType;
         }

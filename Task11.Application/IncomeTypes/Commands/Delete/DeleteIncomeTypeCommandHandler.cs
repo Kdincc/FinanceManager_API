@@ -7,16 +7,25 @@ using System.Text;
 using System.Threading.Tasks;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.IncomeFinanceOperation.Entities;
+using Task11.Domain.IncomeFinanceOperation.ValueObjects;
 
 namespace Task11.Application.IncomeTypes.Commands.Delete
 {
-    public sealed class DeleteIncomeTypeCommandHandler(IRepository<IncomeType> repository) : IRequestHandler<DeleteIncomeTypeCommand, ErrorOr<IncomeTypesResult>>
+    public sealed class DeleteIncomeTypeCommandHandler(IRepository<IncomeType, IncomeTypeId> repository) : IRequestHandler<DeleteIncomeTypeCommand, ErrorOr<IncomeTypesResult>>
     {
-        private readonly IRepository<IncomeType> _repository = repository;
+        private readonly IRepository<IncomeType, IncomeTypeId> _repository = repository;
 
         public async Task<ErrorOr<IncomeTypesResult>> Handle(DeleteIncomeTypeCommand request, CancellationToken cancellationToken)
         {
-            await _repository.DeleteAsync();
+            IncomeType incomeType = await _repository.GetByIdAsync(request.IncomeTypeId, cancellationToken);
+
+            if (incomeType is null) 
+            { 
+            }
+
+            await _repository.DeleteAsync(incomeType, cancellationToken);
+
+            return new IncomeTypesResult(incomeType);
         }
     }
 }

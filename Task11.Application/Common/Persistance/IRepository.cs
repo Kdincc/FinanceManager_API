@@ -9,7 +9,7 @@ namespace Task11.Application.Common.Persistance
 {
     public interface IRepository<T, TId> where T : notnull where TId : notnull
     {
-        public Task<T> GetById(TId id);
+        public Task<T> GetByIdAsync(TId id, CancellationToken cancellationToken);
 
         public Task<IReadOnlyCollection<T>> GetAllAsync(CancellationToken cancellationToken);
 
