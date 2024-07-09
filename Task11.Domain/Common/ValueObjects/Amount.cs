@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Task11.Domain.Common.Models;
 
-namespace Task11.Domain.FinanceOperationAggregate.ValueObjects
+namespace Task11.Domain.Common.ValueObjects
 {
     public sealed class Amount : ValueObject
     {
-        public Amount(decimal value) 
+        public Amount(decimal value)
         {
             if (value < 0)
             {

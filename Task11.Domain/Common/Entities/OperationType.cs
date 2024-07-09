@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Task11.Domain.Common.Models;
 
-namespace Task11.Domain.FinanceOperationAggregate.Entities
+namespace Task11.Domain.Common.Entities
 {
     public abstract class OperationType<TId>(TId id, string name, string description) : Entity<TId>(id) where TId : ValueObject
     {

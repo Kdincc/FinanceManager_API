@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Task11.Domain.Common.Models;
 
-namespace Task11.Domain.FinanceOperationAggregate.ValueObjects
+namespace Task11.Domain.Common.ValueObjects
 {
     public abstract class OperationTypeId : ValueObject
     {

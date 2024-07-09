@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Task11.Domain\Task11.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Persistence\Configurations\" />
+  </ItemGroup>
+
 </Project>
