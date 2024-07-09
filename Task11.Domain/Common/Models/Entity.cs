@@ -8,7 +8,7 @@ namespace Task11.Domain.Common.Models
 {
     public abstract class Entity<TId>(TId id) : IEquatable<Entity<TId>> where TId : notnull, ValueObject
     {
-        public TId Id { get; protected set; }
+        public TId Id { get; protected set; } = id;
 
         public bool Equals(Entity<TId> other)
         {

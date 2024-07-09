@@ -11,10 +11,10 @@ namespace Task11.Domain.ExpenseFinanceOperation
 {
     public sealed class ExpenseFinanceOperation(ExpenseFinanceOperationId id, DateTime date, ExpenseTypeId expenseTypeId, Amount amount) : AggregateRoot<ExpenseFinanceOperationId>(id)
     {
-        public ExpenseTypeId ExpenseTypeId => expenseTypeId;
+        public ExpenseTypeId ExpenseTypeId { get; private set; } = expenseTypeId;
 
-        public DateTime Date => date;
+        public DateTime Date { get; private set; } = date;
 
-        public Amount Amount => amount;
+        public Amount Amount { get; private set; } = amount;
     }
 }

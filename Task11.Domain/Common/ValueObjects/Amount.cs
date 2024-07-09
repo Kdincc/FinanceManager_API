@@ -9,7 +9,7 @@ namespace Task11.Domain.Common.ValueObjects
 {
     public sealed class Amount : ValueObject
     {
-        public Amount(decimal value)
+        private Amount(decimal value)
         {
             if (value < 0)
             {
@@ -18,6 +18,8 @@ namespace Task11.Domain.Common.ValueObjects
 
             Value = Math.Round(value, 2);
         }
+
+        public static Amount Create(decimal value) => new(value);
 
         public decimal Value { get; private set; }
 

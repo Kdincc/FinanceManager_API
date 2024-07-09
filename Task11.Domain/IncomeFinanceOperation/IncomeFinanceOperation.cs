@@ -9,12 +9,19 @@ using Task11.Domain.IncomeFinanceOperation.ValueObjects;
 
 namespace Task11.Domain.IncomeFinanceOperation
 {
-    public sealed class IncomeFinanceOperation(ExpenseFinanceOperationId id, DateTime date, IncomeTypeId incomeTypeId, Amount amount) : AggregateRoot<ExpenseFinanceOperationId>(id)
+    public sealed class IncomeFinanceOperation(
+        IncomeFinanceOperationId id,
+        DateTime date,
+        IncomeTypeId incomeTypeId,
+        Amount amount,
+        string name) : AggregateRoot<IncomeFinanceOperationId>(id)
     {
-        public IncomeTypeId IncomeTypeId => incomeTypeId;
+        public IncomeTypeId IncomeTypeId { get; private set; } = incomeTypeId;
 
-        public DateTime Date => date;
+        public DateTime Date { get; private set; } = date;
 
-        public Amount Amount => amount;
+        public Amount Amount { get; private set; } = amount;
+
+        public string Name { get; private set; } = name;
     }
 }
