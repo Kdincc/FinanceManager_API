@@ -36,5 +36,10 @@ namespace Task11.Domain.Common.Models
         {
             return !Equals(left, right);
         }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id.GetHashCode());
+        }
     }
 }

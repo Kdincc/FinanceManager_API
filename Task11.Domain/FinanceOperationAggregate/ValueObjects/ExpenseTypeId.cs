@@ -7,7 +7,7 @@ using Task11.Domain.Common.Models;
 
 namespace Task11.Domain.FinanceOperationAggregate.ValueObjects
 {
-    public sealed class ExpenseTypeId : ValueObject
+    public sealed class ExpenseTypeId : OperationTypeId
     {
         private ExpenseTypeId(Guid value)
         {

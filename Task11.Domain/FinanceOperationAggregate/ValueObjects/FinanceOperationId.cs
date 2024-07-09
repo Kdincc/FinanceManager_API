@@ -18,6 +18,8 @@ namespace Task11.Domain.FinanceOperationAggregate.ValueObjects
 
         public static FinanceOperationId CreateUniq() => new(Guid.NewGuid());
 
+        public static FinanceOperationId Create(Guid value) => new(value);
+
         public override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;

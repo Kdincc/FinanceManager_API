@@ -6,16 +6,18 @@ namespace Task11.Domain.FinanceOperationAggregate
 {
     public sealed class FinanceOperation : AggregateRoot<FinanceOperationId>
     {
-        public FinanceOperation(FinanceOperationId id, DateTime date, OperationType<ValueObject> operationType, Amount amount) : base(id)
+        public FinanceOperation(FinanceOperationId id, DateTime date, OperationTypeId operationType, Amount amount) : base(id)
         {
-            Id = id;
+            Id = id; 
             Date = date;
-            OperationType = operationType;
+            OperationTypeId = operationType;
             Amount = amount;
         }
 
         public DateTime Date { get; }
-        public OperationType<ValueObject> OperationType { get; }
+
+        public OperationTypeId OperationTypeId { get; }
+
         public Amount Amount { get; }
     }
 }
