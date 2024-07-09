@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.IncomeFinanceOperation.Entities;
+using Task11.Domain.IncomeFinanceOperation.ValueObjects;
 
 namespace Task11.Infrastructure.Persistence.Repos
 {
-    public sealed class IncomeTypeRepository(FinanceDbContext dbContext) : IRepository<IncomeType>
+    public sealed class IncomeTypeRepository(FinanceDbContext dbContext) : IRepository<IncomeType, IncomeTypeId>
     {
         private readonly FinanceDbContext _dbContext = dbContext;
 
@@ -30,6 +31,13 @@ namespace Task11.Infrastructure.Persistence.Repos
         public async Task<IReadOnlyCollection<IncomeType>> GetAllAsync(CancellationToken cancellationToken)
         {
             return await _dbContext.IncomeTypes.ToListAsync(cancellationToken);
+        }
+
+        public async Task<IncomeType> GetById(IncomeTypeId id)
+        {
+            IncomeType incomeType = await _dbContext.IncomeTypes.FirstOrDefaultAsync(i => i.Id == id);
+
+            return incomeType;
         }
 
         public async Task UpdateAsync(IncomeType entity, CancellationToken cancellationToken)
