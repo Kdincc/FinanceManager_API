@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ExpenseType\" />
+    <Folder Include="IncomeType\" />
+    <Folder Include="DailyReport\" />
+    <Folder Include="PeriodReport\" />
+  </ItemGroup>
+
 </Project>
