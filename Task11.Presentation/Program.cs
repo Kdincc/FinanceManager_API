@@ -1,4 +1,6 @@
 
+using Task11.Infrastructure;
+
 namespace Task11.Presentation
 {
     public class Program
@@ -7,12 +9,7 @@ namespace Task11.Presentation
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddInfarstructure(builder.Configuration).AddPresentation();
 
             var app = builder.Build();
 

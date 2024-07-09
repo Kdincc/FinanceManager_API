@@ -3,23 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task11.Presentation", "Task11.Presentation\Task11.Presentation.csproj", "{5301AEC0-8AE1-47EC-A681-A6722DE24EF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task11.Presentation", "Task11.Presentation\Task11.Presentation.csproj", "{5301AEC0-8AE1-47EC-A681-A6722DE24EF0}"
 	ProjectSection(ProjectDependencies) = postProject
-		{433A1A33-327A-4374-BB5E-C85C8B0886D5} = {433A1A33-327A-4374-BB5E-C85C8B0886D5}
 		{72521D59-483E-435C-98CF-83603A613C8B} = {72521D59-483E-435C-98CF-83603A613C8B}
 		{CF193BD4-5EE2-4202-B7E9-1048594A916E} = {CF193BD4-5EE2-4202-B7E9-1048594A916E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task11.Application", "Task11.Application\Task11.Application.csproj", "{CF193BD4-5EE2-4202-B7E9-1048594A916E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task11.Application", "Task11.Application\Task11.Application.csproj", "{CF193BD4-5EE2-4202-B7E9-1048594A916E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D07558B9-CFA9-4EFE-9519-C3DBE37D27CC} = {D07558B9-CFA9-4EFE-9519-C3DBE37D27CC}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task11.Contracts", "Task11.Contracts\Task11.Contracts.csproj", "{433A1A33-327A-4374-BB5E-C85C8B0886D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task11.Contracts", "Task11.Contracts\Task11.Contracts.csproj", "{433A1A33-327A-4374-BB5E-C85C8B0886D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task11.Domain", "Task11.Domain\Task11.Domain.csproj", "{D07558B9-CFA9-4EFE-9519-C3DBE37D27CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task11.Domain", "Task11.Domain\Task11.Domain.csproj", "{D07558B9-CFA9-4EFE-9519-C3DBE37D27CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task11.Infrastructure", "Task11.Infrastructure\Task11.Infrastructure.csproj", "{72521D59-483E-435C-98CF-83603A613C8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task11.Infrastructure", "Task11.Infrastructure\Task11.Infrastructure.csproj", "{72521D59-483E-435C-98CF-83603A613C8B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D07558B9-CFA9-4EFE-9519-C3DBE37D27CC} = {D07558B9-CFA9-4EFE-9519-C3DBE37D27CC}
 	EndProjectSection

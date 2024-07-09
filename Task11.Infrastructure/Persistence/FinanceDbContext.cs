@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Task11.Domain.ExpenseFinanceOperation;
+using Task11.Domain.ExpenseFinanceOperation.Entities;
 using Task11.Domain.IncomeFinanceOperation;
 using Task11.Domain.IncomeFinanceOperation.Entities;
 using Task11.Infrastructure.Persistence.Configurations;
@@ -9,12 +11,15 @@ namespace Task11.Infrastructure.Persistence
     {
         public DbSet<IncomeFinanceOperation> IncomeFinanceOperations { get; set; }
 
+        public DbSet<ExpenseFinanceOperation> ExpenseFinanceOperations { get; set; }
+
         public DbSet<IncomeType> IncomeTypes { get; set; }
+
+        public DbSet<ExpenseType> ExpenseTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new IncomeFinanceOperationConfiguration());
-            modelBuilder.ApplyConfiguration(new IncomeTypeConfiguration());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(FinanceDbContext).Assembly);
 
             base.OnModelCreating(modelBuilder);
         }

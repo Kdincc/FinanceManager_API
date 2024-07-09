@@ -19,6 +19,8 @@ namespace Task11.Domain.ExpenseFinanceOperation.ValueObjects
 
         public static ExpenseTypeId CreateUniq() => new(Guid.NewGuid());
 
+        public static ExpenseTypeId Create(Guid value) => new(value);
+
         public override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;

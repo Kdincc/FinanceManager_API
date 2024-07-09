@@ -9,7 +9,8 @@ namespace Task11.Infrastructure
     {
         public static IServiceCollection AddInfarstructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<FinanceDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DbString")));
+            services.AddDbContext<FinanceDbContext>(options => 
+            options.UseSqlServer(configuration.GetConnectionString("DbString"), b => b.MigrationsAssembly("Task11.Presentation")));
 
             return services;
         }
