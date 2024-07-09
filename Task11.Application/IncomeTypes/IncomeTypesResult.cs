@@ -6,5 +6,5 @@ using Task11.Domain.IncomeFinanceOperation.Entities;
 
 namespace Task11.Application.IncomeTypes
 {
-    public record IncomeTypesResult(Task11.Domain.IncomeFinanceOperation.Entities.IncomeType IncomeType);
+    public record IncomeTypesResult(IncomeType IncomeType);
 }
