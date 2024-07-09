@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task11.Contracts.IncomeType
+namespace Task11.Contracts.ExpenseType
 {
     public record DeleteExpenseTypeRequest(string Id);
 }

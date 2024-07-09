@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ExpenseType\" />
     <Folder Include="DailyReport\" />
     <Folder Include="PeriodReport\" />
   </ItemGroup>
