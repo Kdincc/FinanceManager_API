@@ -12,5 +12,17 @@ namespace Task11.Domain.Common.Entities
         public string Name { get; private set; } = name;
 
         public string Description { get; private set; } = description;
+
+        public string ChangeName(string newName)
+        {
+            if (string.IsNullOrEmpty(newName))
+            {
+                throw new ArgumentNullException(nameof(newName));
+            }
+
+            if ()
+
+            Name = newName;
+        }
     }
 }

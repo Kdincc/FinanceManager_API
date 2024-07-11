@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Task11.Domain.Common.Сonstants;
 using Task11.Domain.IncomeFinanceOperation.ValueObjects;
 using Task11.Domain.IncomeType;
 
@@ -18,11 +19,11 @@ namespace Task11.Infrastructure.Persistence.Configurations
                 .HasConversion(id => id.Value, value => IncomeTypeId.Create(value));
 
             builder.Property(x => x.Name)
-                .HasMaxLength(100)
+                .HasMaxLength(ValidationConstantst.OperationType.MaxNameLength)
                 .IsRequired();
 
             builder.Property(x => x.Description)
-                .HasMaxLength(255);
+                .HasMaxLength(ValidationConstantst.OperationType.MaxDescriptionLength);
         }
     }
 }

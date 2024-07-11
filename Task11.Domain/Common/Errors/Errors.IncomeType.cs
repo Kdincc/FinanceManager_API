@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Task11.Domain.IncomeFinanceOperation.Entities;
 
 namespace Task11.Domain.Common.Errors
 {
