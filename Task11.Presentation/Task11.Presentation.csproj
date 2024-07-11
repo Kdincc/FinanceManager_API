@@ -19,10 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Task11.Application\Task11.Application.csproj" />
     <ProjectReference Include="..\Task11.Infrastructure\Task11.Infrastructure.csproj" />
   </ItemGroup>

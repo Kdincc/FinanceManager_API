@@ -1,4 +1,4 @@
-
+using Task11.Application;
 using Task11.Infrastructure;
 
 namespace Task11.Presentation
@@ -9,11 +9,13 @@ namespace Task11.Presentation
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddInfarstructure(builder.Configuration).AddPresentation();
+            builder.Services
+                .AddInfarstructure(builder.Configuration)
+                .AddPresentation()
+                .AddApplication();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -23,7 +25,6 @@ namespace Task11.Presentation
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
