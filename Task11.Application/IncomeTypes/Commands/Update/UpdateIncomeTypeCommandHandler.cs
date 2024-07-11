@@ -25,9 +25,12 @@ namespace Task11.Application.IncomeTypes.Commands.Update
                 return Errors.IncomeType.IncomeTypeNotFound;
             }
 
+            incomeType.ChangeName(request.Name);
+            incomeType.ChangeDescription(request.Description);
+
             await _repository.UpdateAsync(incomeType, cancellationToken);
 
-            return new IncomeTypesResult(await _repository.GetByIdAsync(request.Id, cancellationToken));
+            return new IncomeTypesResult(incomeType);
         }
     }
 }
