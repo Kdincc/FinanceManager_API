@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Task11.Domain.ExpenseFinanceOperation.Entities;
 using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
+using Task11.Domain.ExpenseType;
 
 namespace Task11.Infrastructure.Persistence.Configurations
 {

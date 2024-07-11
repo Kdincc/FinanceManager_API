@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Task11.Application.Common.Persistance;
-using Task11.Domain.IncomeFinanceOperation.Entities;
+using Task11.Domain.IncomeType;
 using Task11.Infrastructure.Persistence;
 using Task11.Infrastructure.Persistence.Repos;
 

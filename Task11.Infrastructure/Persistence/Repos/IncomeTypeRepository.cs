@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Task11.Application.Common.Persistance;
-using Task11.Domain.IncomeFinanceOperation.Entities;
 using Task11.Domain.IncomeFinanceOperation.ValueObjects;
+using Task11.Domain.IncomeType;
 
 namespace Task11.Infrastructure.Persistence.Repos
 {

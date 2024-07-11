@@ -7,7 +7,7 @@ using Task11.Domain.Common.Models;
 
 namespace Task11.Domain.Common.Entities
 {
-    public abstract class OperationType<TId>(TId id, string name, string description) : Entity<TId>(id) where TId : ValueObject
+    public abstract class OperationType<TId>(TId id, string name, string description) : AggregateRoot<TId>(id) where TId : ValueObject
     {
         public string Name { get; private set; } = name;
 
