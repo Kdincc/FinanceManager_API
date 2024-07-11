@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Task11.Domain.Common.Models;
-
-namespace Task11.Application.Common.Persistance
+﻿namespace Task11.Application.Common.Persistance
 {
     public interface IRepository<T, TId> where T : notnull where TId : notnull
     {

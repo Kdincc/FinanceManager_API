@@ -15,7 +15,7 @@ namespace Task11.Application.IncomeTypes.Commands.Create
         {
             IncomeType incomeType = new(IncomeTypeId.CreateUniq(), request.Name, request.Description);
 
-            var incomeTypes =  await _repository.GetAllAsync(cancellationToken);
+            var incomeTypes = await _repository.GetAllAsync(cancellationToken);
 
             if (incomeTypes.Any(i => i.Name == incomeType.Name && i.Description == incomeType.Description))
             {

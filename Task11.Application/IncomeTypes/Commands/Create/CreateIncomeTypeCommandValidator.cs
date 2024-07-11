@@ -1,9 +1,5 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Task11.Domain.Common.Сonstants;
 
 namespace Task11.Application.IncomeTypes.Commands.Create
 {
@@ -11,8 +7,10 @@ namespace Task11.Application.IncomeTypes.Commands.Create
     {
         public CreateIncomeTypeCommandValidator()
         {
-            RuleFor(p => p.Name).NotEmpty();
-            RuleFor(p => p.Description).NotEmpty();
+            RuleFor(p => p.Name).NotEmpty()
+                .MaximumLength(ValidationConstantst.OperationType.MaxNameLength);
+            RuleFor(p => p.Description).NotEmpty()
+                .MaximumLength(ValidationConstantst.OperationType.MaxDescriptionLength); ;
         }
     }
 }
