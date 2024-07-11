@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Task11.Domain.Common.Models;
+using Task11.Domain.Common.Сonstants;
 
 namespace Task11.Domain.Common.Entities
 {
@@ -13,16 +14,20 @@ namespace Task11.Domain.Common.Entities
 
         public string Description { get; private set; } = description;
 
-        public string ChangeName(string newName)
+        public void ChangeName(string newName)
         {
-            if (string.IsNullOrEmpty(newName))
-            {
-                throw new ArgumentNullException(nameof(newName));
-            }
-
-            if ()
+            ArgumentException.ThrowIfNullOrEmpty(newName, nameof(newName));
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(newName.Length, ValidationConstantst.OperationType.MaxNameLength);
 
             Name = newName;
+        }
+
+        public void ChangeDescription(string newDescription)
+        {
+            ArgumentException.ThrowIfNullOrEmpty(newDescription, nameof(newDescription));
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(newDescription.Length, ValidationConstantst.OperationType.MaxDescriptionLength);
+
+            Description = newDescription;
         }
     }
 }
