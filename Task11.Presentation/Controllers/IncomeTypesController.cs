@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Task11.Application.IncomeTypes;
 using Task11.Application.IncomeTypes.Commands.Create;
+using Task11.Application.IncomeTypes.Commands.Delete;
 using Task11.Application.IncomeTypes.Queries.GetIncomeTypes;
 using Task11.Contracts.IncomeType;
 
@@ -32,9 +33,19 @@ namespace Task11.Presentation.Controllers
 
             var result = await _sender.Send(command, cancellationToken);
 
-            return result.Match(
-                Ok,
-                Problem);
+            return result.Match(Ok,Problem);
+        }
+
+        [HttpDelete("delete")]
+        [ProducesResponseType<IncomeTypesResult>(StatusCodes.Status200OK)]
+        [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
+        public async Task<IActionResult> DeleteIncomeType(DeleteIncomeTypeRequest request, CancellationToken cancellationToken)
+        {
+            var command = _mapper.Map<DeleteIncomeTypeCommand>(request);
+
+            var result = await _sender.Send(command, cancellationToken);
+
+            return result.Match(Ok, Problem);
         }
 
     }
