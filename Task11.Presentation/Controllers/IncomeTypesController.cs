@@ -2,8 +2,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Task11.Application.IncomeTypes;
+using Task11.Application.IncomeTypes.Commands.Create;
 using Task11.Application.IncomeTypes.Queries.GetIncomeTypes;
-using static Task11.Domain.Common.Errors.Errors;
+using Task11.Contracts.IncomeType;
 
 namespace Task11.Presentation.Controllers
 {
@@ -19,8 +20,22 @@ namespace Task11.Presentation.Controllers
         {
             IEnumerable<IncomeTypesResult> incomeTypes = await _sender.Send(new GetIncomeTypesQuery(), cancellationToken);
 
-
             return Ok(incomeTypes);
         }
+
+        [HttpPost("create")]
+        [ProducesResponseType<IncomeTypesResult>(StatusCodes.Status200OK)]
+        [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
+        public async Task<IActionResult> CreateIncomeType(CreateIncomeTypeRequest request, CancellationToken cancellationToken)
+        {
+            var command = _mapper.Map<CreateIncomeTypeCommand>(request);
+
+            var result = await _sender.Send(command, cancellationToken);
+
+            return result.Match(
+                Ok,
+                Problem);
+        }
+
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Task11.Application.Common.Persistance;
+using Task11.Domain.IncomeFinanceOperation.ValueObjects;
 using Task11.Domain.IncomeType;
 using Task11.Infrastructure.Persistence;
 using Task11.Infrastructure.Persistence.Repos;
@@ -14,7 +15,7 @@ namespace Task11.Infrastructure
         {
             services.AddDbContext<FinanceDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DbString"), b => b.MigrationsAssembly("Task11.Presentation")));
             
-            services.AddScoped<IRepository<IncomeType>, IncomeTypeRepository>();
+            services.AddScoped<IRepository<IncomeType, IncomeTypeId>, IncomeTypeRepository>();
 
             return services;
         }
