@@ -10,7 +10,7 @@ namespace Task11.Application.IncomeTypes.Commands.Create
             RuleFor(p => p.Name).NotEmpty()
                 .MaximumLength(ValidationConstantst.OperationType.MaxNameLength);
             RuleFor(p => p.Description).NotEmpty()
-                .MaximumLength(ValidationConstantst.OperationType.MaxDescriptionLength); ;
+                .MaximumLength(ValidationConstantst.OperationType.MaxDescriptionLength);
         }
     }
 }

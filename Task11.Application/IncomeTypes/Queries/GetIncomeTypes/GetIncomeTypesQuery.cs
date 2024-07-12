@@ -9,5 +9,5 @@ using Task11.Domain.IncomeType;
 
 namespace Task11.Application.IncomeTypes.Queries.GetIncomeTypes
 {
-    public record GetIncomeTypesQuery() : IRequest<IEnumerable<IncomeType>>;
+    public record GetIncomeTypesQuery() : IRequest<IEnumerable<IncomeTypesResult>>;
 }
