@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Task11.Application.ExpenseTypes;
 using Task11.Application.ExpenseTypes.Queries.GetExpenseTypes;
+using Task11.Contracts.ExpenseType;
 
 namespace Task11.Presentation.Controllers
 {
@@ -20,5 +21,13 @@ namespace Task11.Presentation.Controllers
 
             return Ok(results);
         }
+
+        //[HttpPost("create")]
+        //[ProducesResponseType<CreateExpenseTypeResponse>(StatusCodes.Status200OK)]
+        //[ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
+        //public async Task<IActionResult> CreateExpenseType(CreateExpenseTypeRequest request, CancellationToken cancellationToken)
+        //{
+
+        //}
     }
 }
