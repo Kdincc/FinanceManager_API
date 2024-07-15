@@ -18,19 +18,29 @@ namespace Task11.Application.ExpenseTypes.Commands.Create
 
         public async Task<ErrorOr<ExpenseTypesResult>> Handle(CreateExpenseTypeCommand request, CancellationToken cancellationToken)
         {
-            ExpenseType expenseTypeToCreate = new(ExpenseTypeId.CreateUniq(), request.Name, request.Description);
+            ExpenseType expenseType = new(ExpenseTypeId.CreateUniq(), request.Name, request.Description);
 
-            await foreach (var expenseType in _repository.GetAllAsAsyncEnumerable()) 
+            if (await HasSameExpenseType(_repository, expenseType)) 
             {
-                if (expenseType.HasSameNameAndDescription(expenseType))
+                return Errors.ExpenseType.DuplicateExpenseType;
+            }
+
+            await _repository.AddAsync(expenseType, cancellationToken);
+
+            return new ExpenseTypesResult(expenseType);
+        }
+
+        private async Task<bool> HasSameExpenseType(IRepository<ExpenseType, ExpenseTypeId> repository, ExpenseType expenseTypeToCheck)
+        {
+            await foreach (var expenseType in repository.GetAllAsAsyncEnumerable())
+            {
+                if (expenseType.HasSameNameAndDescription(expenseTypeToCheck))
                 {
-                    return Errors.ExpenseType.DuplicateExpenseType;
+                    return true;
                 }
             }
 
-            await _repository.AddAsync(expenseTypeToCreate, cancellationToken);
-
-            return new ExpenseTypesResult(expenseTypeToCreate);
+            return false;
         }
     }
 }

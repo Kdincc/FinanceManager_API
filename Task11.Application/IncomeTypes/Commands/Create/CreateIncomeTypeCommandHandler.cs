@@ -2,6 +2,7 @@
 using MediatR;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.Common.Errors;
+using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
 using Task11.Domain.IncomeFinanceOperation.ValueObjects;
 using Task11.Domain.IncomeType;
 
@@ -15,12 +16,9 @@ namespace Task11.Application.IncomeTypes.Commands.Create
         {
             IncomeType incomeTypeToCreate = new(IncomeTypeId.CreateUniq(), request.Name, request.Description);
 
-            await foreach (var incomeType in _repository.GetAllAsAsyncEnumerable())
+            if (await HasSameIncomeType(_repository, incomeTypeToCreate)) 
             {
-                if (incomeType.HasSameNameAndDescription(incomeTypeToCreate))
-                {
-                    return Errors.IncomeType.DuplicateIncomeType;
-                }
+                return Errors.IncomeType.IncomeTypeNotFound;
             }
 
             await _repository.AddAsync(incomeTypeToCreate, cancellationToken);
@@ -28,6 +26,19 @@ namespace Task11.Application.IncomeTypes.Commands.Create
             IncomeTypesResult result = new(incomeTypeToCreate);
 
             return result;
+        }
+
+        private async Task<bool> HasSameIncomeType(IRepository<IncomeType, IncomeTypeId> repository, IncomeType incnomeTypeToCheck)
+        {
+            await foreach (var incomeType in repository.GetAllAsAsyncEnumerable())
+            {
+                if (incomeType.HasSameNameAndDescription(incnomeTypeToCheck))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

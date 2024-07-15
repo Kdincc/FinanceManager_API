@@ -23,17 +23,27 @@ namespace Task11.Application.IncomeTypes.Commands.Update
             incomeTypeToUpdate.ChangeName(request.Name);
             incomeTypeToUpdate.ChangeDescription(request.Description);
 
-            await foreach(var incomeType in _repository.GetAllAsAsyncEnumerable())
+            if (await HasSameIncomeType(_repository, incomeTypeToUpdate))
             {
-                if (incomeType.HasSameNameAndDescription(incomeTypeToUpdate))
-                {
-                    return Errors.IncomeType.DuplicateIncomeType;
-                }
+                return Errors.IncomeType.DuplicateIncomeType;
             }
 
             await _repository.UpdateAsync(incomeTypeToUpdate, cancellationToken);
 
             return new IncomeTypesResult(incomeTypeToUpdate);
+        }
+
+        private async Task<bool> HasSameIncomeType(IRepository<IncomeType, IncomeTypeId> repository, IncomeType incnomeTypeToCheck)
+        {
+            await foreach (var incomeType in repository.GetAllAsAsyncEnumerable())
+            {
+                if (incomeType.HasSameNameAndDescription(incnomeTypeToCheck))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
