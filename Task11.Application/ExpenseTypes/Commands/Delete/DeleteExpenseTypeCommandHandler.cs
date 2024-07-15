@@ -1,10 +1,5 @@
 ﻿using ErrorOr;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.Common.Errors;
 using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
@@ -20,9 +15,9 @@ namespace Task11.Application.ExpenseTypes.Commands.Delete
         {
             ExpenseType expenseType = await _repository.GetByIdAsync(request.ExpenseTypeId, cancellationToken);
 
-            if (expenseType is null) 
+            if (expenseType is null)
             {
-                return Errors.ExpenseType.ExpenseTypeNotFound; 
+                return Errors.ExpenseType.ExpenseTypeNotFound;
             }
 
             await _repository.DeleteAsync(expenseType, cancellationToken);
