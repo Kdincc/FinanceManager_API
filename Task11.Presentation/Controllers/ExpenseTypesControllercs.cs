@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Task11.Application.ExpenseTypes;
 using Task11.Application.ExpenseTypes.Commands.Create;
+using Task11.Application.ExpenseTypes.Commands.Update;
 using Task11.Application.ExpenseTypes.Queries.GetExpenseTypes;
 using Task11.Contracts.ExpenseType;
 
@@ -29,6 +30,18 @@ namespace Task11.Presentation.Controllers
         public async Task<IActionResult> CreateExpenseType(CreateExpenseTypeRequest request, CancellationToken cancellationToken)
         {
             var command = _mapper.Map<CreateExpenseTypeCommand>(request);
+
+            var result = await _sender.Send(command, cancellationToken);
+
+            return result.Match(Ok, Problem);
+        }
+
+        [HttpPut("update")]
+        [ProducesResponseType<ExpenseTypesResult>(StatusCodes.Status200OK)]
+        [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
+        public async Task<IActionResult> UpdateExpenseType(UpdateExpenseTypeRequest request, CancellationToken cancellationToken)
+        {
+            var command = _mapper.Map<UpdateExpenseTypeCommand>(request);
 
             var result = await _sender.Send(command, cancellationToken);
 
