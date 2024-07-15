@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Task11.Application.ExpenseTypes;
 using Task11.Application.ExpenseTypes.Commands.Create;
+using Task11.Application.ExpenseTypes.Commands.Delete;
 using Task11.Application.ExpenseTypes.Commands.Update;
 using Task11.Application.ExpenseTypes.Queries.GetExpenseTypes;
 using Task11.Contracts.ExpenseType;
@@ -47,5 +48,18 @@ namespace Task11.Presentation.Controllers
 
             return result.Match(Ok, Problem);
         }
+
+        [HttpDelete("delete")]
+        [ProducesResponseType<ExpenseTypesResult>(StatusCodes.Status200OK)]
+        [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
+        public async Task<IActionResult> DeleteExpenseType(DeleteExpenseTypeRequest request, CancellationToken cancellationToken)
+        {
+            var command = _mapper.Map<DeleteExpenseTypeCommand>(request);
+
+            var result = await _sender.Send(command, cancellationToken);
+
+            return result.Match(Ok, Problem);
+        }
+
     }
 }
