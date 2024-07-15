@@ -10,7 +10,7 @@ using Task11.Contracts.IncomeType;
 
 namespace Task11.Presentation.Controllers
 {
-    [Route("incomeTypes")]
+    [Route("incomes")]
     public class IncomeTypesController(ISender sender, IMapper mapper) : ApiController
     {
         private readonly ISender _sender = sender;
