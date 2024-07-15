@@ -2,6 +2,8 @@
 {
     public interface IRepository<T, TId> where T : notnull where TId : notnull
     {
+        public IAsyncEnumerable<T> GetAllAsAsyncEnumerable();
+
         public Task<T> GetByIdAsync(TId id, CancellationToken cancellationToken);
 
         public Task<IReadOnlyCollection<T>> GetAllAsync(CancellationToken cancellationToken);
