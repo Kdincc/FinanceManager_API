@@ -4,6 +4,7 @@ using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.IncomeFinanceOperation;
 using Task11.Domain.IncomeFinanceOperation.ValueObjects;
 using Task11.Domain.IncomeType;
+using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Infrastructure.Persistence.Configurations
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Task11.Domain.Common.Entities;
-using Task11.Domain.IncomeFinanceOperation.ValueObjects;
+using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Domain.IncomeType
 {

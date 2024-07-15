@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Task11.Domain.Common.Models;
 using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.IncomeFinanceOperation.ValueObjects;
+using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Domain.IncomeFinanceOperation
 {

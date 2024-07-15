@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Task11.Domain.Common.Models;
 using Task11.Domain.Common.ValueObjects;
 
-namespace Task11.Domain.ExpenseFinanceOperation.ValueObjects
+namespace Task11.Domain.ExpenseType.ValueObjects
 {
     public sealed class ExpenseTypeId : OperationTypeId
     {

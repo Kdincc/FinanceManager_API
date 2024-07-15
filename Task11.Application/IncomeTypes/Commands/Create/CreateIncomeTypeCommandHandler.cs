@@ -3,8 +3,8 @@ using MediatR;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.Common.Errors;
 using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
-using Task11.Domain.IncomeFinanceOperation.ValueObjects;
 using Task11.Domain.IncomeType;
+using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Application.IncomeTypes.Commands.Create
 {

@@ -4,6 +4,7 @@ using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.ExpenseFinanceOperation;
 using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
 using Task11.Domain.ExpenseType;
+using Task11.Domain.ExpenseType.ValueObjects;
 
 namespace Task11.Infrastructure.Persistence.Configurations
 {

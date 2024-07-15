@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Task11.Domain.Common.Сonstants;
-using Task11.Domain.IncomeFinanceOperation.ValueObjects;
 using Task11.Domain.IncomeType;
+using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Infrastructure.Persistence.Configurations
 {
