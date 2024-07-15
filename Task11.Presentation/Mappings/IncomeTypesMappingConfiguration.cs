@@ -19,6 +19,10 @@ namespace Task11.Presentation.Mappings
             config.ForType<DeleteIncomeTypeRequest, DeleteIncomeTypeCommand>()
                   .Map(dest => dest.IncomeTypeId, src => IncomeTypeId.Create(Guid.Parse(src.Id)))
                   .ConstructUsing(src => new DeleteIncomeTypeCommand(IncomeTypeId.Create(Guid.Parse(src.Id))));
+
+            config.ForType<UpdateIncomeTypeRequest, UpdateIncomeTypeCommand>()
+                .Map(dest => dest.Id, src => IncomeTypeId.Create(Guid.Parse(src.Id)))
+                .ConstructUsing(src => new UpdateIncomeTypeCommand(IncomeTypeId.Create(Guid.Parse(src.Id)), src.Name, src.Description));
         }
     }
 }
