@@ -13,19 +13,27 @@ namespace Task11.Application.IncomeTypes.Commands.Update
 
         public async Task<ErrorOr<IncomeTypesResult>> Handle(UpdateIncomeTypeCommand request, CancellationToken cancellationToken)
         {
-            IncomeType incomeType = await _repository.GetByIdAsync(request.Id, cancellationToken);
+            IncomeType incomeTypeToUpdate = await _repository.GetByIdAsync(request.Id, cancellationToken);
 
-            if (incomeType is null)
+            if (incomeTypeToUpdate is null)
             {
                 return Errors.IncomeType.IncomeTypeNotFound;
             }
 
-            incomeType.ChangeName(request.Name);
-            incomeType.ChangeDescription(request.Description);
+            incomeTypeToUpdate.ChangeName(request.Name);
+            incomeTypeToUpdate.ChangeDescription(request.Description);
 
-            await _repository.UpdateAsync(incomeType, cancellationToken);
+            await foreach(var incomeType in _repository.GetAllAsAsyncEnumerable())
+            {
+                if (incomeType.HasSameNameAndDescription(incomeTypeToUpdate))
+                {
+                    return Errors.IncomeType.DuplicateIncomeType;
+                }
+            }
 
-            return new IncomeTypesResult(incomeType);
+            await _repository.UpdateAsync(incomeTypeToUpdate, cancellationToken);
+
+            return new IncomeTypesResult(incomeTypeToUpdate);
         }
     }
 }

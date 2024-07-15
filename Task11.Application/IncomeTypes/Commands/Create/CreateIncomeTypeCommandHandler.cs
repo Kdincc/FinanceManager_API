@@ -13,18 +13,19 @@ namespace Task11.Application.IncomeTypes.Commands.Create
 
         public async Task<ErrorOr<IncomeTypesResult>> Handle(CreateIncomeTypeCommand request, CancellationToken cancellationToken)
         {
-            IncomeType incomeType = new(IncomeTypeId.CreateUniq(), request.Name, request.Description);
+            IncomeType incomeTypeToCreate = new(IncomeTypeId.CreateUniq(), request.Name, request.Description);
 
-            var incomeTypes = await _repository.GetAllAsync(cancellationToken);
-
-            if (incomeTypes.Any(i => i.Name == incomeType.Name && i.Description == incomeType.Description))
+            await foreach (var incomeType in _repository.GetAllAsAsyncEnumerable())
             {
-                return Errors.IncomeType.DuplicateIncomeType;
+                if (incomeType.HasSameNameAndDescription(incomeTypeToCreate))
+                {
+                    return Errors.IncomeType.DuplicateIncomeType;
+                }
             }
 
-            await _repository.AddAsync(incomeType, cancellationToken);
+            await _repository.AddAsync(incomeTypeToCreate, cancellationToken);
 
-            IncomeTypesResult result = new(incomeType);
+            IncomeTypesResult result = new(incomeTypeToCreate);
 
             return result;
         }
