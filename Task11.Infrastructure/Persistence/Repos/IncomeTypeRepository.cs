@@ -28,6 +28,11 @@ namespace Task11.Infrastructure.Persistence.Repos
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
+        public IAsyncEnumerable<IncomeType> GetAllAsAsyncEnumerable()
+        {
+            return _dbContext.IncomeTypes.AsAsyncEnumerable();
+        }
+
         public async Task<IReadOnlyCollection<IncomeType>> GetAllAsync(CancellationToken cancellationToken)
         {
             return await _dbContext.IncomeTypes.ToListAsync(cancellationToken);
