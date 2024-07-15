@@ -11,7 +11,7 @@ using Task11.Contracts.ExpenseType;
 namespace Task11.Presentation.Controllers
 {
     [Route("expenses")]
-    public sealed class ExpenseTypesControllercs(ISender sender, IMapper mapper) : ApiController
+    public sealed class ExpenseTypesController(ISender sender, IMapper mapper) : ApiController
     {
         private readonly ISender _sender = sender;
         private readonly IMapper _mapper = mapper;
