@@ -24,5 +24,10 @@ namespace Task11.Domain.Common.Entities
 
             Description = newDescription;
         }
+
+        public bool HasSameNameAndDescription(OperationType<TId> operationType)
+        {
+            return Name == operationType.Name && Description == operationType.Description;
+        }
     }
 }
