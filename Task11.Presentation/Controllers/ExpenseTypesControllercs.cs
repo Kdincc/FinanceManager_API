@@ -24,7 +24,7 @@ namespace Task11.Presentation.Controllers
         }
 
         [HttpPost("create")]
-        [ProducesResponseType<CreateExpenseTypeResponse>(StatusCodes.Status200OK)]
+        [ProducesResponseType<ExpenseTypesResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> CreateExpenseType(CreateExpenseTypeRequest request, CancellationToken cancellationToken)
         {
