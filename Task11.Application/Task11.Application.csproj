@@ -17,8 +17,4 @@
     <PackageReference Include="MediatR" Version="12.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ExpenseTypes\Commands\Update\" />
-  </ItemGroup>
-
 </Project>
