@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ExpenseFinanceOperations\Commands\Delete\" />
     <Folder Include="ExpenseFinanceOperations\Commands\Update\" />
   </ItemGroup>
 
