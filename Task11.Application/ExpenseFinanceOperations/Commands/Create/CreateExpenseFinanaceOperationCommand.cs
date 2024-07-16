@@ -9,7 +9,7 @@ using Task11.Domain.ExpenseType.ValueObjects;
 
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Create
 {
-    public record CreateExpenseFinanaceOperation(
+    public record CreateExpenseFinanaceOperationCommand(
         DateTime Date,
         ExpenseTypeId ExpenseTypeId,
         Amount Amount,
