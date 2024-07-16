@@ -19,7 +19,7 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
 
             RuleFor(x => x.Name)
                 .NotEmpty()
-                .MaximumLength(ValidationConstantst.ExpenseFinanceOperation.MaxNameLength);
+                .MaximumLength(ValidationConstants.ExpenseFinanceOperation.MaxNameLength);
 
             RuleFor(x => x.ExpenseFinanceOperationId)
                 .NotEmpty();

@@ -14,10 +14,10 @@ namespace Task11.Application.ExpenseTypes.Commands.Create
         {
             RuleFor(e => e.Name)
                 .NotEmpty()
-                .MaximumLength(ValidationConstantst.OperationType.MaxNameLength);
+                .MaximumLength(ValidationConstants.OperationType.MaxNameLength);
             RuleFor(e => e.Description)
                 .NotEmpty()
-                .MaximumLength(ValidationConstantst.OperationType.MaxDescriptionLength);
+                .MaximumLength(ValidationConstants.OperationType.MaxDescriptionLength);
         }
     }
 }

@@ -19,11 +19,11 @@ namespace Task11.Infrastructure.Persistence.Configurations
                 .HasConversion(id => id.Value, value => ExpenseTypeId.Create(value));
 
             builder.Property(x => x.Name)
-                .HasMaxLength(ValidationConstantst.OperationType.MaxNameLength)
+                .HasMaxLength(ValidationConstants.OperationType.MaxNameLength)
                 .IsRequired();
 
             builder.Property(x => x.Description)
-                .HasMaxLength(ValidationConstantst.OperationType.MaxDescriptionLength);
+                .HasMaxLength(ValidationConstants.OperationType.MaxDescriptionLength);
         }
     }
 }

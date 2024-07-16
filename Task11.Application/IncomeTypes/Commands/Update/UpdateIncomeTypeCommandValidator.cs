@@ -8,9 +8,9 @@ namespace Task11.Application.IncomeTypes.Commands.Update
         public UpdateIncomeTypeCommandValidator()
         {
             RuleFor(p => p.Name).NotEmpty()
-                .MaximumLength(ValidationConstantst.OperationType.MaxNameLength);
+                .MaximumLength(ValidationConstants.OperationType.MaxNameLength);
             RuleFor(p => p.Description).NotEmpty()
-                .MaximumLength(ValidationConstantst.OperationType.MaxDescriptionLength);
+                .MaximumLength(ValidationConstants.OperationType.MaxDescriptionLength);
         }
     }
 }

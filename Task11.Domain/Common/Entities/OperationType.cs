@@ -24,7 +24,7 @@ namespace Task11.Domain.Common.Entities
         private void ChangeName(string newName)
         {
             ArgumentException.ThrowIfNullOrEmpty(newName, nameof(newName));
-            ArgumentOutOfRangeException.ThrowIfGreaterThan(newName.Length, ValidationConstantst.OperationType.MaxNameLength);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(newName.Length, ValidationConstants.OperationType.MaxNameLength);
 
             Name = newName;
         }
@@ -32,7 +32,7 @@ namespace Task11.Domain.Common.Entities
         private void ChangeDescription(string newDescription)
         {
             ArgumentException.ThrowIfNullOrEmpty(newDescription, nameof(newDescription));
-            ArgumentOutOfRangeException.ThrowIfGreaterThan(newDescription.Length, ValidationConstantst.OperationType.MaxDescriptionLength);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(newDescription.Length, ValidationConstants.OperationType.MaxDescriptionLength);
 
             Description = newDescription;
         }

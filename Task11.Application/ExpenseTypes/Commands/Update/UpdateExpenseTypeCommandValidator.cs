@@ -9,11 +9,11 @@ namespace Task11.Application.ExpenseTypes.Commands.Update
         {
             RuleFor(p => p.Name)
                 .NotEmpty()
-                .MaximumLength(ValidationConstantst.OperationType.MaxNameLength);
+                .MaximumLength(ValidationConstants.OperationType.MaxNameLength);
 
             RuleFor(p => p.Description)
                 .NotEmpty()
-                .MaximumLength(ValidationConstantst.OperationType.MaxDescriptionLength);
+                .MaximumLength(ValidationConstants.OperationType.MaxDescriptionLength);
 
             RuleFor(p => p.ExpenseTypeId)
                 .NotEmpty();
