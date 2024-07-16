@@ -1,11 +1,5 @@
 ﻿using FluentValidation;
 using Task11.Domain.Common.Сonstants;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task11.Application.ExpenseTypes.Commands.Update
 {
@@ -17,7 +11,7 @@ namespace Task11.Application.ExpenseTypes.Commands.Update
                 .NotEmpty()
                 .MaximumLength(ValidationConstantst.OperationType.MaxNameLength);
 
-            RuleFor(p => p.Name)
+            RuleFor(p => p.Description)
                 .NotEmpty()
                 .MaximumLength(ValidationConstantst.OperationType.MaxDescriptionLength);
 

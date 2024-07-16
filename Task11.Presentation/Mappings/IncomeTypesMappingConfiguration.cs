@@ -4,6 +4,7 @@ using Task11.Application.IncomeTypes.Commands.Create;
 using Task11.Application.IncomeTypes.Commands.Delete;
 using Task11.Application.IncomeTypes.Commands.Update;
 using Task11.Contracts.IncomeType;
+using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Presentation.Mappings
@@ -18,7 +19,7 @@ namespace Task11.Presentation.Mappings
 
             config.ForType<UpdateIncomeTypeRequest, UpdateIncomeTypeCommand>()
                 .Map(dest => dest.Id, src => IncomeTypeId.Create(Guid.Parse(src.Id)))
-                .ConstructUsing(src => new UpdateIncomeTypeCommand(IncomeTypeId.Create(Guid.Parse(src.Id)), src.Name, src.Description));
+                .ConstructUsing(src => new UpdateIncomeTypeCommand(IncomeTypeId.Create(Guid.Parse(src.Id)), src.Name, src.Description, Amount.Create(src.Amount)));
         }
     }
 }

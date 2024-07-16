@@ -11,8 +11,7 @@ namespace Task11.Domain.ExpenseType
 {
     public sealed class ExpenseType(ExpenseTypeId id,
                                    string name,
-                                   string description,
-                                   Amount amount) : OperationType<ExpenseTypeId>(id, name, description, amount)
+                                   string description) : OperationType<ExpenseTypeId>(id, name, description)
     {
     }
 }

@@ -2,6 +2,7 @@
 using Task11.Application.ExpenseTypes.Commands.Delete;
 using Task11.Application.ExpenseTypes.Commands.Update;
 using Task11.Contracts.ExpenseType;
+using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.ExpenseType.ValueObjects;
 
 namespace Task11.Presentation.Mappings
@@ -16,7 +17,7 @@ namespace Task11.Presentation.Mappings
 
             config.ForType<UpdateExpenseTypeRequest, UpdateExpenseTypeCommand>()
                 .Map(dest => dest.ExpenseTypeId, src => ExpenseTypeId.Create(Guid.Parse(src.Id)))
-                .ConstructUsing(src => new UpdateExpenseTypeCommand(ExpenseTypeId.Create(Guid.Parse(src.Id)), src.Name, src.Description));
+                .ConstructUsing(src => new UpdateExpenseTypeCommand(ExpenseTypeId.Create(Guid.Parse(src.Id)), src.Name, src.Description, Amount.Create(src.Amount)));
         }
     }
 }

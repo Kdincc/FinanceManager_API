@@ -20,8 +20,7 @@ namespace Task11.Application.ExpenseTypes.Commands.Update
                 return Errors.ExpenseType.ExpenseTypeNotFound;
             }
 
-            expenseType.ChangeName(request.Name);
-            expenseType.ChangeDescription(request.Description);
+            expenseType.Update(request.Name, request.Description);
 
             if (await HasSameExpenseType(_repository, expenseType))
             {
