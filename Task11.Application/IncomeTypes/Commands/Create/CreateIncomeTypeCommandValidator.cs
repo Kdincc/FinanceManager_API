@@ -11,6 +11,9 @@ namespace Task11.Application.IncomeTypes.Commands.Create
                 .MaximumLength(ValidationConstantst.OperationType.MaxNameLength);
             RuleFor(p => p.Description).NotEmpty()
                 .MaximumLength(ValidationConstantst.OperationType.MaxDescriptionLength);
+            RuleFor(p => p.Amount)
+                .NotNull()
+                .Must(e => e.Value >= 0);
         }
     }
 }

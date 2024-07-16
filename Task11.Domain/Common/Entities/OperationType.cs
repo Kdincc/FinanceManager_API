@@ -1,15 +1,31 @@
 ﻿using Task11.Domain.Common.Models;
+using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.Common.Сonstants;
 
 namespace Task11.Domain.Common.Entities
 {
-    public abstract class OperationType<TId>(TId id, string name, string description) : AggregateRoot<TId>(id) where TId : ValueObject
+    public abstract class OperationType<TId>(TId id, string name, string description, Amount amount) : AggregateRoot<TId>(id) where TId : ValueObject
     {
         public string Name { get; private set; } = name;
 
         public string Description { get; private set; } = description;
 
-        public void ChangeName(string newName)
+        public Amount Amount { get; private set; } = amount;
+
+
+        public bool HasSameNameAndDescription(OperationType<TId> operationType)
+        {
+            return Name == operationType.Name && Description == operationType.Description;
+        }
+
+        public void Update(string name, string description, Amount amount)
+        {
+            ChangeName(name);
+            ChangeDescription(description);
+            ChangeAmount(amount);
+        }
+
+        private void ChangeName(string newName)
         {
             ArgumentException.ThrowIfNullOrEmpty(newName, nameof(newName));
             ArgumentOutOfRangeException.ThrowIfGreaterThan(newName.Length, ValidationConstantst.OperationType.MaxNameLength);
@@ -17,7 +33,7 @@ namespace Task11.Domain.Common.Entities
             Name = newName;
         }
 
-        public void ChangeDescription(string newDescription)
+        private void ChangeDescription(string newDescription)
         {
             ArgumentException.ThrowIfNullOrEmpty(newDescription, nameof(newDescription));
             ArgumentOutOfRangeException.ThrowIfGreaterThan(newDescription.Length, ValidationConstantst.OperationType.MaxDescriptionLength);
@@ -25,9 +41,11 @@ namespace Task11.Domain.Common.Entities
             Description = newDescription;
         }
 
-        public bool HasSameNameAndDescription(OperationType<TId> operationType)
+        private void ChangeAmount(Amount newAmount)
         {
-            return Name == operationType.Name && Description == operationType.Description;
+            ArgumentOutOfRangeException.ThrowIfLessThan(newAmount.Value, 0);
+
+            Amount = newAmount;
         }
     }
 }

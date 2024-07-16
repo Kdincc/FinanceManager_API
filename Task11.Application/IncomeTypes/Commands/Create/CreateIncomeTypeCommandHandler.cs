@@ -14,7 +14,7 @@ namespace Task11.Application.IncomeTypes.Commands.Create
 
         public async Task<ErrorOr<IncomeTypesResult>> Handle(CreateIncomeTypeCommand request, CancellationToken cancellationToken)
         {
-            IncomeType incomeTypeToCreate = new(IncomeTypeId.CreateUniq(), request.Name, request.Description);
+            IncomeType incomeTypeToCreate = new(IncomeTypeId.CreateUniq(), request.Name, request.Description, request.Amount);
 
             if (await HasSameIncomeType(_repository, incomeTypeToCreate)) 
             {
