@@ -17,4 +17,9 @@
     <PackageReference Include="MediatR" Version="12.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ExpenseFinanceOperation\Commands\Delete\" />
+    <Folder Include="ExpenseFinanceOperation\Commands\Update\" />
+  </ItemGroup>
+
 </Project>
