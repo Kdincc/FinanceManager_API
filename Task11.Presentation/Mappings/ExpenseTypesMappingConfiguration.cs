@@ -17,7 +17,7 @@ namespace Task11.Presentation.Mappings
 
             config.ForType<UpdateExpenseTypeRequest, UpdateExpenseTypeCommand>()
                 .Map(dest => dest.ExpenseTypeId, src => ExpenseTypeId.Create(Guid.Parse(src.Id)))
-                .ConstructUsing(src => new UpdateExpenseTypeCommand(ExpenseTypeId.Create(Guid.Parse(src.Id)), src.Name, src.Description, Amount.Create(src.Amount)));
+                .ConstructUsing(src => new UpdateExpenseTypeCommand(ExpenseTypeId.Create(Guid.Parse(src.Id)), src.Name, src.Description));
         }
     }
 }

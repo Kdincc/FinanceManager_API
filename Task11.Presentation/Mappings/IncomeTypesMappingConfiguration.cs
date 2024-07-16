@@ -19,7 +19,7 @@ namespace Task11.Presentation.Mappings
 
             config.ForType<UpdateIncomeTypeRequest, UpdateIncomeTypeCommand>()
                 .Map(dest => dest.Id, src => IncomeTypeId.Create(Guid.Parse(src.Id)))
-                .ConstructUsing(src => new UpdateIncomeTypeCommand(IncomeTypeId.Create(Guid.Parse(src.Id)), src.Name, src.Description, Amount.Create(src.Amount)));
+                .ConstructUsing(src => new UpdateIncomeTypeCommand(IncomeTypeId.Create(Guid.Parse(src.Id)), src.Name, src.Description));
         }
     }
 }
