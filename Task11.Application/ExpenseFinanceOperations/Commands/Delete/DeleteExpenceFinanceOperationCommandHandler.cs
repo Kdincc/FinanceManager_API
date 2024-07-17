@@ -12,11 +12,11 @@ using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
 
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Delete
 {
-    public sealed class DeleteExpenceFinanceOperationCommandHandler(IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> repository) : IRequestHandler<DeleteExpenceFinanceOperationCommand, ErrorOr<ExpenseFinanceOperationResult>>
+    public sealed class DeleteExpenceFinanceOperationCommandHandler(IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> repository) : IRequestHandler<DeleteExpenceFinanseOperationCommand, ErrorOr<ExpenseFinanceOperationResult>>
     {
         private readonly IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> _repository = repository;
 
-        public async Task<ErrorOr<ExpenseFinanceOperationResult>> Handle(DeleteExpenceFinanceOperationCommand request, CancellationToken cancellationToken)
+        public async Task<ErrorOr<ExpenseFinanceOperationResult>> Handle(DeleteExpenceFinanseOperationCommand request, CancellationToken cancellationToken)
         {
             ExpenseFinanceOperation expenseFinanceOperation = await _repository.GetByIdAsync(request.Id, cancellationToken);
 

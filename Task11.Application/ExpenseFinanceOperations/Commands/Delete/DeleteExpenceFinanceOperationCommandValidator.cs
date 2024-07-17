@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Delete
 {
-    public sealed class DeleteExpenceFinanceOperationCommandValidator : AbstractValidator<DeleteExpenceFinanceOperationCommand>
+    public sealed class DeleteExpenceFinanceOperationCommandValidator : AbstractValidator<DeleteExpenceFinanseOperationCommand>
     {
         public DeleteExpenceFinanceOperationCommandValidator()
         {

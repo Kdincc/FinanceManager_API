@@ -4,5 +4,5 @@ using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
 
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Delete
 {
-    public record DeleteExpenceFinanceOperationCommand(ExpenseFinanceOperationId Id) : IRequest<ErrorOr<ExpenseFinanceOperationResult>>;
+    public record DeleteExpenceFinanseOperationCommand(ExpenseFinanceOperationId Id) : IRequest<ErrorOr<ExpenseFinanceOperationResult>>;
 }
