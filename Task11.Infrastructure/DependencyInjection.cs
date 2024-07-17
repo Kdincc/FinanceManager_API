@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Task11.Application.Common.Persistance;
+using Task11.Domain.ExpenseFinanceOperation;
+using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
 using Task11.Domain.ExpenseType;
 using Task11.Domain.ExpenseType.ValueObjects;
 using Task11.Domain.IncomeType;
@@ -19,6 +21,7 @@ namespace Task11.Infrastructure
             
             services.AddScoped<IRepository<IncomeType, IncomeTypeId>, IncomeTypeRepository>();
             services.AddScoped<IRepository<ExpenseType, ExpenseTypeId>, ExpenseTypeRepository>();
+            services.AddScoped<IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId>, ExpenceFinanceOperationRepository>();
 
             return services;
         }
