@@ -2,7 +2,6 @@
 using Task11.Application.ExpenseTypes.Commands.Delete;
 using Task11.Application.ExpenseTypes.Commands.Update;
 using Task11.Contracts.ExpenseType;
-using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.ExpenseType.ValueObjects;
 
 namespace Task11.Presentation.Mappings

@@ -1,5 +1,4 @@
 ﻿using Task11.Domain.Common.Models;
-using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.Common.Сonstants;
 
 namespace Task11.Domain.Common.Entities

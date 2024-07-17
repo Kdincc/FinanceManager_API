@@ -18,7 +18,7 @@ namespace Task11.Presentation.Controllers
 
         [HttpGet("all")]
         [ProducesResponseType<IEnumerable<ExpenseTypesResult>>(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll(CancellationToken cancellationToken) 
+        public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
         {
             IEnumerable<ExpenseTypesResult> results = await _sender.Send(new GetExpenseTypesQuery(), cancellationToken);
 

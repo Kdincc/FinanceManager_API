@@ -1,9 +1,4 @@
 ﻿using ErrorOr;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task11.Domain.Common.Errors
 {
@@ -19,6 +14,6 @@ namespace Task11.Domain.Common.Errors
                 code: "IncomeType.DuplicateIncomeType",
                 description: "Income type with same name and description already exists!");
         }
-            
+
     }
 }

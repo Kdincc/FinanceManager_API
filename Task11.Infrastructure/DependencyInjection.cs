@@ -18,7 +18,7 @@ namespace Task11.Infrastructure
         public static IServiceCollection AddInfarstructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<FinanceDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DbString"), b => b.MigrationsAssembly("Task11.Presentation")));
-            
+
             services.AddScoped<IRepository<IncomeType, IncomeTypeId>, IncomeTypeRepository>();
             services.AddScoped<IRepository<ExpenseType, ExpenseTypeId>, ExpenseTypeRepository>();
             services.AddScoped<IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId>, ExpenceFinanceOperationRepository>();

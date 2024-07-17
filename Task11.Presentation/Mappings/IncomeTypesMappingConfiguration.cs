@@ -1,10 +1,7 @@
 ﻿using Mapster;
-using Task11.Application.IncomeTypes;
-using Task11.Application.IncomeTypes.Commands.Create;
 using Task11.Application.IncomeTypes.Commands.Delete;
 using Task11.Application.IncomeTypes.Commands.Update;
 using Task11.Contracts.IncomeType;
-using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Presentation.Mappings

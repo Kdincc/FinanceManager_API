@@ -3,7 +3,6 @@ using Task11.Domain.ExpenseFinanceOperation;
 using Task11.Domain.ExpenseType;
 using Task11.Domain.IncomeFinanceOperation;
 using Task11.Domain.IncomeType;
-using Task11.Infrastructure.Persistence.Configurations;
 
 namespace Task11.Infrastructure.Persistence
 {

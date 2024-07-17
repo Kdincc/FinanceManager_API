@@ -1,10 +1,5 @@
 ﻿using ErrorOr;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.Common.Errors;
 using Task11.Domain.ExpenseType;
@@ -20,7 +15,7 @@ namespace Task11.Application.ExpenseTypes.Commands.Create
         {
             ExpenseType expenseType = new(ExpenseTypeId.CreateUniq(), request.Name, request.Description);
 
-            if (await HasSameExpenseType(_repository, expenseType)) 
+            if (await HasSameExpenseType(_repository, expenseType))
             {
                 return Errors.ExpenseType.DuplicateExpenseType;
             }

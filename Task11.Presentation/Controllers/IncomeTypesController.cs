@@ -18,7 +18,7 @@ namespace Task11.Presentation.Controllers
 
         [HttpGet("all")]
         [ProducesResponseType<IEnumerable<IncomeTypesResult>>(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetIncomeTypes(CancellationToken cancellationToken) 
+        public async Task<IActionResult> GetIncomeTypes(CancellationToken cancellationToken)
         {
             IEnumerable<IncomeTypesResult> incomeTypes = await _sender.Send(new GetIncomeTypesQuery(), cancellationToken);
 
@@ -34,7 +34,7 @@ namespace Task11.Presentation.Controllers
 
             var result = await _sender.Send(command, cancellationToken);
 
-            return result.Match(Ok,Problem);
+            return result.Match(Ok, Problem);
         }
 
         [HttpDelete("delete")]
@@ -58,7 +58,7 @@ namespace Task11.Presentation.Controllers
 
             var result = await _sender.Send(command, cancellationToken);
 
-            return result.Match(Ok,Problem);
+            return result.Match(Ok, Problem);
         }
 
     }
