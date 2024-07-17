@@ -12,11 +12,9 @@ namespace Task11.Presentation.Mappings
         public void Register(TypeAdapterConfig config)
         {
             config.ForType<DeleteExpenseTypeRequest, DeleteExpenseTypeCommand>()
-                .Map(dest => dest.ExpenseTypeId, src => ExpenseTypeId.Create(Guid.Parse(src.Id)))
                 .ConstructUsing(src => new DeleteExpenseTypeCommand(ExpenseTypeId.Create(Guid.Parse(src.Id))));
 
             config.ForType<UpdateExpenseTypeRequest, UpdateExpenseTypeCommand>()
-                .Map(dest => dest.ExpenseTypeId, src => ExpenseTypeId.Create(Guid.Parse(src.Id)))
                 .ConstructUsing(src => new UpdateExpenseTypeCommand(ExpenseTypeId.Create(Guid.Parse(src.Id)), src.Name, src.Description));
         }
     }

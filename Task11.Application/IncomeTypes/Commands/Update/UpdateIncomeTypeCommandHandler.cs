@@ -20,7 +20,7 @@ namespace Task11.Application.IncomeTypes.Commands.Update
                 return Errors.IncomeType.IncomeTypeNotFound;
             }
 
-            incomeTypeToUpdate.Update(request.Name, request.Description, request.Amount);
+            incomeTypeToUpdate.Update(request.Name, request.Description);
 
             if (await HasSameIncomeType(_repository, incomeTypeToUpdate))
             {
