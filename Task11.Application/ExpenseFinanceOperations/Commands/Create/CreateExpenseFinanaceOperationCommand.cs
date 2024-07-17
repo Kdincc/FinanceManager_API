@@ -1,5 +1,4 @@
-﻿using ErrorOr;
-using MediatR;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +12,5 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Create
         DateTime Date,
         ExpenseTypeId ExpenseTypeId,
         Amount Amount,
-        string Name) : IRequest<ErrorOr<ExpenseFinanceOperationResult>>;
+        string Name) : IRequest<ExpenseFinanceOperationResult>;
 }

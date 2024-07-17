@@ -12,11 +12,11 @@ using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
 
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Create
 {
-    public sealed class CreateExpenseFinanceOperationCommandHandler(IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> repository) : IRequestHandler<CreateExpenseFinanaceOperationCommand, ErrorOr<ExpenseFinanceOperationResult>>
+    public sealed class CreateExpenseFinanceOperationCommandHandler(IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> repository) : IRequestHandler<CreateExpenseFinanaceOperationCommand, ExpenseFinanceOperationResult>
     {
         private readonly IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> _repository = repository;
 
-        public async Task<ErrorOr<ExpenseFinanceOperationResult>> Handle(CreateExpenseFinanaceOperationCommand request, CancellationToken cancellationToken)
+        public async Task<ExpenseFinanceOperationResult> Handle(CreateExpenseFinanaceOperationCommand request, CancellationToken cancellationToken)
         {
             ExpenseFinanceOperation expenseFinanceOperation = new(
                 ExpenseFinanceOperationId.Create(Guid.NewGuid()),
