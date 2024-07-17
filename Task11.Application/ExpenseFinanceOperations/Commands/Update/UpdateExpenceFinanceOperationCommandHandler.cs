@@ -4,16 +4,25 @@ using Task11.Application.Common.Persistance;
 using Task11.Domain.ExpenseFinanceOperation;
 using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
 using Task11.Domain.Common.Errors;
+using Task11.Domain.ExpenseType.ValueObjects;
+using Task11.Domain.ExpenseType;
 
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
 {
-    public sealed class UpdateExpenceFinanceOperationCommandHandler(IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> repository) : IRequestHandler<UpdateExpenceFinanceOperationCommand, ErrorOr<ExpenseFinanceOperationResult>>
+    public sealed class UpdateExpenceFinanceOperationCommandHandler(IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> repository, IRepository<ExpenseType, ExpenseTypeId> expenseTypeRepository) : IRequestHandler<UpdateExpenceFinanceOperationCommand, ErrorOr<ExpenseFinanceOperationResult>>
     {
         private readonly IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> _repository = repository;
+        private readonly IRepository<ExpenseType, ExpenseTypeId> _expenseTypeRepository = expenseTypeRepository;
 
         public async Task<ErrorOr<ExpenseFinanceOperationResult>> Handle(UpdateExpenceFinanceOperationCommand request, CancellationToken cancellationToken)
         {
             ExpenseFinanceOperation expenseFinanceOperation = await _repository.GetByIdAsync(request.ExpenseFinanceOperationId, cancellationToken);
+            ExpenseType expenseType = await _expenseTypeRepository.GetByIdAsync(request.ExpenceTypeId, cancellationToken);
+
+            if (expenseType is null)
+            {
+                return Errors.ExpenseType.ExpenseTypeNotFound;
+            }
 
             if (expenseFinanceOperation is null)
             {
