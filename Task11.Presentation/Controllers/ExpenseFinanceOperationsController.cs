@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Task11.Application.ExpenseFinanceOperations;
+using Task11.Application.ExpenseFinanceOperations.Commands.Create;
 using Task11.Application.ExpenseFinanceOperations.Queries.GetExpenceFinanceOperations;
 
 namespace Task11.Presentation.Controllers
@@ -20,6 +21,15 @@ namespace Task11.Presentation.Controllers
             IEnumerable<ExpenseFinanceOperationResult> results = await _sender.Send(new GetExpenceFinanceOperationsQuery(), cancellationToken);
 
             return Ok(results);
+        }
+
+        [HttpPost("create")]
+        [ProducesResponseType<ExpenseFinanceOperationResult>(StatusCodes.Status200OK)]
+        public async Task<IActionResult> CreateExpenseFinaseOperation(CreateExpenseFinanaceOperationCommand command, CancellationToken cancellationToken)
+        {
+            ExpenseFinanceOperationResult result = await _sender.Send(command, cancellationToken);
+
+            return Ok(result);
         }
     }
 }
