@@ -1,10 +1,13 @@
-﻿using MapsterMapper;
+﻿using ErrorOr;
+using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Task11.Application.ExpenseFinanceOperations;
 using Task11.Application.ExpenseFinanceOperations.Commands.Create;
+using Task11.Application.ExpenseFinanceOperations.Commands.Update;
 using Task11.Application.ExpenseFinanceOperations.Queries.GetExpenceFinanceOperations;
+using Task11.Contracts.ExpenseFinanceOperation;
 
 namespace Task11.Presentation.Controllers
 {
@@ -25,11 +28,25 @@ namespace Task11.Presentation.Controllers
 
         [HttpPost("create")]
         [ProducesResponseType<ExpenseFinanceOperationResult>(StatusCodes.Status200OK)]
-        public async Task<IActionResult> CreateExpenseFinaseOperation(CreateExpenseFinanaceOperationCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateExpenseFinaseOperation(CreateExpenseFinanceOperationRequest request, CancellationToken cancellationToken)
         {
-            ExpenseFinanceOperationResult result = await _sender.Send(command, cancellationToken);
+            var command = _mapper.Map<CreateExpenseFinanaceOperationCommand>(request);
+
+            var result = await _sender.Send(command, cancellationToken);
 
             return Ok(result);
+        }
+
+        [HttpPut("update")]
+        [ProducesResponseType<ExpenseFinanceOperationResult>(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UpdateExpenseFinanceOperation(UpdateExpenseFinanceOperationRequest request, CancellationToken cancellationToken)
+        {
+            var command = _mapper.Map<UpdateExpenceFinanceOperationCommand>(request);
+
+            var result = await _sender.Send(command, cancellationToken);
+
+            return result.Match(Ok, Problem);
         }
     }
 }
