@@ -17,4 +17,11 @@
     <PackageReference Include="MediatR" Version="12.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="IncomeFinanceOperations\Commands\Create\" />
+    <Folder Include="IncomeFinanceOperations\Commands\Delete\" />
+    <Folder Include="IncomeFinanceOperations\Commands\Update\" />
+    <Folder Include="IncomeFinanceOperations\Queries\GetIncomeFinanceOperations\" />
+  </ItemGroup>
+
 </Project>
