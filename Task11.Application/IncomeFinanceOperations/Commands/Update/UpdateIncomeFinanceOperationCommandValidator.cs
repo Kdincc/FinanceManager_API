@@ -5,13 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task11.Application.IncomeFinanceOperations.Commands.Update;
 
-namespace Task11.Application.IncomeFinanceOperations.Commands.Create
+namespace Task11.Application.IncomeFinanceOperations.Commands.Update
 {
-    public sealed class UpdateIncomeFinanceOperationCommandValidator : AbstractValidator<CreateIncomeFinanceOperationCommand>
+    public sealed class UpdateIncomeFinanceOperationCommandValidator : AbstractValidator<UpdateIncomeFinanceOperationCommand>
     {
         public UpdateIncomeFinanceOperationCommandValidator()
         {
+            RuleFor(x => x.IncomeFinanceOperationId)
+                .NotEmpty();
+
             RuleFor(x => x.Date)
                 .NotEmpty();
 
