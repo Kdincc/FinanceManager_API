@@ -19,5 +19,15 @@ namespace Task11.Domain.IncomeFinanceOperation
         public Amount Amount { get; private set; } = amount;
 
         public string Name { get; private set; } = name;
+
+        public void Update(DateTime date, IncomeTypeId incomeTypeId, Amount amount, string name)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(name, nameof(name));
+
+            Date = date;
+            IncomeTypeId = incomeTypeId;
+            Amount = amount;
+            Name = name;
+        }
     }
 }
