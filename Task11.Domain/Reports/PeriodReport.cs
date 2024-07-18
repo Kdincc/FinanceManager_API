@@ -9,5 +9,9 @@ namespace Task11.Domain.Reports
 {
     internal class PeriodReport : ValueObject
     {
+        public override IEnumerable<object> GetEqualityComponents()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
