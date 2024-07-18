@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Task11.Domain.ExpenseFinanceOperation;
+using Task11.Domain.ExpenseFinanceOperationAggregate;
 using Task11.Domain.ExpenseType;
-using Task11.Domain.IncomeFinanceOperation;
+using Task11.Domain.IncomeFinanceOperationAggregate;
 using Task11.Domain.IncomeType;
 
 namespace Task11.Infrastructure.Persistence

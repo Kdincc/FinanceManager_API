@@ -1,4 +1,4 @@
-﻿using Task11.Domain.ExpenseFinanceOperation;
+﻿using Task11.Domain.ExpenseFinanceOperationAggregate;
 
 namespace Task11.Application.ExpenseFinanceOperations
 {

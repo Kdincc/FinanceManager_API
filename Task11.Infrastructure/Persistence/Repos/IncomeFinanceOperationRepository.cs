@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Task11.Application.Common.Persistance;
-using Task11.Domain.IncomeFinanceOperation;
-using Task11.Domain.IncomeFinanceOperation.ValueObjects;
+using Task11.Domain.IncomeFinanceOperationAggregate;
+using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 
 namespace Task11.Infrastructure.Persistence.Repos
 {

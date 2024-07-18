@@ -18,6 +18,8 @@ namespace Task11.Domain.Common.ValueObjects
 
         public decimal Value { get; private set; }
 
+        public static Amount operator +(Amount a, Amount b) => Create(a.Value + b.Value);
+
         public override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;

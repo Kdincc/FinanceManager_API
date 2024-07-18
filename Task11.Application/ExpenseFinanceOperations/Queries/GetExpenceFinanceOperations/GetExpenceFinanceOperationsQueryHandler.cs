@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Task11.Application.Common.Persistance;
-using Task11.Domain.ExpenseFinanceOperation;
-using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
+using Task11.Domain.ExpenseFinanceOperationAggregate;
+using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 
 namespace Task11.Application.ExpenseFinanceOperations.Queries.GetExpenceFinanceOperations
 {

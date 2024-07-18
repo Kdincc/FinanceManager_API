@@ -4,7 +4,7 @@ using Task11.Application.IncomeFinanceOperations.Commands.Delete;
 using Task11.Application.IncomeFinanceOperations.Commands.Update;
 using Task11.Contracts.IncomeFinanceOperation;
 using Task11.Domain.Common.ValueObjects;
-using Task11.Domain.IncomeFinanceOperation.ValueObjects;
+using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Presentation.Mappings

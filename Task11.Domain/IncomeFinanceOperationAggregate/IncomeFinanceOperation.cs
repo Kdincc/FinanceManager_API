@@ -1,9 +1,9 @@
 ﻿using Task11.Domain.Common.Models;
 using Task11.Domain.Common.ValueObjects;
-using Task11.Domain.IncomeFinanceOperation.ValueObjects;
+using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeType.ValueObjects;
 
-namespace Task11.Domain.IncomeFinanceOperation
+namespace Task11.Domain.IncomeFinanceOperationAggregate
 {
     public sealed class IncomeFinanceOperation(
         IncomeFinanceOperationId id,

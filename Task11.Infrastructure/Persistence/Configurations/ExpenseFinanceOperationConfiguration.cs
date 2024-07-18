@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Task11.Domain.Common.ValueObjects;
-using Task11.Domain.ExpenseFinanceOperation;
-using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
+using Task11.Domain.ExpenseFinanceOperationAggregate;
+using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.ExpenseType;
 using Task11.Domain.ExpenseType.ValueObjects;
 

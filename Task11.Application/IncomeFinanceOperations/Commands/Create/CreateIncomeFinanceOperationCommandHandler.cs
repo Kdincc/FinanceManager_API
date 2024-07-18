@@ -2,8 +2,8 @@
 using MediatR;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.Common.Errors;
-using Task11.Domain.IncomeFinanceOperation;
-using Task11.Domain.IncomeFinanceOperation.ValueObjects;
+using Task11.Domain.IncomeFinanceOperationAggregate;
+using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeType;
 using Task11.Domain.IncomeType.ValueObjects;
 

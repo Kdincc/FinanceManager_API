@@ -1,9 +1,9 @@
 ﻿using Task11.Domain.Common.Models;
 using Task11.Domain.Common.ValueObjects;
-using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
+using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.ExpenseType.ValueObjects;
 
-namespace Task11.Domain.ExpenseFinanceOperation
+namespace Task11.Domain.ExpenseFinanceOperationAggregate
 {
     public sealed class ExpenseFinanceOperation(ExpenseFinanceOperationId id,
                                                 DateTime date,

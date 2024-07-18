@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Task11.Domain.Common.ValueObjects;
-using Task11.Domain.IncomeFinanceOperation;
-using Task11.Domain.IncomeFinanceOperation.ValueObjects;
+using Task11.Domain.IncomeFinanceOperationAggregate;
+using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeType;
 using Task11.Domain.IncomeType.ValueObjects;
 
