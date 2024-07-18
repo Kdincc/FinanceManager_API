@@ -12,8 +12,7 @@ using Task11.Domain.Common.Errors;
 
 namespace Task11.Application.IncomeFinanceOperations.Commands.Delete
 {
-    public sealed class DeleteIncomeFinanceOperationCommandHandler(
-        IRepository<IncomeFinanceOperation, IncomeFinanceOperationId> incomeFinanceOperationRepository) : IRequestHandler<DeleteIncomeFinanceOperationCommand, ErrorOr<IncomeFinanceOperationResult>>
+    public sealed class DeleteIncomeFinanceOperationCommandHandler(IRepository<IncomeFinanceOperation, IncomeFinanceOperationId> incomeFinanceOperationRepository) : IRequestHandler<DeleteIncomeFinanceOperationCommand, ErrorOr<IncomeFinanceOperationResult>>
     {
         private readonly IRepository<IncomeFinanceOperation, IncomeFinanceOperationId> _incomeFinanceOperationRepository = incomeFinanceOperationRepository;
 
