@@ -6,6 +6,8 @@ using Task11.Domain.ExpenseFinanceOperation;
 using Task11.Domain.ExpenseFinanceOperation.ValueObjects;
 using Task11.Domain.ExpenseType;
 using Task11.Domain.ExpenseType.ValueObjects;
+using Task11.Domain.IncomeFinanceOperation;
+using Task11.Domain.IncomeFinanceOperation.ValueObjects;
 using Task11.Domain.IncomeType;
 using Task11.Domain.IncomeType.ValueObjects;
 using Task11.Infrastructure.Persistence;
@@ -22,6 +24,7 @@ namespace Task11.Infrastructure
             services.AddScoped<IRepository<IncomeType, IncomeTypeId>, IncomeTypeRepository>();
             services.AddScoped<IRepository<ExpenseType, ExpenseTypeId>, ExpenseTypeRepository>();
             services.AddScoped<IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId>, ExpenceFinanceOperationRepository>();
+            services.AddScoped<IRepository<IncomeFinanceOperation, IncomeFinanceOperationId>, IncomeFinanceOperationRepository>();
 
             return services;
         }
