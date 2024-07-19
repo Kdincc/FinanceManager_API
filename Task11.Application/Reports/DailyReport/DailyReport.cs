@@ -8,9 +8,9 @@ using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.ExpenseFinanceOperationAggregate;
 using Task11.Domain.IncomeFinanceOperationAggregate;
 
-namespace Task11.Domain.DailyReports
+namespace Task11.Application.DailyReport
 {
-    public sealed class DailyReport : ValueObject
+    public sealed class DailyReport
     {
         private DailyReport(
             DateTime date,
@@ -48,15 +48,6 @@ namespace Task11.Domain.DailyReports
         public Amount TotalExpenses { get; }
 
         public Amount TotalIncomes { get; }
-
-        public override IEnumerable<object> GetEqualityComponents()
-        {
-            yield return Date;
-            yield return TotalExpenses;
-            yield return TotalIncomes;
-            yield return Expenses;
-            yield return Incomes;
-        }
 
         private static void ThrowIfFinanceOperationsDatesNotMatchReportDate(
             IReadOnlyCollection<ExpenseFinanceOperation> expenses,
