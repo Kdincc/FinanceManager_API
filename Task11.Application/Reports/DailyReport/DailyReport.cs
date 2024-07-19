@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task11.Application.Common.DTOs;
 using Task11.Domain.Common.Models;
 using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.ExpenseFinanceOperationAggregate;
@@ -14,8 +15,8 @@ namespace Task11.Application.DailyReport
     {
         private DailyReport(
             DateTime date,
-            IReadOnlyCollection<ExpenseFinanceOperation> expenses,
-            IReadOnlyCollection<IncomeFinanceOperation> incomes,
+            IReadOnlyCollection<ExpenseFinanceOperationDto> expenses,
+            IReadOnlyCollection<IncomeFinanceOperationDto> incomes,
             Amount totalExpenses,
             Amount totalIncomes)
         {
@@ -28,8 +29,8 @@ namespace Task11.Application.DailyReport
 
         public static DailyReport Create(
             DateTime date,
-            IReadOnlyCollection<ExpenseFinanceOperation> expenses,
-            IReadOnlyCollection<IncomeFinanceOperation> incomes)
+            IReadOnlyCollection<ExpenseFinanceOperationDto> expenses,
+            IReadOnlyCollection<IncomeFinanceOperationDto> incomes)
         {
             ThrowIfFinanceOperationsDatesNotMatchReportDate(expenses, incomes, date);
             
@@ -41,17 +42,17 @@ namespace Task11.Application.DailyReport
 
         public DateTime Date { get; }
 
-        public IReadOnlyCollection<ExpenseFinanceOperation> Expenses { get; }
+        public IReadOnlyCollection<ExpenseFinanceOperationDto> Expenses { get; }
 
-        public IReadOnlyCollection<IncomeFinanceOperation> Incomes { get; }
+        public IReadOnlyCollection<IncomeFinanceOperationDto> Incomes { get; }
 
         public Amount TotalExpenses { get; }
 
         public Amount TotalIncomes { get; }
 
         private static void ThrowIfFinanceOperationsDatesNotMatchReportDate(
-            IReadOnlyCollection<ExpenseFinanceOperation> expenses,
-            IReadOnlyCollection<IncomeFinanceOperation> incomes,
+            IReadOnlyCollection<ExpenseFinanceOperationDto> expenses,
+            IReadOnlyCollection<IncomeFinanceOperationDto> incomes,
             DateTime reportDate)
         {
             var financeOperationsUniqDates = expenses.Select(e => e.Date)
