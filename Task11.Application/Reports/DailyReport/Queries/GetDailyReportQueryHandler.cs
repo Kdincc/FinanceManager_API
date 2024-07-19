@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task11.Application.Common.DTOs;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.ExpenseFinanceOperationAggregate;
 using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
@@ -22,10 +23,43 @@ namespace Task11.Application.Reports.DailyReport.Queries
 
         public async Task<ErrorOr<DailyReport>> Handle(GetDailyReportQuery request, CancellationToken cancellationToken)
         {
-            var incomes = await _incomeOperationRepository.GetAllAsync(cancellationToken);
-            var expenses = await _expenseOperationRepository.GetAllAsync(cancellationToken);
+            var incomes = await GetDateMatchesIncomeFinanceOperations(request.Date);
+            var expenses = await GetDateMatchesExpenseFinanceOperations(request.Date);
 
-            DailyReport dailyReport = DailyReport.Create(request.Date, incomes, expenses);
+            var incomeDtos = incomes.Select(i => new IncomeFinanceOperationDto(i)).ToList();
+            var expenseDtos = expenses.Select(e => new ExpenseFinanceOperationDto(e)).ToList();
+
+            return DailyReport.Create(request.Date, expenseDtos, incomeDtos);
+        }
+
+        private async Task<IReadOnlyCollection<IncomeFinanceOperation>> GetDateMatchesIncomeFinanceOperations(DateOnly date)
+        {
+            List<IncomeFinanceOperation> dateMatchesOperations = [];
+
+            await foreach (var income in _incomeOperationRepository.GetAllAsAsyncEnumerable().)
+            {
+                if (income.Date == date)
+                {
+                    dateMatchesOperations.Add(income);
+                }
+            }
+
+            return dateMatchesOperations;
+        }
+
+        private async Task<IReadOnlyCollection<ExpenseFinanceOperation>> GetDateMatchesExpenseFinanceOperations(DateOnly date)
+        {
+            List<ExpenseFinanceOperation> dateMatchesOperations = [];
+
+            await foreach (var expense in _expenseOperationRepository.GetAllAsAsyncEnumerable())
+            {
+                if (expense.Date == date)
+                {
+                    dateMatchesOperations.Add(expense);
+                }
+            }
+
+            return dateMatchesOperations;
         }
     }
 }

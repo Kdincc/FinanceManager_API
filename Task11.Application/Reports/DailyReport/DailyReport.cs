@@ -14,7 +14,7 @@ namespace Task11.Application.Reports.DailyReport
     public sealed class DailyReport
     {
         private DailyReport(
-            DateTime date,
+            DateOnly date,
             IReadOnlyCollection<ExpenseFinanceOperationDto> expenses,
             IReadOnlyCollection<IncomeFinanceOperationDto> incomes,
             Amount totalExpenses,
@@ -28,7 +28,7 @@ namespace Task11.Application.Reports.DailyReport
         }
 
         public static DailyReport Create(
-            DateTime date,
+            DateOnly date,
             IReadOnlyCollection<ExpenseFinanceOperationDto> expenses,
             IReadOnlyCollection<IncomeFinanceOperationDto> incomes)
         {
@@ -40,7 +40,7 @@ namespace Task11.Application.Reports.DailyReport
             return new DailyReport(date, expenses, incomes, totalExpenses, totalIncomes);
         }
 
-        public DateTime Date { get; }
+        public DateOnly Date { get; }
 
         public IReadOnlyCollection<ExpenseFinanceOperationDto> Expenses { get; }
 
@@ -53,7 +53,7 @@ namespace Task11.Application.Reports.DailyReport
         private static void ThrowIfFinanceOperationsDatesNotMatchReportDate(
             IReadOnlyCollection<ExpenseFinanceOperationDto> expenses,
             IReadOnlyCollection<IncomeFinanceOperationDto> incomes,
-            DateTime reportDate)
+            DateOnly reportDate)
         {
             var financeOperationsUniqDates = expenses.Select(e => e.Date)
                 .Concat(incomes.Select(i => i.Date))

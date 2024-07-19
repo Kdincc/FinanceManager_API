@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Task11.Application.Reports.DailyReport.Queries
 {
-    public record GetDailyReportQuery(DateOnly date) : IRequest<ErrorOr<DailyReport>>;
+    public record GetDailyReportQuery(DateOnly Date) : IRequest<ErrorOr<DailyReport>>;
 }
