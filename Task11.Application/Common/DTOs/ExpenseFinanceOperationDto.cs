@@ -14,7 +14,7 @@ namespace Task11.Application.Common.DTOs
     {
         public ExpenseFinanceOperationId Id => expenseFinanceOperation.Id;
 
-        public DateTime Date => expenseFinanceOperation.Date;
+        public DateOnly Date => expenseFinanceOperation.Date;
 
         public Amount Amount => expenseFinanceOperation.Amount;
 

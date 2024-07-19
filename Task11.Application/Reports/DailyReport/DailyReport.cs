@@ -9,7 +9,7 @@ using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.ExpenseFinanceOperationAggregate;
 using Task11.Domain.IncomeFinanceOperationAggregate;
 
-namespace Task11.Application.DailyReport
+namespace Task11.Application.Reports.DailyReport
 {
     public sealed class DailyReport
     {
@@ -33,7 +33,7 @@ namespace Task11.Application.DailyReport
             IReadOnlyCollection<IncomeFinanceOperationDto> incomes)
         {
             ThrowIfFinanceOperationsDatesNotMatchReportDate(expenses, incomes, date);
-            
+
             Amount totalExpenses = expenses.Aggregate(Amount.Create(0), (acc, x) => acc + x.Amount);
             Amount totalIncomes = incomes.Aggregate(Amount.Create(0), (acc, x) => acc + x.Amount);
 

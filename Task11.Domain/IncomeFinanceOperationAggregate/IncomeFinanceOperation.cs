@@ -7,20 +7,20 @@ namespace Task11.Domain.IncomeFinanceOperationAggregate
 {
     public sealed class IncomeFinanceOperation(
         IncomeFinanceOperationId id,
-        DateTime date,
+        DateOnly date,
         IncomeTypeId incomeTypeId,
         Amount amount,
         string name) : AggregateRoot<IncomeFinanceOperationId>(id)
     {
         public IncomeTypeId IncomeTypeId { get; private set; } = incomeTypeId;
 
-        public DateTime Date { get; private set; } = date;
+        public DateOnly Date { get; private set; } = date;
 
         public Amount Amount { get; private set; } = amount;
 
         public string Name { get; private set; } = name;
 
-        public void Update(DateTime date, IncomeTypeId incomeTypeId, Amount amount, string name)
+        public void Update(DateOnly date, IncomeTypeId incomeTypeId, Amount amount, string name)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(name, nameof(name));
 
