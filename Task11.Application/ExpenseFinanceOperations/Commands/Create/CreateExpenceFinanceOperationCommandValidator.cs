@@ -8,7 +8,8 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Create
         public CreateExpenceFinanceOperationCommandValidator()
         {
             RuleFor(x => x.Date)
-                .NotEmpty();
+                .NotEmpty()
+                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.ExpenseFinanceOperation.DateFormat, out _));
 
             RuleFor(x => x.ExpenseTypeId)
                 .NotEmpty();
