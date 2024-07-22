@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Task11.Application.Common.DTOs;
+﻿using Task11.Application.Common.DTOs;
 using Task11.Domain.Common.ValueObjects;
 
 namespace Task11.Application.Reports.PeriodReport
@@ -17,7 +12,7 @@ namespace Task11.Application.Reports.PeriodReport
             Amount totalExpenses,
             Amount totalIncomes)
         {
-            
+
         }
 
         public static PeriodReport Create(
@@ -33,15 +28,15 @@ namespace Task11.Application.Reports.PeriodReport
             return new PeriodReport(period, expenses, incomes, totalExpenses, totalIncomes);
         }
 
-        DatePeriod Period { get; }
+        public DatePeriod Period { get; }
 
-        IReadOnlyCollection<ExpenseFinanceOperationDto> Expenses { get; }
+        public IReadOnlyCollection<ExpenseFinanceOperationDto> Expenses { get; }
 
-        IReadOnlyCollection<IncomeFinanceOperationDto> Incomes { get; }
+        public IReadOnlyCollection<IncomeFinanceOperationDto> Incomes { get; }
 
-        Amount TotalExpenses { get; }
+        public Amount TotalExpenses { get; }
 
-        Amount TotalIncomes { get; }
+        public Amount TotalIncomes { get; }
 
         private static void ThrowIfFinanceOperationsDatesNotMatchReportPeriod(
             IReadOnlyCollection<ExpenseFinanceOperationDto> expenses,
