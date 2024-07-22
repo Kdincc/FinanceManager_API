@@ -5,6 +5,8 @@
         public static class IncomeFinanceOperation
         {
             public static int MaxNameLength => 100;
+
+            public static string DateFormat => "yyyy-MM-dd";
         }
     }
 }

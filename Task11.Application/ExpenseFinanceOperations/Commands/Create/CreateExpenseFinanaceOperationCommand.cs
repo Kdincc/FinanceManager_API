@@ -6,7 +6,7 @@ using Task11.Domain.ExpenseType.ValueObjects;
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Create
 {
     public record CreateExpenseFinanaceOperationCommand(
-        DateOnly Date,
+        string Date,
         ExpenseTypeId ExpenseTypeId,
         Amount Amount,
         string Name) : IRequest<ErrorOr<ExpenseFinanceOperationResult>>;
