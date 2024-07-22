@@ -9,15 +9,9 @@ namespace Task11.Domain.ExpenseFinanceOperationAggregate
                                                 DateOnly date,
                                                 ExpenseTypeId expenseTypeId,
                                                 Amount amount,
-                                                string name) : AggregateRoot<ExpenseFinanceOperationId>(id)
+                                                string name) : FinanceOperation<ExpenseFinanceOperationId>(id, name, amount, date)
     {
         public ExpenseTypeId ExpenseTypeId { get; private set; } = expenseTypeId;
-
-        public DateOnly Date { get; private set; } = date;
-
-        public Amount Amount { get; private set; } = amount;
-
-        public string Name { get; private set; } = name;
 
         public void Update(DateOnly date, ExpenseTypeId expenseTypeId, Amount amount, string name)
         {

@@ -10,15 +10,9 @@ namespace Task11.Domain.IncomeFinanceOperationAggregate
         DateOnly date,
         IncomeTypeId incomeTypeId,
         Amount amount,
-        string name) : AggregateRoot<IncomeFinanceOperationId>(id)
+        string name) : FinanceOperation<IncomeFinanceOperationId>(id, name, amount, date)
     {
         public IncomeTypeId IncomeTypeId { get; private set; } = incomeTypeId;
-
-        public DateOnly Date { get; private set; } = date;
-
-        public Amount Amount { get; private set; } = amount;
-
-        public string Name { get; private set; } = name;
 
         public void Update(DateOnly date, IncomeTypeId incomeTypeId, Amount amount, string name)
         {

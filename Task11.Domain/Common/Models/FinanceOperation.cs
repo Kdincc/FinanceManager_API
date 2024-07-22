@@ -8,14 +8,14 @@ using Task11.Domain.Common.ValueObjects;
 
 namespace Task11.Domain.Common.Models
 {
-    public abstract class FinanceOperation<TId>(TId id, string name, Amount amount, DateOnly date) : AggregateRoot<TId>(Id) where TId : ValueObject
+    public abstract class FinanceOperation<TId>(TId id, string name, Amount amount, DateOnly date) : AggregateRoot<TId>(id) where TId : ValueObject
     {
-        public TId Id { get; private set; } = id;
+        public TId Id { get; protected set; } = id;
 
-        public string Name { get; private set; } = name;
+        public string Name { get; protected set; } = name;
 
-        public Amount Amount { get; private set; } = amount;
+        public Amount Amount { get; protected set; } = amount;
 
-        public DateOnly Date { get; private set; } = date;
+        public DateOnly Date { get; protected set; } = date;
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Task11.Application.Properties;
+using Task11.Domain.Common.Сonstants;
 
 namespace Task11.Application.Reports.PeriodReport.Queries
 {
@@ -14,12 +15,12 @@ namespace Task11.Application.Reports.PeriodReport.Queries
         {
             RuleFor(x => x.StartDate)
                 .NotEmpty()
-                .Must(x => DateTime.TryParse(x, out _))
+                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.FinanceOperation.DateFormat, out _))
                 .WithMessage(ValidationErrorMessages.IncorrectDateFormat);
 
             RuleFor(x => x.EndDate)
                 .NotEmpty()
-                .Must(x => DateTime.TryParse(x, out _))
+                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.FinanceOperation.DateFormat, out _))
                 .WithMessage(ValidationErrorMessages.IncorrectDateFormat);
         }
     }

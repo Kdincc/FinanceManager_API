@@ -21,7 +21,7 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Update
 
             RuleFor(x => x.Date)
                 .NotEmpty()
-                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.ExpenseFinanceOperation.DateFormat, out _))
+                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.FinanceOperation.DateFormat, out _))
                 .WithMessage(ValidationErrorMessages.IncorrectDateFormat);
 
             RuleFor(x => x.IncomeTypeId)
@@ -35,7 +35,7 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Update
 
             RuleFor(x => x.Name)
                 .NotEmpty()
-                .MaximumLength(ValidationConstants.IncomeFinanceOperation.MaxNameLength);
+                .MaximumLength(ValidationConstants.FinanceOperation.MaxNameLength);
         }
     }
 }

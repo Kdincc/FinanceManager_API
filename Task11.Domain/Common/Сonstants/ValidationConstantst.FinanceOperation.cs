@@ -2,7 +2,7 @@
 {
     public static partial class ValidationConstants
     {
-        public static class IncomeFinanceOperation
+        public static class FinanceOperation
         {
             public static int MaxNameLength => 100;
 

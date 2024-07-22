@@ -10,7 +10,7 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
         {
             RuleFor(x => x.Date)
                 .NotEmpty()
-                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.ExpenseFinanceOperation.DateFormat, out _))
+                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.FinanceOperation.DateFormat, out _))
                 .WithMessage(ValidationErrorMessages.IncorrectDateFormat);
 
             RuleFor(x => x.ExpenceTypeId)
@@ -25,7 +25,7 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
 
             RuleFor(x => x.Name)
                 .NotEmpty()
-                .MaximumLength(ValidationConstants.ExpenseFinanceOperation.MaxNameLength);
+                .MaximumLength(ValidationConstants.FinanceOperation.MaxNameLength);
 
             RuleFor(x => x.ExpenseFinanceOperationId)
                 .NotEmpty()
