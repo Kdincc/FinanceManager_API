@@ -27,7 +27,7 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Create
 
             ExpenseFinanceOperation expenseFinanceOperation = new(
                 ExpenseFinanceOperationId.Create(Guid.NewGuid()),
-                request.Date,
+                DateOnly.Parse(request.Date),
                 request.ExpenseTypeId,
                 request.Amount,
                 request.Name);
