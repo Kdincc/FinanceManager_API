@@ -15,7 +15,6 @@ namespace Task11.Application
             services.AddMediatR(config => config.RegisterServicesFromAssembly(assembly));
 
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-            services.AddSingleton(TimeProvider.System);
 
             ValidatorOptions.Global.LanguageManager.Culture = new("en");
             services.AddValidatorsFromAssembly(assembly);
