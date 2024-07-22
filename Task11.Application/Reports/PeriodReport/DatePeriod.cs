@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Task11.Application.Reports.PeriodReport
 {
-    public readonly struct DatePeriod
     {
         public DatePeriod(DateOnly startDate, DateOnly endDate)
         {
@@ -19,7 +18,5 @@ namespace Task11.Application.Reports.PeriodReport
             EndDate = endDate;
         }
 
-        public readonly DateOnly StartDate { get; }
-        public readonly DateOnly EndDate { get; }
     }
 }
