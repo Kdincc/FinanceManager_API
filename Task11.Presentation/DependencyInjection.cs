@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using MapsterMapper;
 using System.Reflection;
+using Task11.Presentation.Converters;
 
 namespace Task11.Presentation
 {
@@ -8,7 +9,8 @@ namespace Task11.Presentation
     {
         public static IServiceCollection AddPresentation(this IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter()));
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddMappings();
