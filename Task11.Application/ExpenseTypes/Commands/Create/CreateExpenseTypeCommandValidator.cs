@@ -10,6 +10,7 @@ namespace Task11.Application.ExpenseTypes.Commands.Create
             RuleFor(e => e.Name)
                 .NotEmpty()
                 .MaximumLength(ValidationConstants.OperationType.MaxNameLength);
+
             RuleFor(e => e.Description)
                 .NotEmpty()
                 .MaximumLength(ValidationConstants.OperationType.MaxDescriptionLength);

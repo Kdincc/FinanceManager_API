@@ -59,5 +59,32 @@ namespace Task11.Application.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value must be greate or equal zero.
+        /// </summary>
+        internal static string IncorrectAmountValue {
+            get {
+                return ResourceManager.GetString("IncorrectAmountValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect date format correct format is yyyy-MM-DD.
+        /// </summary>
+        internal static string IncorrectDateFormat {
+            get {
+                return ResourceManager.GetString("IncorrectDateFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect id format.
+        /// </summary>
+        internal static string IncorrectIdFormatError {
+            get {
+                return ResourceManager.GetString("IncorrectIdFormatError", resourceCulture);
+            }
+        }
     }
 }

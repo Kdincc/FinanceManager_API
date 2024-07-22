@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task11.Application.Properties;
 
 namespace Task11.Application.IncomeFinanceOperations.Commands.Create
 {
@@ -15,14 +16,16 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Create
             RuleFor(x => x.Date)
                 .NotEmpty()
                 .Must(x => DateOnly.TryParseExact(x, ValidationConstants.ExpenseFinanceOperation.DateFormat, out _))
-                .WithMessage("Incorrect date format, coorect format is yyyy-MM-DD");
+                .WithMessage(ValidationErrorMessages.IncorrectDateFormat);
 
             RuleFor(x => x.IncomeTypeId)
                 .NotEmpty()
-                .Must(x => Guid.TryParse(x, out _));
+                .Must(x => Guid.TryParse(x, out _))
+                .WithMessage(ValidationErrorMessages.IncorrectDateFormat);
 
             RuleFor(x => x.Amount)
-                .Must(x => x >= 0);
+                .Must(x => x >= 0)
+                .WithMessage(ValidationErrorMessages.IncorrectAmountValue);
 
             RuleFor(x => x.Name)
                 .NotEmpty()

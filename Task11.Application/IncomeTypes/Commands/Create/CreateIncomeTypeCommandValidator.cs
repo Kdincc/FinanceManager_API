@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Task11.Application.Properties;
 using Task11.Domain.Common.Сonstants;
 
 namespace Task11.Application.IncomeTypes.Commands.Create
@@ -15,7 +16,8 @@ namespace Task11.Application.IncomeTypes.Commands.Create
 
             RuleFor(p => p.Amount)
                 .NotEmpty()
-                .Must(p => p >= 0);
+                .Must(p => p >= 0)
+                .WithMessage(ValidationErrorMessages.IncorrectAmountValue);
         }
     }
 }

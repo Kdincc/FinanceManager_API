@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Task11.Application.Properties;
 using Task11.Domain.Common.Сonstants;
 
 namespace Task11.Application.ExpenseTypes.Commands.Update
@@ -17,7 +18,8 @@ namespace Task11.Application.ExpenseTypes.Commands.Update
 
             RuleFor(p => p.ExpenseTypeId)
                 .NotEmpty()
-                .Must(x => Guid.TryParse(x, out _));
+                .Must(x => Guid.TryParse(x, out _))
+                .WithMessage(ValidationErrorMessages.IncorrectIdFormatError);
         }
     }
 }

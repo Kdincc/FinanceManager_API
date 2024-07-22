@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Task11.Application.Properties;
 
 namespace Task11.Application.ExpenseTypes.Commands.Delete
 {
@@ -8,7 +9,8 @@ namespace Task11.Application.ExpenseTypes.Commands.Delete
         {
             RuleFor(p => p.ExpenseTypeId)
                 .NotEmpty()
-                .Must(x => Guid.TryParse(x, out _));
+                .Must(x => Guid.TryParse(x, out _))
+                .WithMessage(ValidationErrorMessages.IncorrectIdFormatError);
         }
     }
 }
