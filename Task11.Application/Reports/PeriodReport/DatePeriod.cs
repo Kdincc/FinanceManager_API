@@ -19,6 +19,20 @@ namespace Task11.Application.Reports.PeriodReport
             EndDate = endDate;
         }
 
+        public DatePeriod(string startDate, string endDate, string format)
+        {
+            DateOnly start = DateOnly.ParseExact(startDate, format);
+            DateOnly end = DateOnly.ParseExact(endDate, format);
+
+            if (start > end)
+            {
+                throw new ArgumentException("Start date cannot be greater than end date.");
+            }
+
+            StartDate = start;
+            EndDate = end;
+        }
+
         public readonly DateOnly StartDate { get; }
         public readonly DateOnly EndDate { get; }
 
