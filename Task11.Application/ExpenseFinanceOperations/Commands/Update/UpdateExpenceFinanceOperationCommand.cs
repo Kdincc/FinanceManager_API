@@ -7,9 +7,9 @@ using Task11.Domain.ExpenseType.ValueObjects;
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
 {
     public record UpdateExpenceFinanceOperationCommand(
-        ExpenseFinanceOperationId ExpenseFinanceOperationId,
+        string ExpenseFinanceOperationId,
         string Date,
-        ExpenseTypeId ExpenceTypeId,
-        Amount Amount,
+        string ExpenceTypeId,
+        decimal Amount,
         string Name) : IRequest<ErrorOr<ExpenseFinanceOperationResult>>;
 }

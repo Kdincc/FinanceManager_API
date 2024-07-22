@@ -14,7 +14,7 @@ namespace Task11.Domain.ExpenseType.ValueObjects
 
         public static ExpenseTypeId CreateUniq() => new(Guid.NewGuid());
 
-        public static ExpenseTypeId Create(Guid value) => new(value);
+        public static ExpenseTypeId Create(string value) => new(Guid.Parse(value));
 
         public override IEnumerable<object> GetEqualityComponents()
         {

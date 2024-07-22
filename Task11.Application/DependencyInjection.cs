@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Task11.Application.Common.Behaviours;
+using System.Globalization;
 
 namespace Task11.Application
 {
@@ -15,6 +16,7 @@ namespace Task11.Application
 
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
+            ValidatorOptions.Global.LanguageManager.Culture = new("en");
             services.AddValidatorsFromAssembly(assembly);
 
             return services;

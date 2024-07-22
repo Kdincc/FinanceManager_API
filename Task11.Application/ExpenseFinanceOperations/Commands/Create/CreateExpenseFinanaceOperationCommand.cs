@@ -7,7 +7,7 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Create
 {
     public record CreateExpenseFinanaceOperationCommand(
         string Date,
-        ExpenseTypeId ExpenseTypeId,
-        Amount Amount,
+        string ExpenseTypeId,
+        decimal Amount,
         string Name) : IRequest<ErrorOr<ExpenseFinanceOperationResult>>;
 }

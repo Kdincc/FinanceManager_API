@@ -14,7 +14,7 @@ namespace Task11.Domain.IncomeType.ValueObjects
 
         public static IncomeTypeId CreateUniq() => new(Guid.NewGuid());
 
-        public static IncomeTypeId Create(Guid value) => new(value);
+        public static IncomeTypeId Create(string value) => new(Guid.Parse(value));
 
         public override IEnumerable<object> GetEqualityComponents()
         {

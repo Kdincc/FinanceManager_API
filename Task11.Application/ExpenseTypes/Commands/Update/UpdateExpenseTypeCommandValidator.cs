@@ -16,7 +16,8 @@ namespace Task11.Application.ExpenseTypes.Commands.Update
                 .MaximumLength(ValidationConstants.OperationType.MaxDescriptionLength);
 
             RuleFor(p => p.ExpenseTypeId)
-                .NotEmpty();
+                .NotEmpty()
+                .Must(x => Guid.TryParse(x, out _));
         }
     }
 }

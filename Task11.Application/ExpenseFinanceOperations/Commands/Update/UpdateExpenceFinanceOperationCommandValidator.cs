@@ -13,18 +13,20 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
                 .WithMessage("Incorrect date format, coorect format is yyyy-MM-DD");
 
             RuleFor(x => x.ExpenceTypeId)
-                .NotEmpty();
+                .NotEmpty()
+                .Must(x => Guid.TryParse(x, out _));
 
             RuleFor(x => x.Amount)
                 .NotEmpty()
-                .Must(x => x.Value >= 0);
+                .Must(x => x >= 0);
 
             RuleFor(x => x.Name)
                 .NotEmpty()
                 .MaximumLength(ValidationConstants.ExpenseFinanceOperation.MaxNameLength);
 
             RuleFor(x => x.ExpenseFinanceOperationId)
-                .NotEmpty();
+                .NotEmpty()
+                .Must(x => Guid.TryParse(x, out _));
         }
     }
 }

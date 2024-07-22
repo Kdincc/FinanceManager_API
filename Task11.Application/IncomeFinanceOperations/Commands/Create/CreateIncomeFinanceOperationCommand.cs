@@ -10,5 +10,5 @@ using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Application.IncomeFinanceOperations.Commands.Create
 {
-    public record CreateIncomeFinanceOperationCommand(string Date, IncomeTypeId IncomeTypeId, Amount Amount, string Name) : IRequest<ErrorOr<IncomeFinanceOperationResult>>;
+    public record CreateIncomeFinanceOperationCommand(string Date, string IncomeTypeId, decimal Amount, string Name) : IRequest<ErrorOr<IncomeFinanceOperationResult>>;
 }

@@ -12,9 +12,9 @@ using Task11.Domain.IncomeType.ValueObjects;
 namespace Task11.Application.IncomeFinanceOperations.Commands.Update
 {
     public record UpdateIncomeFinanceOperationCommand(
-        IncomeFinanceOperationId IncomeFinanceOperationId,
-        IncomeTypeId IncomeTypeId,
+        string IncomeFinanceOperationId,
+        string IncomeTypeId,
         string Date,
-        Amount Amount,
+        decimal Amount,
         string Name) : IRequest<ErrorOr<IncomeFinanceOperationResult>>;
 }

@@ -12,7 +12,8 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Delete
         public DeleteIncomeFinanceOperationCommandValidator()
         {
             RuleFor(x => x.IncomeFinanceOperationId)
-                .NotEmpty();
+                .NotEmpty()
+                .Must(x => Guid.TryParse(x, out _));
         }
     }
 }

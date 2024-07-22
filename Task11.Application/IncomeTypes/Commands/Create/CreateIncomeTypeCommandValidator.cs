@@ -9,11 +9,13 @@ namespace Task11.Application.IncomeTypes.Commands.Create
         {
             RuleFor(p => p.Name).NotEmpty()
                 .MaximumLength(ValidationConstants.OperationType.MaxNameLength);
+
             RuleFor(p => p.Description).NotEmpty()
                 .MaximumLength(ValidationConstants.OperationType.MaxDescriptionLength);
+
             RuleFor(p => p.Amount)
-                .NotNull()
-                .Must(e => e.Value >= 0);
+                .NotEmpty()
+                .Must(p => p >= 0);
         }
     }
 }

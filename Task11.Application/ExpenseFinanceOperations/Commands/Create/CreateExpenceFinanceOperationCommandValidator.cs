@@ -13,11 +13,12 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Create
                 .WithMessage("Incorrect date format, coorect format is yyyy-MM-DD");
 
             RuleFor(x => x.ExpenseTypeId)
-                .NotEmpty();
+                .NotEmpty()
+                .Must(x => Guid.TryParse(x, out _));
 
             RuleFor(x => x.Amount)
                 .NotEmpty()
-                .Must(x => x.Value >= 0);
+                .Must(x => x >= 0);
 
             RuleFor(x => x.Name)
                 .NotEmpty()

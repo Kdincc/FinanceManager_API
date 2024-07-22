@@ -9,5 +9,5 @@ using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 
 namespace Task11.Application.IncomeFinanceOperations.Commands.Delete
 {
-    public record DeleteIncomeFinanceOperationCommand(IncomeFinanceOperationId IncomeFinanceOperationId) : IRequest<ErrorOr<IncomeFinanceOperationResult>>;
+    public record DeleteIncomeFinanceOperationCommand(string IncomeFinanceOperationId) : IRequest<ErrorOr<IncomeFinanceOperationResult>>;
 }

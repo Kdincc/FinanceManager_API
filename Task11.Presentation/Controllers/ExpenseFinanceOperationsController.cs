@@ -41,6 +41,7 @@ namespace Task11.Presentation.Controllers
         [HttpPut("update")]
         [ProducesResponseType<ExpenseFinanceOperationResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+        [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateExpenseFinanceOperation(UpdateExpenseFinanceOperationRequest request, CancellationToken cancellationToken)
         {
             var command = _mapper.Map<UpdateExpenceFinanceOperationCommand>(request);
@@ -53,6 +54,7 @@ namespace Task11.Presentation.Controllers
         [HttpDelete("delete")]
         [ProducesResponseType<ExpenseFinanceOperationResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+        [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> DeleteExpenseFinanceOperation(DeleteExpenseFinanceOperationRequest request, CancellationToken cancellationToken)
         {
             var command = _mapper.Map<DeleteExpenceFinanseOperationCommand>(request);

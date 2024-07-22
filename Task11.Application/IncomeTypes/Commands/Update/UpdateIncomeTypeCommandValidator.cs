@@ -7,8 +7,13 @@ namespace Task11.Application.IncomeTypes.Commands.Update
     {
         public UpdateIncomeTypeCommandValidator()
         {
+            RuleFor(x => x.Id)
+                .NotEmpty()
+                .Must(x => Guid.TryParse(x, out _));
+
             RuleFor(p => p.Name).NotEmpty()
                 .MaximumLength(ValidationConstants.OperationType.MaxNameLength);
+
             RuleFor(p => p.Description).NotEmpty()
                 .MaximumLength(ValidationConstants.OperationType.MaxDescriptionLength);
         }

@@ -3,7 +3,6 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Task11.Application.Reports.DailyReport;
 using Task11.Application.Reports.DailyReport.Queries;
-using Task11.Contracts.DailyReport;
 
 namespace Task11.Presentation.Controllers
 {

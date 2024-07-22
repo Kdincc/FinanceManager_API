@@ -13,7 +13,7 @@ namespace Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects
 
         public static ExpenseFinanceOperationId CreateUniq() => new(Guid.NewGuid());
 
-        public static ExpenseFinanceOperationId Create(Guid value) => new(value);
+        public static ExpenseFinanceOperationId Create(string value) => new(Guid.Parse(value));
 
         public override IEnumerable<object> GetEqualityComponents()
         {

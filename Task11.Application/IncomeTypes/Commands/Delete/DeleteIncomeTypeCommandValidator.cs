@@ -6,7 +6,9 @@ namespace Task11.Application.IncomeTypes.Commands.Delete
     {
         public DeleteIncomeTypeCommandValidator()
         {
-            RuleFor(i => i.IncomeTypeId).NotEmpty();
+            RuleFor(i => i.IncomeTypeId)
+                .NotEmpty()
+                .Must(x => Guid.TryParse(x, out _));
         }
     }
 }

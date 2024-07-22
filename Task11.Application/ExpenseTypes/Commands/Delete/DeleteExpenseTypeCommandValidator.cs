@@ -6,7 +6,9 @@ namespace Task11.Application.ExpenseTypes.Commands.Delete
     {
         public DeleteExpenseTypeCommandValidator()
         {
-            RuleFor(p => p.ExpenseTypeId).NotEmpty();
+            RuleFor(p => p.ExpenseTypeId)
+                .NotEmpty()
+                .Must(x => Guid.TryParse(x, out _));
         }
     }
 }

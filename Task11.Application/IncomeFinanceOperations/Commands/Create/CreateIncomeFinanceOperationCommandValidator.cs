@@ -18,10 +18,11 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Create
                 .WithMessage("Incorrect date format, coorect format is yyyy-MM-DD");
 
             RuleFor(x => x.IncomeTypeId)
-                .NotEmpty();
+                .NotEmpty()
+                .Must(x => Guid.TryParse(x, out _));
 
             RuleFor(x => x.Amount)
-                .Must(x => x.Value >= 0);
+                .Must(x => x >= 0);
 
             RuleFor(x => x.Name)
                 .NotEmpty()

@@ -13,7 +13,7 @@ namespace Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects
 
         public static IncomeFinanceOperationId CreateUniq() => new(Guid.NewGuid());
 
-        public static IncomeFinanceOperationId Create(Guid value) => new(value);
+        public static IncomeFinanceOperationId Create(string value) => new(Guid.Parse(value));
 
         public override IEnumerable<object> GetEqualityComponents()
         {

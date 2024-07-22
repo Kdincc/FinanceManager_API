@@ -6,7 +6,9 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Delete
     {
         public DeleteExpenceFinanceOperationCommandValidator()
         {
-            RuleFor(x => x.Id).NotEmpty();
+            RuleFor(x => x.Id)
+                .NotEmpty()
+                .Must(x => Guid.TryParse(x, out _));
         }
     }
 }
