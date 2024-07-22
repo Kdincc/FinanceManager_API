@@ -15,7 +15,7 @@ namespace Task11.Presentation.Mappings
         {
             config.ForType<CreateIncomeFinanceOperationRequest, CreateIncomeFinanceOperationCommand>()
                 .ConstructUsing(src => new CreateIncomeFinanceOperationCommand(
-                    DateOnly.Parse(src.Date),
+                    src.Date,
                     IncomeTypeId.Create(Guid.Parse(src.IncomeTypeId)),
                     Amount.Create(src.Amount),
                     src.Name));
@@ -24,7 +24,7 @@ namespace Task11.Presentation.Mappings
                 .ConstructUsing(src => new UpdateIncomeFinanceOperationCommand(
                     IncomeFinanceOperationId.Create(Guid.Parse(src.IncomeFinanceOperationId)),
                     IncomeTypeId.Create(Guid.Parse(src.IncomeTypeId)),
-                    DateOnly.Parse(src.Date),
+                    src.Date,
                     Amount.Create(src.Amount),
                     src.Name));
 

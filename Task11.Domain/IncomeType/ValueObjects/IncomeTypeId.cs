@@ -1,8 +1,9 @@
-﻿using Task11.Domain.Common.ValueObjects;
+﻿using Task11.Domain.Common.Models;
+using Task11.Domain.Common.ValueObjects;
 
 namespace Task11.Domain.IncomeType.ValueObjects
 {
-    public class IncomeTypeId : OperationTypeId
+    public class IncomeTypeId : ValueObject
     {
         private IncomeTypeId(Guid value)
         {

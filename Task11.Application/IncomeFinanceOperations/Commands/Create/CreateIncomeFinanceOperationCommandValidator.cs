@@ -14,7 +14,8 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Create
         {
             RuleFor(x => x.Date)
                 .NotEmpty()
-                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.ExpenseFinanceOperation.DateFormat, out _));
+                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.ExpenseFinanceOperation.DateFormat, out _))
+                .WithMessage("Incorrect date format, coorect format is yyyy-MM-DD");
 
             RuleFor(x => x.IncomeTypeId)
                 .NotEmpty();

@@ -13,11 +13,12 @@ namespace Task11.Presentation.Controllers
         private readonly ISender _sender = sender;
         private readonly IMapper _mapper = mapper;
 
-        [HttpGet("daily")]
+        [HttpGet("daily/{date}")]
         [ProducesResponseType<DailyReport>(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetDailyReport(GetDailyReportRequest request)
+        [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetDailyReport(string date)
         {
-            var query = _mapper.Map<GetDailyReportQuery>(request);
+            var query = new GetDailyReportQuery(date);
 
             var result = await _sender.Send(query);
 

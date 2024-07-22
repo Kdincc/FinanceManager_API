@@ -15,7 +15,7 @@ namespace Task11.Presentation.Mappings
         {
             config.ForType<CreateExpenseFinanceOperationRequest, CreateExpenseFinanaceOperationCommand>()
                 .ConstructUsing(src => new CreateExpenseFinanaceOperationCommand(
-                    DateOnly.Parse(src.Date),
+                    src.Date,
                     ExpenseTypeId.Create(Guid.Parse(src.ExpenseTypeId)),
                     Amount.Create(src.Amount),
                     src.Name));
@@ -23,7 +23,7 @@ namespace Task11.Presentation.Mappings
             config.ForType<UpdateExpenseFinanceOperationRequest, UpdateExpenceFinanceOperationCommand>()
                 .ConstructUsing(src => new UpdateExpenceFinanceOperationCommand(
                     ExpenseFinanceOperationId.Create(Guid.Parse(src.ExpenseFinanceOperationId)),
-                    DateOnly.Parse(src.Date),
+                    src.Date,
                     ExpenseTypeId.Create(Guid.Parse(src.ExpenseTypeId)),
                     Amount.Create(src.Amount),
                     src.Name));

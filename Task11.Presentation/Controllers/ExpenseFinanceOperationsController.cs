@@ -28,13 +28,14 @@ namespace Task11.Presentation.Controllers
         [HttpPost("create")]
         [ProducesResponseType<ExpenseFinanceOperationResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+        [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateExpenseFinaseOperation(CreateExpenseFinanceOperationRequest request, CancellationToken cancellationToken)
         {
             var command = _mapper.Map<CreateExpenseFinanaceOperationCommand>(request);
 
             var result = await _sender.Send(command, cancellationToken);
 
-            return Ok(result);
+            return result.Match(Ok, Problem);
         }
 
         [HttpPut("update")]

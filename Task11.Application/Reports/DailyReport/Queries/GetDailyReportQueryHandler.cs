@@ -23,13 +23,15 @@ namespace Task11.Application.Reports.DailyReport.Queries
 
         public async Task<ErrorOr<DailyReport>> Handle(GetDailyReportQuery request, CancellationToken cancellationToken)
         {
-            var incomes = await GetDateMatchesIncomeFinanceOperations(request.Date);
-            var expenses = await GetDateMatchesExpenseFinanceOperations(request.Date);
+            DateOnly date = DateOnly.Parse(request.Date);
+
+            var incomes = await GetDateMatchesIncomeFinanceOperations(date);
+            var expenses = await GetDateMatchesExpenseFinanceOperations(date);
 
             var incomeDtos = incomes.Select(i => new IncomeFinanceOperationDto(i)).ToList();
             var expenseDtos = expenses.Select(e => new ExpenseFinanceOperationDto(e)).ToList();
 
-            return DailyReport.Create(request.Date, expenseDtos, incomeDtos);
+            return DailyReport.Create(date, expenseDtos, incomeDtos);
         }
 
         private async Task<IReadOnlyCollection<IncomeFinanceOperation>> GetDateMatchesIncomeFinanceOperations(DateOnly date)

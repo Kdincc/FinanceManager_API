@@ -9,7 +9,8 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
         {
             RuleFor(x => x.Date)
                 .NotEmpty()
-                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.ExpenseFinanceOperation.DateFormat, out _));
+                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.ExpenseFinanceOperation.DateFormat, out _))
+                .WithMessage("Incorrect date format, coorect format is yyyy-MM-DD");
 
             RuleFor(x => x.ExpenceTypeId)
                 .NotEmpty();
