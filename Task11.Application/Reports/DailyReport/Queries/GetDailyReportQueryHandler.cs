@@ -36,7 +36,7 @@ namespace Task11.Application.Reports.DailyReport.Queries
         {
             List<IncomeFinanceOperation> dateMatchesOperations = [];
 
-            await foreach (var income in _incomeOperationRepository.GetAllAsAsyncEnumerable().)
+            await foreach (var income in _incomeOperationRepository.GetAllAsAsyncEnumerable())
             {
                 if (income.Date == date)
                 {
