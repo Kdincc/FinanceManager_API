@@ -13,7 +13,9 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Delete
 
         public async Task<ErrorOr<ExpenseFinanceOperationResult>> Handle(DeleteExpenceFinanseOperationCommand request, CancellationToken cancellationToken)
         {
-            ExpenseFinanceOperation expenseFinanceOperation = await _repository.GetByIdAsync(request.Id, cancellationToken);
+            ExpenseFinanceOperation expenseFinanceOperation = await _repository.GetByIdAsync(
+                ExpenseFinanceOperationId.Create(request.Id), 
+                cancellationToken);
 
             if (expenseFinanceOperation is null)
             {

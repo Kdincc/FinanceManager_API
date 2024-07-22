@@ -2,6 +2,7 @@
 using MediatR;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.Common.Errors;
+using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.ExpenseFinanceOperationAggregate;
 using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.ExpenseType;
@@ -18,7 +19,10 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Create
 
         public async Task<ErrorOr<ExpenseFinanceOperationResult>> Handle(CreateExpenseFinanaceOperationCommand request, CancellationToken cancellationToken)
         {
-            var expenseType = await _expenseTypeRepository.GetByIdAsync(request.ExpenseTypeId, cancellationToken);
+            ExpenseTypeId expenseTypeId = ExpenseTypeId.Create(request.ExpenseTypeId);
+            Amount amount = Amount.Create(request.Amount);
+
+            var expenseType = await _expenseTypeRepository.GetByIdAsync(expenseTypeId, cancellationToken);
 
             if (expenseType is null)
             {
@@ -26,10 +30,10 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Create
             }
 
             ExpenseFinanceOperation expenseFinanceOperation = new(
-                ExpenseFinanceOperationId.Create(Guid.NewGuid()),
+                ExpenseFinanceOperationId.CreateUniq(),
                 DateOnly.Parse(request.Date),
-                request.ExpenseTypeId,
-                request.Amount,
+                expenseTypeId,
+                amount,
                 request.Name);
 
             await _expenseFinanceOperationRepository.AddAsync(expenseFinanceOperation, cancellationToken);

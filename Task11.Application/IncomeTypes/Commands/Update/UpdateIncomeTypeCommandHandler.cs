@@ -13,7 +13,9 @@ namespace Task11.Application.IncomeTypes.Commands.Update
 
         public async Task<ErrorOr<IncomeTypesResult>> Handle(UpdateIncomeTypeCommand request, CancellationToken cancellationToken)
         {
-            IncomeType incomeTypeToUpdate = await _repository.GetByIdAsync(request.Id, cancellationToken);
+            IncomeTypeId incomeTypeId = IncomeTypeId.Create(request.Id);
+
+            IncomeType incomeTypeToUpdate = await _repository.GetByIdAsync(incomeTypeId, cancellationToken);
 
             if (incomeTypeToUpdate is null)
             {

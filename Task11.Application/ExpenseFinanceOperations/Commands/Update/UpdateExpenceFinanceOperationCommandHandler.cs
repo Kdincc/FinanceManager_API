@@ -2,6 +2,7 @@
 using MediatR;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.Common.Errors;
+using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.ExpenseFinanceOperationAggregate;
 using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.ExpenseType;
@@ -16,8 +17,15 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
 
         public async Task<ErrorOr<ExpenseFinanceOperationResult>> Handle(UpdateExpenceFinanceOperationCommand request, CancellationToken cancellationToken)
         {
-            ExpenseFinanceOperation expenseFinanceOperation = await _repository.GetByIdAsync(request.ExpenseFinanceOperationId, cancellationToken);
-            ExpenseType expenseType = await _expenseTypeRepository.GetByIdAsync(request.ExpenceTypeId, cancellationToken);
+            Amount amount = Amount.Create(request.Amount);
+            ExpenseFinanceOperationId expenseFinanceOperationId = ExpenseFinanceOperationId.Create(request.ExpenseFinanceOperationId);
+            ExpenseTypeId expenseTypeId = ExpenseTypeId.Create(request.ExpenceTypeId);
+
+            ExpenseFinanceOperation expenseFinanceOperation = await _repository.GetByIdAsync
+                (expenseFinanceOperationId, 
+                cancellationToken);
+
+            ExpenseType expenseType = await _expenseTypeRepository.GetByIdAsync(expenseTypeId, cancellationToken);
 
             if (expenseType is null)
             {
@@ -31,8 +39,8 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
 
             expenseFinanceOperation.Update(
                 DateOnly.Parse(request.Date),
-                request.ExpenceTypeId,
-                request.Amount,
+                expenseTypeId,
+                amount,
                 request.Name);
 
             await _repository.UpdateAsync(expenseFinanceOperation, cancellationToken);

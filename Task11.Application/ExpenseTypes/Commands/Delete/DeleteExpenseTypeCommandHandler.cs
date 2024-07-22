@@ -13,7 +13,8 @@ namespace Task11.Application.ExpenseTypes.Commands.Delete
 
         public async Task<ErrorOr<ExpenseTypesResult>> Handle(DeleteExpenseTypeCommand request, CancellationToken cancellationToken)
         {
-            ExpenseType expenseType = await _repository.GetByIdAsync(request.ExpenseTypeId, cancellationToken);
+            ExpenseTypeId expenseTypeId = ExpenseTypeId.Create(request.ExpenseTypeId);
+            ExpenseType expenseType = await _repository.GetByIdAsync(expenseTypeId, cancellationToken);
 
             if (expenseType is null)
             {

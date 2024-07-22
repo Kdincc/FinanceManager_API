@@ -13,7 +13,9 @@ namespace Task11.Application.ExpenseTypes.Commands.Update
 
         public async Task<ErrorOr<ExpenseTypesResult>> Handle(UpdateExpenseTypeCommand request, CancellationToken cancellationToken)
         {
-            ExpenseType expenseType = await _repository.GetByIdAsync(request.ExpenseTypeId, cancellationToken);
+            ExpenseTypeId expenseTypeId = ExpenseTypeId.Create(request.ExpenseTypeId);
+
+            ExpenseType expenseType = await _repository.GetByIdAsync(expenseTypeId, cancellationToken);
 
             if (expenseType is null)
             {

@@ -11,6 +11,7 @@ using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeType;
 using Task11.Domain.IncomeType.ValueObjects;
 using Task11.Domain.Common.Errors;
+using Task11.Domain.Common.ValueObjects;
 
 namespace Task11.Application.IncomeFinanceOperations.Commands.Update
 {
@@ -23,14 +24,18 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Update
 
         public async Task<ErrorOr<IncomeFinanceOperationResult>> Handle(UpdateIncomeFinanceOperationCommand request, CancellationToken cancellationToken)
         {
-            IncomeType incomeType = await _incomeTypeRepository.GetByIdAsync(request.IncomeTypeId, cancellationToken);
+            Amount amount = Amount.Create(request.Amount);
+            IncomeTypeId incomeTypeId = IncomeTypeId.Create(request.IncomeTypeId);
+            IncomeFinanceOperationId incomeFinanceOperationId = IncomeFinanceOperationId.Create(request.IncomeFinanceOperationId);
+
+            IncomeType incomeType = await _incomeTypeRepository.GetByIdAsync(incomeTypeId, cancellationToken);
 
             if (incomeType is null)
             {
                 return Errors.IncomeType.IncomeTypeNotFound;
             }
 
-            IncomeFinanceOperation financeOperation = await _incomeFinanceOperationRepository.GetByIdAsync(request.IncomeFinanceOperationId, cancellationToken);
+            IncomeFinanceOperation financeOperation = await _incomeFinanceOperationRepository.GetByIdAsync(incomeFinanceOperationId, cancellationToken);
 
             if (financeOperation is null)
             {
@@ -39,8 +44,8 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Update
 
             financeOperation.Update(
                 DateOnly.Parse(request.Date),
-                request.IncomeTypeId,
-                request.Amount,
+                incomeTypeId,
+                amount,
                 request.Name);
 
             await _incomeFinanceOperationRepository.UpdateAsync(financeOperation, cancellationToken);

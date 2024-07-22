@@ -2,6 +2,7 @@
 using MediatR;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.Common.Errors;
+using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.IncomeFinanceOperationAggregate;
 using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeType;
@@ -18,7 +19,10 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Create
 
         public  async Task<ErrorOr<IncomeFinanceOperationResult>> Handle(CreateIncomeFinanceOperationCommand request, CancellationToken cancellationToken)
         {
-            IncomeType incomeType = await _incomeTypeRepository.GetByIdAsync(request.IncomeTypeId, cancellationToken);
+            Amount amount = Amount.Create(request.Amount);
+            IncomeTypeId incomeTypeId = IncomeTypeId.Create(request.IncomeTypeId);
+
+            IncomeType incomeType = await _incomeTypeRepository.GetByIdAsync(incomeTypeId, cancellationToken);
 
             if (incomeType is null)
             {
@@ -28,8 +32,8 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Create
             IncomeFinanceOperation financeOperation = new(
                 IncomeFinanceOperationId.CreateUniq(),
                 DateOnly.Parse(request.Date),
-                request.IncomeTypeId,
-                request.Amount,
+                incomeTypeId,
+                amount,
                 request.Name);
 
             await _financeOperationRepository.AddAsync(financeOperation, cancellationToken);

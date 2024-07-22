@@ -18,7 +18,9 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Delete
 
         public async Task<ErrorOr<IncomeFinanceOperationResult>> Handle(DeleteIncomeFinanceOperationCommand request, CancellationToken cancellationToken)
         {
-            IncomeFinanceOperation financeOperation = await _incomeFinanceOperationRepository.GetByIdAsync(request.IncomeFinanceOperationId, cancellationToken);
+            IncomeFinanceOperationId incomeFinanceOperationId = IncomeFinanceOperationId.Create(request.IncomeFinanceOperationId);
+
+            IncomeFinanceOperation financeOperation = await _incomeFinanceOperationRepository.GetByIdAsync(incomeFinanceOperationId, cancellationToken);
 
             if (financeOperation is null)
             {
