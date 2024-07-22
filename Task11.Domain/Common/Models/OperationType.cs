@@ -1,7 +1,6 @@
-﻿using Task11.Domain.Common.Models;
-using Task11.Domain.Common.Сonstants;
+﻿using Task11.Domain.Common.Сonstants;
 
-namespace Task11.Domain.Common.Entities
+namespace Task11.Domain.Common.Models
 {
     public abstract class OperationType<TId>(TId id, string name, string description) : AggregateRoot<TId>(id) where TId : ValueObject
     {

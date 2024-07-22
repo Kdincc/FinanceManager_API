@@ -1,4 +1,4 @@
-﻿using Task11.Domain.Common.Entities;
+﻿using Task11.Domain.Common.Models;
 using Task11.Domain.ExpenseType.ValueObjects;
 
 namespace Task11.Domain.ExpenseType
