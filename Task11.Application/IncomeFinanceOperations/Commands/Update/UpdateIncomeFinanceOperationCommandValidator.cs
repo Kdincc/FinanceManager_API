@@ -17,7 +17,8 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Update
                 .NotEmpty();
 
             RuleFor(x => x.Date)
-                .NotEmpty();
+                .NotEmpty()
+                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.ExpenseFinanceOperation.DateFormat, out _));
 
             RuleFor(x => x.IncomeTypeId)
                 .NotEmpty();

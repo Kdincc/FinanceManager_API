@@ -38,7 +38,7 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Update
             }
 
             financeOperation.Update(
-                request.Date,
+                DateOnly.Parse(request.Date),
                 request.IncomeTypeId,
                 request.Amount,
                 request.Name);

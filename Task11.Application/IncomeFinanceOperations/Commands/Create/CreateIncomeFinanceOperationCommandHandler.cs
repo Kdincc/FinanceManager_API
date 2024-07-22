@@ -27,7 +27,7 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Create
 
             IncomeFinanceOperation financeOperation = new(
                 IncomeFinanceOperationId.CreateUniq(),
-                request.Date,
+                DateOnly.Parse(request.Date),
                 request.IncomeTypeId,
                 request.Amount,
                 request.Name);

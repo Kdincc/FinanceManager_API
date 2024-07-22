@@ -30,7 +30,7 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
             }
 
             expenseFinanceOperation.Update(
-                request.Date,
+                DateOnly.Parse(request.Date),
                 request.ExpenceTypeId,
                 request.Amount,
                 request.Name);

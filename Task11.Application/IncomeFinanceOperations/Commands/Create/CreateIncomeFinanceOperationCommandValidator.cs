@@ -13,7 +13,8 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Create
         public UpdateIncomeFinanceOperationCommandValidator()
         {
             RuleFor(x => x.Date)
-                .NotEmpty();
+                .NotEmpty()
+                .Must(x => DateOnly.TryParseExact(x, ValidationConstants.ExpenseFinanceOperation.DateFormat, out _));
 
             RuleFor(x => x.IncomeTypeId)
                 .NotEmpty();
