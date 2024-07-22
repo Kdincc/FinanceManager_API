@@ -13,23 +13,11 @@ namespace Task11.Presentation.Mappings
     {
         public void Register(TypeAdapterConfig config)
         {
-            config.ForType<CreateIncomeFinanceOperationRequest, CreateIncomeFinanceOperationCommand>()
-                .ConstructUsing(src => new CreateIncomeFinanceOperationCommand(
-                    src.Date,
-                    IncomeTypeId.Create(Guid.Parse(src.IncomeTypeId)),
-                    Amount.Create(src.Amount),
-                    src.Name));
+            config.NewConfig<CreateIncomeFinanceOperationRequest, CreateIncomeFinanceOperationCommand>();
 
-            config.ForType<UpdateIncomeFinanceOperationRequest, UpdateIncomeFinanceOperationCommand>()
-                .ConstructUsing(src => new UpdateIncomeFinanceOperationCommand(
-                    IncomeFinanceOperationId.Create(Guid.Parse(src.IncomeFinanceOperationId)),
-                    IncomeTypeId.Create(Guid.Parse(src.IncomeTypeId)),
-                    src.Date,
-                    Amount.Create(src.Amount),
-                    src.Name));
+            config.NewConfig<UpdateIncomeFinanceOperationRequest, UpdateIncomeFinanceOperationCommand>();
 
-            config.ForType<DeleteIncomeFinanceOperationRequest, DeleteIncomeFinanceOperationCommand>()
-                .ConstructUsing(src => new DeleteIncomeFinanceOperationCommand(IncomeFinanceOperationId.Create(Guid.Parse(src.IncomeFinanceOperationId))));
+            config.NewConfig<DeleteIncomeFinanceOperationRequest, DeleteIncomeFinanceOperationCommand>();
         }
     }
 }
