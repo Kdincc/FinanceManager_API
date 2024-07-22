@@ -22,5 +22,10 @@ namespace Task11.Application.Reports.PeriodReport
         public readonly DateOnly StartDate { get; }
         public readonly DateOnly EndDate { get; }
 
+        public bool Contains(DateOnly date)
+        {
+            return date >= StartDate && date <= EndDate;
+        }
+
     }
 }
