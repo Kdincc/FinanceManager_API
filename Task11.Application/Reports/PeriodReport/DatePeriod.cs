@@ -10,10 +10,7 @@ namespace Task11.Application.Reports.PeriodReport
     {
         public DatePeriod(DateOnly startDate, DateOnly endDate)
         {
-            if (startDate > endDate)
-            {
-                throw new ArgumentException("Start date cannot be greater than end date.");
-            }
+            ThrowIfStartDateGreaterThanEndDate(startDate, endDate);
 
             StartDate = startDate;
             EndDate = endDate;
@@ -24,10 +21,7 @@ namespace Task11.Application.Reports.PeriodReport
             DateOnly start = DateOnly.ParseExact(startDate, format);
             DateOnly end = DateOnly.ParseExact(endDate, format);
 
-            if (start > end)
-            {
-                throw new ArgumentException("Start date cannot be greater than end date.");
-            }
+            ThrowIfStartDateGreaterThanEndDate(start, end);
 
             StartDate = start;
             EndDate = end;
@@ -39,6 +33,14 @@ namespace Task11.Application.Reports.PeriodReport
         public bool Contains(DateOnly date)
         {
             return date >= StartDate && date <= EndDate;
+        }
+
+        private void ThrowIfStartDateGreaterThanEndDate(DateOnly startDate, DateOnly endDate)
+        {
+            if (startDate > endDate)
+            {
+                throw new ArgumentException("Start date cannot be greater than end date.");
+            }
         }
 
     }
