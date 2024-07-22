@@ -8,7 +8,7 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
 {
     public record UpdateExpenceFinanceOperationCommand(
         ExpenseFinanceOperationId ExpenseFinanceOperationId,
-        DateTime Date,
+        DateOnly Date,
         ExpenseTypeId ExpenceTypeId,
         Amount Amount,
         string Name) : IRequest<ErrorOr<ExpenseFinanceOperationResult>>;

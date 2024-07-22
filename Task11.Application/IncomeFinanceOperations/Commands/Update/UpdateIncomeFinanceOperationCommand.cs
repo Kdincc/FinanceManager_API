@@ -14,7 +14,7 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Update
     public record UpdateIncomeFinanceOperationCommand(
         IncomeFinanceOperationId IncomeFinanceOperationId,
         IncomeTypeId IncomeTypeId,
-        DateTime Date,
+        DateOnly Date,
         Amount Amount,
         string Name) : IRequest<ErrorOr<IncomeFinanceOperationResult>>;
 }
