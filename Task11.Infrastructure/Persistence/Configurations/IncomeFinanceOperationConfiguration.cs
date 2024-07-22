@@ -18,7 +18,7 @@ namespace Task11.Infrastructure.Persistence.Configurations
 
             builder.Property(x => x.Id)
                 .ValueGeneratedNever()
-                .HasConversion(id => id.Value, value => IncomeFinanceOperationId.Create(value));
+                .HasConversion(id => id.Value, value => IncomeFinanceOperationId.Create(value.ToString()));
 
             builder.Property(x => x.Name)
                 .HasMaxLength(100);
@@ -27,7 +27,7 @@ namespace Task11.Infrastructure.Persistence.Configurations
                 .HasConversion(amount => amount.Value, value => Amount.Create(value));
 
             builder.Property(x => x.IncomeTypeId)
-                .HasConversion(id => id.Value, value => IncomeTypeId.Create(value));
+                .HasConversion(id => id.Value, value => IncomeTypeId.Create(value.ToString()));
 
             builder.HasOne<IncomeType>()
                 .WithMany()

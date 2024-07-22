@@ -16,7 +16,7 @@ namespace Task11.Infrastructure.Persistence.Configurations
 
             builder.Property(x => x.Id)
                 .ValueGeneratedNever()
-                .HasConversion(id => id.Value, value => IncomeTypeId.Create(value));
+                .HasConversion(id => id.Value, value => IncomeTypeId.Create(value.ToString()));
 
             builder.Property(x => x.Name)
                 .HasMaxLength(ValidationConstants.OperationType.MaxNameLength)
