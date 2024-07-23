@@ -1,13 +1,7 @@
 ﻿using ErrorOr;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task11.Application.Common.DTOs;
 using Task11.Application.Common.Persistance;
-using Task11.Domain.Common.Models;
 using Task11.Domain.ExpenseFinanceOperationAggregate;
 using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeFinanceOperationAggregate;
@@ -24,7 +18,7 @@ namespace Task11.Application.Reports.PeriodReport.Queries
 
         public async Task<ErrorOr<PeriodReport>> Handle(GetPeriodReportQuery request, CancellationToken cancellationToken)
         {
-            DatePeriod period = new (request.StartDate, request.EndDate);
+            DatePeriod period = new(request.StartDate, request.EndDate);
 
             var matchesIncomes = await GetPeriodMatchesIncomeFinanceOperations(period);
             var matchesExpenses = await GetPeriodMatchesExpenseFinanceOperations(period);
@@ -38,8 +32,8 @@ namespace Task11.Application.Reports.PeriodReport.Queries
         private async Task<IReadOnlyCollection<IncomeFinanceOperation>> GetPeriodMatchesIncomeFinanceOperations(DatePeriod period)
         {
             List<IncomeFinanceOperation> dateMatchesOperations = [];
-            
-            await foreach(var income in _incomeRepository.GetAllAsAsyncEnumerable())
+
+            await foreach (var income in _incomeRepository.GetAllAsAsyncEnumerable())
             {
                 if (period.Contains(income.Date))
                 {

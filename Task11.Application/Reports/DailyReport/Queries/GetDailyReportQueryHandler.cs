@@ -1,17 +1,12 @@
 ﻿using ErrorOr;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task11.Application.Common.DTOs;
 using Task11.Application.Common.Persistance;
+using Task11.Domain.Common.Сonstants;
 using Task11.Domain.ExpenseFinanceOperationAggregate;
 using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeFinanceOperationAggregate;
 using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
-using Task11.Domain.Common.Сonstants;
 
 namespace Task11.Application.Reports.DailyReport.Queries
 {

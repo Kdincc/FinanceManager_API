@@ -1,18 +1,13 @@
 ﻿using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Task11.Application.Common.Persistance;
+using Task11.Application.IncomeTypes;
 using Task11.Application.IncomeTypes.Commands.Create;
 using Task11.Application.IncomeTypes.Commands.Delete;
 using Task11.Application.IncomeTypes.Commands.Update;
 using Task11.Application.IncomeTypes.Queries.GetIncomeTypes;
+using Task11.Domain.Common.Errors;
 using Task11.Domain.IncomeType;
 using Task11.Domain.IncomeType.ValueObjects;
-using Task11.Domain.Common.Errors;
-using Task11.Application.Common.Persistance;
-using Task11.Application.IncomeTypes;
 
 
 namespace Task11.Tests

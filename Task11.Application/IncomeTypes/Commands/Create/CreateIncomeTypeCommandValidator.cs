@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Task11.Application.Properties;
 using Task11.Domain.Common.Сonstants;
 
 namespace Task11.Application.IncomeTypes.Commands.Create

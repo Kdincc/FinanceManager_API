@@ -1,23 +1,17 @@
-﻿using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ErrorOr;
+using Moq;
 using Task11.Application.Common.Persistance;
-using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
-using Task11.Domain.IncomeFinanceOperationAggregate;
-using Task11.Domain.IncomeType.ValueObjects;
-using Task11.Domain.IncomeType;
+using Task11.Application.IncomeFinanceOperations;
 using Task11.Application.IncomeFinanceOperations.Commands.Create;
 using Task11.Application.IncomeFinanceOperations.Commands.Delete;
 using Task11.Application.IncomeFinanceOperations.Commands.Update;
-using Task11.Domain.Common.Errors;
 using Task11.Application.IncomeFinanceOperations.Queries.GetIncomeFinanceOperations;
-using ErrorOr;
-using Task11.Application.IncomeFinanceOperations;
+using Task11.Domain.Common.Errors;
 using Task11.Domain.Common.ValueObjects;
-using Task11.Application.IncomeTypes.Commands.Create;
+using Task11.Domain.IncomeFinanceOperationAggregate;
+using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
+using Task11.Domain.IncomeType;
+using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Tests
 {
@@ -128,7 +122,7 @@ namespace Task11.Tests
             var updatedOperation = new IncomeFinanceOperation(_incomeFinanceOperationId, DateOnly.Parse("2011-12-12"), _incomeTypeId, Amount.Create(200), "Test");
             var expected = new IncomeFinanceOperationResult(updatedOperation);
 
-            UpdateIncomeFinanceOperationCommand command = new(_incomeFinanceOperationId.ToString(), _incomeTypeId.ToString(), "2011-12-12",  200, "Test");
+            UpdateIncomeFinanceOperationCommand command = new(_incomeFinanceOperationId.ToString(), _incomeTypeId.ToString(), "2011-12-12", 200, "Test");
             UpdateIncomeFinanceOperationCommandHandler handler = new(_incomesRepositoryMock.Object, _incomeTypeRepositoryMock.Object);
 
             //Setup
@@ -238,11 +232,11 @@ namespace Task11.Tests
         public void CreateIncomeFinanceOperationCommandValidator_InvalidData_IsInvalid(string date, decimal amount, string name)
         {
             //Arrange
-           CreateIncomeFinanceOperationCommand command = new(
-                date,
-                _incomeTypeId.ToString(),
-                amount,
-                name);
+            CreateIncomeFinanceOperationCommand command = new(
+                 date,
+                 _incomeTypeId.ToString(),
+                 amount,
+                 name);
             CreateIncomeFinanceOperationCommandValidator validator = new();
 
             //Act

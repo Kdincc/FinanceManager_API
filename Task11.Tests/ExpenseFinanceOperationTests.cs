@@ -3,16 +3,15 @@ using Moq;
 using Task11.Application.Common.Persistance;
 using Task11.Application.ExpenseFinanceOperations;
 using Task11.Application.ExpenseFinanceOperations.Commands.Create;
+using Task11.Application.ExpenseFinanceOperations.Commands.Delete;
+using Task11.Application.ExpenseFinanceOperations.Commands.Update;
+using Task11.Application.ExpenseFinanceOperations.Queries.GetExpenceFinanceOperations;
+using Task11.Domain.Common.Errors;
+using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.ExpenseFinanceOperationAggregate;
 using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.ExpenseType;
 using Task11.Domain.ExpenseType.ValueObjects;
-using Task11.Domain.Common.Errors;
-using Task11.Application.ExpenseFinanceOperations.Commands.Delete;
-using Task11.Domain.Common.ValueObjects;
-using Task11.Application.ExpenseFinanceOperations.Commands.Update;
-using Task11.Application.ExpenseFinanceOperations.Queries.GetExpenceFinanceOperations;
-using FluentValidation.Results;
 
 namespace Task11.Tests
 {
@@ -120,7 +119,7 @@ namespace Task11.Tests
         {
             //Arrange
             var operationToUpdate = new ExpenseFinanceOperation(_expenseFinanceOperationId, DateOnly.Parse("2011-11-11"), _expenseTypeId, Amount.Create(100), "test");
-            var updatedOperation = new ExpenseFinanceOperation(_expenseFinanceOperationId, DateOnly.Parse("2011-12-12"), _expenseTypeId, Amount.Create(200), "Test"); 
+            var updatedOperation = new ExpenseFinanceOperation(_expenseFinanceOperationId, DateOnly.Parse("2011-12-12"), _expenseTypeId, Amount.Create(200), "Test");
             var expected = new ExpenseFinanceOperationResult(updatedOperation);
 
             UpdateExpenceFinanceOperationCommand command = new(_expenseFinanceOperationId.ToString(), "2011-12-12", _expenseTypeId.ToString(), 200, "Test");
@@ -188,7 +187,7 @@ namespace Task11.Tests
         {
             //Arrange
             var handler = new GetExpenceFinanceOperationsQueryHandler(_expensesRepositoryMock.Object);
-            IReadOnlyCollection<ExpenseFinanceOperation> operations = 
+            IReadOnlyCollection<ExpenseFinanceOperation> operations =
             [
                 new(ExpenseFinanceOperationId.CreateUniq(), DateOnly.MinValue, ExpenseTypeId.CreateUniq(), Amount.Create(0), ""),
                 new(ExpenseFinanceOperationId.CreateUniq(), DateOnly.MinValue, ExpenseTypeId.CreateUniq(), Amount.Create(0), "")

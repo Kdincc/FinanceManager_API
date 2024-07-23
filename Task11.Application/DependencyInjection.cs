@@ -2,7 +2,6 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Task11.Application.Common.Behaviours;
-using System.Globalization;
 
 namespace Task11.Application
 {

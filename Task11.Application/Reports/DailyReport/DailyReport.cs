@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Task11.Application.Common.DTOs;
-using Task11.Domain.Common.Models;
+﻿using Task11.Application.Common.DTOs;
 using Task11.Domain.Common.ValueObjects;
-using Task11.Domain.ExpenseFinanceOperationAggregate;
-using Task11.Domain.IncomeFinanceOperationAggregate;
 
 namespace Task11.Application.Reports.DailyReport
 {

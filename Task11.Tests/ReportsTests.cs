@@ -1,9 +1,4 @@
 ﻿using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task11.Application.Common.DTOs;
 using Task11.Application.Common.Persistance;
 using Task11.Application.Reports.DailyReport;
@@ -17,7 +12,6 @@ using Task11.Domain.ExpenseType.ValueObjects;
 using Task11.Domain.IncomeFinanceOperationAggregate;
 using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeType.ValueObjects;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Task11.Tests
 {

@@ -17,7 +17,7 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Create
         private readonly IRepository<IncomeType, IncomeTypeId> _incomeTypeRepository = incomeTypeRepository;
         private readonly IRepository<IncomeFinanceOperation, IncomeFinanceOperationId> _financeOperationRepository = financeOperationRepository;
 
-        public  async Task<ErrorOr<IncomeFinanceOperationResult>> Handle(CreateIncomeFinanceOperationCommand request, CancellationToken cancellationToken)
+        public async Task<ErrorOr<IncomeFinanceOperationResult>> Handle(CreateIncomeFinanceOperationCommand request, CancellationToken cancellationToken)
         {
             Amount amount = Amount.Create(request.Amount);
             IncomeTypeId incomeTypeId = IncomeTypeId.Create(request.IncomeTypeId);

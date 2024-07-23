@@ -1,12 +1,6 @@
 ﻿using FluentValidation;
-using Task11.Domain.Common.Сonstants;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Task11.Application.IncomeFinanceOperations.Commands.Update;
 using Task11.Application.Properties;
+using Task11.Domain.Common.Сonstants;
 
 namespace Task11.Application.IncomeFinanceOperations.Commands.Update
 {

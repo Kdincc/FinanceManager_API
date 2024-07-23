@@ -1,14 +1,9 @@
 ﻿using ErrorOr;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task11.Application.Common.Persistance;
+using Task11.Domain.Common.Errors;
 using Task11.Domain.IncomeFinanceOperationAggregate;
 using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
-using Task11.Domain.Common.Errors;
 
 namespace Task11.Application.IncomeFinanceOperations.Commands.Delete
 {

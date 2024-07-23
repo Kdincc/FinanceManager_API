@@ -22,7 +22,7 @@ namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
             ExpenseTypeId expenseTypeId = ExpenseTypeId.Create(request.ExpenceTypeId);
 
             ExpenseFinanceOperation expenseFinanceOperation = await _repository.GetByIdAsync
-                (expenseFinanceOperationId, 
+                (expenseFinanceOperationId,
                 cancellationToken);
 
             ExpenseType expenseType = await _expenseTypeRepository.GetByIdAsync(expenseTypeId, cancellationToken);
