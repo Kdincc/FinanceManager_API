@@ -20,5 +20,7 @@ namespace Task11.Domain.IncomeType.ValueObjects
         {
             yield return Value;
         }
+
+        public override string ToString() => Value.ToString();
     }
 }

@@ -20,5 +20,10 @@ namespace Task11.Domain.ExpenseType.ValueObjects
         {
             yield return Value;
         }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }

@@ -19,5 +19,10 @@ namespace Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects
         {
             yield return Value;
         }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }
