@@ -23,7 +23,7 @@ namespace Task11.Application.Common.Behaviours
                 return await next();
             }
 
-            ValidationResult validationResult = _validator.Validate(request);
+            ValidationResult validationResult = await _validator.ValidateAsync(request, cancellationToken);
 
             if (validationResult.IsValid)
             {

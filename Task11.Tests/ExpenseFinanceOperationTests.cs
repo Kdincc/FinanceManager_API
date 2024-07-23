@@ -234,10 +234,10 @@ namespace Task11.Tests
         {
             //Arrange
             CreateExpenseFinanaceOperationCommand command = new(
-                "2011-11-11",
+                date,
                 _expenseTypeId.ToString(),
-                -100,
-                "test");
+                amount,
+                name);
             CreateExpenceFinanceOperationCommandValidator validator = new();
 
             //Act

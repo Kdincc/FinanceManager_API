@@ -9,9 +9,9 @@ using Task11.Application.Properties;
 
 namespace Task11.Application.IncomeFinanceOperations.Commands.Create
 {
-    public sealed class UpdateIncomeFinanceOperationCommandValidator : AbstractValidator<CreateIncomeFinanceOperationCommand>
+    public sealed class CreateIncomeFinanceOperationCommandValidator : AbstractValidator<CreateIncomeFinanceOperationCommand>
     {
-        public UpdateIncomeFinanceOperationCommandValidator()
+        public CreateIncomeFinanceOperationCommandValidator()
         {
             RuleFor(x => x.Date)
                 .NotEmpty()
