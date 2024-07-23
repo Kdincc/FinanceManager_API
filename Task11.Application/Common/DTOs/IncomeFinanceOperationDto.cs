@@ -10,7 +10,7 @@ using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Application.Common.DTOs
 {
-    public sealed class IncomeFinanceOperationDto(IncomeFinanceOperation incomeFinanceOperation)
+    public sealed class IncomeFinanceOperationDto(IncomeFinanceOperation incomeFinanceOperation) : IEquatable<IncomeFinanceOperationDto>
     {
         public IncomeFinanceOperationId Id => incomeFinanceOperation.Id;
 
@@ -21,5 +21,10 @@ namespace Task11.Application.Common.DTOs
         public string Name => incomeFinanceOperation.Name;
 
         public IncomeTypeId IncomeTypeId => incomeFinanceOperation.IncomeTypeId;
+
+        public bool Equals(IncomeFinanceOperationDto other)
+        {
+            return Id == other.Id;
+        }
     }
 }

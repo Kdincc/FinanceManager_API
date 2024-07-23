@@ -13,11 +13,6 @@ namespace Task11.Application.IncomeTypes.Commands.Create
 
             RuleFor(p => p.Description).NotEmpty()
                 .MaximumLength(ValidationConstants.OperationType.MaxDescriptionLength);
-
-            RuleFor(p => p.Amount)
-                .NotEmpty()
-                .Must(p => p >= 0)
-                .WithMessage(ValidationErrorMessages.IncorrectAmountValue);
         }
     }
 }

@@ -3,7 +3,7 @@ using Task11.Domain.Common.ValueObjects;
 
 namespace Task11.Application.Reports.PeriodReport
 {
-    public sealed class PeriodReport
+    public sealed class PeriodReport : IEquatable<PeriodReport>
     {
         private PeriodReport(
             DatePeriod period,
@@ -12,7 +12,11 @@ namespace Task11.Application.Reports.PeriodReport
             Amount totalExpenses,
             Amount totalIncomes)
         {
-
+            Period = period;
+            Expenses = expenses;
+            Incomes = incomes;
+            TotalExpenses = totalExpenses;
+            TotalIncomes = totalIncomes;
         }
 
         public static PeriodReport Create(
@@ -52,6 +56,19 @@ namespace Task11.Application.Reports.PeriodReport
             {
                 throw new ArgumentException("Finance operations dates do not match report period.");
             }
+        }
+
+        public bool Equals(PeriodReport other)
+        {
+            bool isDatesEqual = Period == other.Period;
+            bool isExpensesEqual = Expenses.SequenceEqual(other.Expenses);
+            bool isIncomesEqual = Incomes.SequenceEqual(other.Incomes);
+            bool isTotalExpensesEqual = TotalExpenses == other.TotalExpenses;
+            bool isTotalIncomesEqual = TotalIncomes == other.TotalIncomes;
+
+            bool areEquals = isDatesEqual && isExpensesEqual && isIncomesEqual && isTotalExpensesEqual && isTotalIncomesEqual;
+
+            return areEquals;
         }
     }
 }

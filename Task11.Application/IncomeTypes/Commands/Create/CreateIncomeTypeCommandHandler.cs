@@ -17,7 +17,7 @@ namespace Task11.Application.IncomeTypes.Commands.Create
 
             if (await HasSameIncomeType(_repository, incomeTypeToCreate))
             {
-                return Errors.IncomeType.IncomeTypeNotFound;
+                return Errors.IncomeType.DuplicateIncomeType;
             }
 
             await _repository.AddAsync(incomeTypeToCreate, cancellationToken);

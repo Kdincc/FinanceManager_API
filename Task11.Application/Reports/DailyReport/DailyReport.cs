@@ -11,7 +11,7 @@ using Task11.Domain.IncomeFinanceOperationAggregate;
 
 namespace Task11.Application.Reports.DailyReport
 {
-    public sealed class DailyReport
+    public sealed class DailyReport : IEquatable<DailyReport>
     {
         private DailyReport(
             DateOnly date,
@@ -50,6 +50,16 @@ namespace Task11.Application.Reports.DailyReport
 
         public Amount TotalIncomes { get; }
 
+        public static bool operator ==(DailyReport left, DailyReport right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(DailyReport left, DailyReport right)
+        {
+            return !(left == right);
+        }
+
         private static void ThrowIfFinanceOperationsDatesNotMatchReportDate(
             IReadOnlyCollection<ExpenseFinanceOperationDto> expenses,
             IReadOnlyCollection<IncomeFinanceOperationDto> incomes,
@@ -64,6 +74,24 @@ namespace Task11.Application.Reports.DailyReport
             {
                 throw new InvalidOperationException("Finance operations dates do not match report date");
             }
+        }
+
+        public bool Equals(DailyReport other)
+        {
+            bool isDateEqual = Date == other.Date;
+            bool areExpensesEqual = Expenses.SequenceEqual(other.Expenses);
+            bool areIncomesEqual = Incomes.SequenceEqual(other.Incomes);
+            bool isTotalExpensesEqual = TotalExpenses == other.TotalExpenses;
+            bool isTotalIncomesEqual = TotalIncomes == other.TotalIncomes;
+
+            bool areEquals = isDateEqual && areExpensesEqual && areIncomesEqual && isTotalExpensesEqual && isTotalIncomesEqual;
+
+            return areEquals;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as DailyReport);
         }
     }
 }

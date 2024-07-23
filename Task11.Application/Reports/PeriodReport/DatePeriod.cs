@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task11.Application.Reports.PeriodReport
 {
-    public readonly struct DatePeriod
+    public readonly struct DatePeriod : IEquatable<DatePeriod>
     {
         public DatePeriod(DateOnly startDate, DateOnly endDate)
         {
@@ -35,6 +35,16 @@ namespace Task11.Application.Reports.PeriodReport
             return date >= StartDate && date <= EndDate;
         }
 
+        public static bool operator ==(DatePeriod left, DatePeriod right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(DatePeriod left, DatePeriod right)
+        {
+            return !(left == right);
+        }
+
         private void ThrowIfStartDateGreaterThanEndDate(DateOnly startDate, DateOnly endDate)
         {
             if (startDate > endDate)
@@ -43,5 +53,9 @@ namespace Task11.Application.Reports.PeriodReport
             }
         }
 
+        public bool Equals(DatePeriod other)
+        {
+            return StartDate == other.StartDate && EndDate == other.EndDate;
+        }
     }
 }

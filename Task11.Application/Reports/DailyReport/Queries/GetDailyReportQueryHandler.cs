@@ -11,6 +11,7 @@ using Task11.Domain.ExpenseFinanceOperationAggregate;
 using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeFinanceOperationAggregate;
 using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
+using Task11.Domain.Common.Сonstants;
 
 namespace Task11.Application.Reports.DailyReport.Queries
 {
@@ -23,7 +24,7 @@ namespace Task11.Application.Reports.DailyReport.Queries
 
         public async Task<ErrorOr<DailyReport>> Handle(GetDailyReportQuery request, CancellationToken cancellationToken)
         {
-            DateOnly date = DateOnly.Parse(request.Date);
+            DateOnly date = DateOnly.ParseExact(request.Date, ValidationConstants.FinanceOperation.DateFormat);
 
             var incomes = await GetDateMatchesIncomeFinanceOperations(date);
             var expenses = await GetDateMatchesExpenseFinanceOperations(date);
