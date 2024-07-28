@@ -5,11 +5,11 @@ using Task11.Application.Reports.DailyReport;
 using Task11.Application.Reports.DailyReport.Queries;
 using Task11.Application.Reports.PeriodReport;
 using Task11.Application.Reports.PeriodReport.Queries;
+using Task11.Contracts.Reports;
 using Task11.Presentation.ApiRoutes;
 
 namespace Task11.Presentation.Controllers
 {
-    [Route("reports")]
     public class ReportsController(ISender sender, IMapper mapper) : ApiController
     {
         private readonly ISender _sender = sender;
@@ -18,11 +18,11 @@ namespace Task11.Presentation.Controllers
         [HttpGet(Routes.Reports.GetDailyReport)]
         [ProducesResponseType<DailyReport>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetDailyReport()
+        public async Task<IActionResult> GetDailyReport(GetDailyReportRequest request, CancellationToken cancellationToken)
         {
-            var query = new GetDailyReportQuery(date);
+            var query = _mapper.Map<GetDailyReportQuery>(request);
 
-            var result = await _sender.Send(query);
+            var result = await _sender.Send(query, cancellationToken);
 
             return result.Match(Ok, Problem);
         }
@@ -30,11 +30,11 @@ namespace Task11.Presentation.Controllers
         [HttpGet(Routes.Reports.GetPeriodReport)]
         [ProducesResponseType<PeriodReport>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetPeriodReport()
+        public async Task<IActionResult> GetPeriodReport(GetPeriodReportRequest request, CancellationToken cancellationToken)
         {
-            var query = new GetPeriodReportQuery(startDate, endDate);
+            var query = _mapper.Map<GetPeriodReportQuery>(request);
 
-            var result = await _sender.Send(query);
+            var result = await _sender.Send(query, cancellationToken);
 
             return result.Match(Ok, Problem);
         }
