@@ -5,7 +5,7 @@ using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 
 namespace Task11.Infrastructure.Persistence.Repos
 {
-    public sealed class IncomeFinanceOperationRepository(FinanceDbContext dbContext) : IRepository<IncomeFinanceOperation, IncomeFinanceOperationId>
+    public sealed class IncomeFinanceOperationRepository(FinanceDbContext dbContext) : IIncomeFinanceOperationRepository
     {
         private readonly FinanceDbContext _dbContext = dbContext;
 

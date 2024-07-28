@@ -5,7 +5,7 @@ using Task11.Domain.ExpenseType.ValueObjects;
 
 namespace Task11.Infrastructure.Persistence.Repos
 {
-    public sealed class ExpenseTypeRepository(FinanceDbContext dbContext) : IRepository<ExpenseType, ExpenseTypeId>
+    public sealed class ExpenseTypeRepository(FinanceDbContext dbContext) : IExpenseTypeRepository
     {
         private readonly FinanceDbContext _dbContext = dbContext;
 
