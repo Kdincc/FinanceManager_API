@@ -17,15 +17,15 @@ namespace Task11.Tests
 {
     public class ExpenseFinanceOperationTests
     {
-        private readonly Mock<IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId>> _expensesRepositoryMock;
-        private readonly Mock<IRepository<ExpenseType, ExpenseTypeId>> _expenseTypeRepositoryMock;
+        private readonly Mock<IExpenseFinanceOperationRepository> _expensesRepositoryMock;
+        private readonly Mock<IExpenseTypeRepository> _expenseTypeRepositoryMock;
         private ExpenseTypeId _expenseTypeId = ExpenseTypeId.CreateUniq();
         private ExpenseFinanceOperationId _expenseFinanceOperationId = ExpenseFinanceOperationId.CreateUniq();
 
         public ExpenseFinanceOperationTests()
         {
-            _expensesRepositoryMock = new Mock<IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId>>();
-            _expenseTypeRepositoryMock = new Mock<IRepository<ExpenseType, ExpenseTypeId>>();
+            _expensesRepositoryMock = new Mock<IExpenseFinanceOperationRepository>();
+            _expenseTypeRepositoryMock = new Mock<IExpenseTypeRepository>();
         }
 
         [Fact]

@@ -14,11 +14,11 @@ namespace Task11.Tests
 
     public class ExpenseTypeTests
     {
-        private readonly Mock<IRepository<ExpenseType, ExpenseTypeId>> _repositoryMock;
+        private readonly Mock<IExpenseTypeRepository> _repositoryMock;
 
         public ExpenseTypeTests()
         {
-            _repositoryMock = new Mock<IRepository<ExpenseType, ExpenseTypeId>>();
+            _repositoryMock = new Mock<IExpenseTypeRepository>();
         }
 
         [Fact]

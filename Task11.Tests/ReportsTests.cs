@@ -17,13 +17,13 @@ namespace Task11.Tests
 {
     public class ReportsTests
     {
-        private readonly Mock<IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId>> _expensesMock;
-        private readonly Mock<IRepository<IncomeFinanceOperation, IncomeFinanceOperationId>> _incomesMock;
+        private readonly Mock<IExpenseFinanceOperationRepository> _expensesMock;
+        private readonly Mock<IIncomeFinanceOperationRepository> _incomesMock;
 
         public ReportsTests()
         {
-            _expensesMock = new Mock<IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId>>();
-            _incomesMock = new Mock<IRepository<IncomeFinanceOperation, IncomeFinanceOperationId>>();
+            _expensesMock = new Mock<IExpenseFinanceOperationRepository>();
+            _incomesMock = new Mock<IIncomeFinanceOperationRepository>();
         }
 
         [Fact]

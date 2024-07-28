@@ -11,9 +11,9 @@ namespace Task11.Application.IncomeFinanceOperations.Commands.Create
 {
     public sealed class CreateIncomeFinanceOperationCommandHandler(
         IIncomeFinanceOperationRepository financeOperationRepository,
-        Common.Persistance.IncomeType incomeTypeRepository) : IRequestHandler<CreateIncomeFinanceOperationCommand, ErrorOr<IncomeFinanceOperationResult>>
+        IIncomeTypeRepository incomeTypeRepository) : IRequestHandler<CreateIncomeFinanceOperationCommand, ErrorOr<IncomeFinanceOperationResult>>
     {
-        private readonly Common.Persistance.IncomeType _incomeTypeRepository = incomeTypeRepository;
+        private readonly IIncomeTypeRepository _incomeTypeRepository = incomeTypeRepository;
         private readonly IIncomeFinanceOperationRepository _financeOperationRepository = financeOperationRepository;
 
         public async Task<ErrorOr<IncomeFinanceOperationResult>> Handle(CreateIncomeFinanceOperationCommand request, CancellationToken cancellationToken)

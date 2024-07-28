@@ -10,22 +10,21 @@ using Task11.Domain.Common.Errors;
 using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.IncomeFinanceOperationAggregate;
 using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
-using Task11.Domain.IncomeType;
 using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Tests
 {
     public class IncomeFinanceOperationTests
     {
-        private readonly Mock<IRepository<IncomeFinanceOperation, IncomeFinanceOperationId>> _incomesRepositoryMock;
-        private readonly Mock<IRepository<Domain.IncomeType.IncomeType, IncomeTypeId>> _incomeTypeRepositoryMock;
+        private readonly Mock<IIncomeFinanceOperationRepository> _incomesRepositoryMock;
+        private readonly Mock<IIncomeTypeRepository> _incomeTypeRepositoryMock;
         private IncomeTypeId _incomeTypeId = IncomeTypeId.CreateUniq();
         private IncomeFinanceOperationId _incomeFinanceOperationId = IncomeFinanceOperationId.CreateUniq();
 
         public IncomeFinanceOperationTests()
         {
-            _incomesRepositoryMock = new Mock<IRepository<IncomeFinanceOperation, IncomeFinanceOperationId>>();
-            _incomeTypeRepositoryMock = new Mock<IRepository<Domain.IncomeType.IncomeType, IncomeTypeId>>();
+            _incomesRepositoryMock = new Mock<IIncomeFinanceOperationRepository>();
+            _incomeTypeRepositoryMock = new Mock<IIncomeTypeRepository>();
         }
 
         [Fact]

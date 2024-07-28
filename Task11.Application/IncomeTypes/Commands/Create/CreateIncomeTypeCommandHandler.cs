@@ -6,9 +6,9 @@ using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Application.IncomeTypes.Commands.Create
 {
-    public sealed class CreateIncomeTypeCommandHandler(Common.Persistance.IncomeType repository) : IRequestHandler<CreateIncomeTypeCommand, ErrorOr<IncomeTypesResult>>
+    public sealed class CreateIncomeTypeCommandHandler(IIncomeTypeRepository repository) : IRequestHandler<CreateIncomeTypeCommand, ErrorOr<IncomeTypesResult>>
     {
-        private readonly Common.Persistance.IncomeType _repository = repository;
+        private readonly IIncomeTypeRepository _repository = repository;
 
         public async Task<ErrorOr<IncomeTypesResult>> Handle(CreateIncomeTypeCommand request, CancellationToken cancellationToken)
         {

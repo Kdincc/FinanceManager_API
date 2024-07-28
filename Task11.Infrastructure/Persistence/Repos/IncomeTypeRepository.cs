@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Task11.Application.Common.Persistance;
-using Task11.Domain.IncomeType;
 using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Infrastructure.Persistence.Repos
 {
-    public sealed class IncomeTypeRepository(FinanceDbContext dbContext) : Application.Common.Persistance.IncomeType
+    public sealed class IncomeTypeRepository(FinanceDbContext dbContext) : IIncomeTypeRepository
     {
         private readonly FinanceDbContext _dbContext = dbContext;
 

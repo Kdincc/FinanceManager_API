@@ -6,7 +6,6 @@ using Task11.Application.IncomeTypes.Commands.Delete;
 using Task11.Application.IncomeTypes.Commands.Update;
 using Task11.Application.IncomeTypes.Queries.GetIncomeTypes;
 using Task11.Domain.Common.Errors;
-using Task11.Domain.IncomeType;
 using Task11.Domain.IncomeType.ValueObjects;
 
 
@@ -14,11 +13,11 @@ namespace Task11.Tests
 {
     public class IncomeTypeTests
     {
-        private readonly Mock<IRepository<Domain.IncomeType.IncomeType, IncomeTypeId>> _repositoryMock;
+        private readonly Mock<IIncomeTypeRepository> _repositoryMock;
 
         public IncomeTypeTests()
         {
-            _repositoryMock = new Mock<IRepository<Domain.IncomeType.IncomeType, IncomeTypeId>>();
+            _repositoryMock = new Mock<IIncomeTypeRepository>();
         }
 
         [Fact]
