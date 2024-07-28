@@ -14,11 +14,11 @@ namespace Task11.Tests
 {
     public class IncomeTypeTests
     {
-        private readonly Mock<IRepository<IncomeType, IncomeTypeId>> _repositoryMock;
+        private readonly Mock<IRepository<Domain.IncomeType.IncomeType, IncomeTypeId>> _repositoryMock;
 
         public IncomeTypeTests()
         {
-            _repositoryMock = new Mock<IRepository<IncomeType, IncomeTypeId>>();
+            _repositoryMock = new Mock<IRepository<Domain.IncomeType.IncomeType, IncomeTypeId>>();
         }
 
         [Fact]
@@ -29,13 +29,13 @@ namespace Task11.Tests
             var command = new CreateIncomeTypeCommand("Test", "Test");
 
             //Setup
-            _repositoryMock.Setup(x => x.GetAllAsAsyncEnumerable()).Returns(Utilities.GetEmptyAsyncEnumerable<IncomeType>());
+            _repositoryMock.Setup(x => x.GetAllAsAsyncEnumerable()).Returns(Utilities.GetEmptyAsyncEnumerable<Domain.IncomeType.IncomeType>());
 
             //Act
             var result = await handler.Handle(command, CancellationToken.None);
 
             //Assert
-            _repositoryMock.Verify(x => x.AddAsync(It.IsAny<IncomeType>(), It.IsAny<CancellationToken>()), Times.Once);
+            _repositoryMock.Verify(x => x.AddAsync(It.IsAny<Domain.IncomeType.IncomeType>(), It.IsAny<CancellationToken>()), Times.Once);
             Assert.False(result.IsError);
         }
 
@@ -43,7 +43,7 @@ namespace Task11.Tests
         public async Task CreateExpenseTypeCommandHandler_SameTypeExists_ReturnsError()
         {
             // Arrange
-            var incomeType = new IncomeType(IncomeTypeId.CreateUniq(), "Test", "Test");
+            var incomeType = new Domain.IncomeType.IncomeType(IncomeTypeId.CreateUniq(), "Test", "Test");
             var handler = new CreateIncomeTypeCommandHandler(_repositoryMock.Object);
             var command = new CreateIncomeTypeCommand("Test", "Test");
 
@@ -62,7 +62,7 @@ namespace Task11.Tests
         public async Task DeleteExpenseTypeCommandHandler_ValidId_RetrunsResult()
         {
             //Arrange
-            var expenseType = new IncomeType(IncomeTypeId.CreateUniq(), "Test", "Test");
+            var expenseType = new Domain.IncomeType.IncomeType(IncomeTypeId.CreateUniq(), "Test", "Test");
             var expected = new IncomeTypesResult(expenseType);
             var handler = new DeleteIncomeTypeCommandHandler(_repositoryMock.Object);
             var command = new DeleteIncomeTypeCommand(expenseType.Id.ToString());
@@ -88,7 +88,7 @@ namespace Task11.Tests
 
             //Setup
             _repositoryMock.Setup(x => x.GetByIdAsync(It.IsAny<IncomeTypeId>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync((IncomeType)null);
+                .ReturnsAsync((Domain.IncomeType.IncomeType)null);
 
             //Act
             var result = await handler.Handle(command, CancellationToken.None);
@@ -102,13 +102,13 @@ namespace Task11.Tests
         public async Task GetExpenseTypesQueryHandler_ReturnsResult()
         {
             //Arrange
-            var expenses = new List<IncomeType>
+            var expenses = new List<Domain.IncomeType.IncomeType>
             {
                 new (IncomeTypeId.CreateUniq(), "Test", "Test"),
                 new (IncomeTypeId.CreateUniq(), "Test", "Test")
             };
             var expected = expenses.Select(x => new IncomeTypesResult(x));
-            var expenseType = new IncomeType(IncomeTypeId.CreateUniq(), "Test", "Test");
+            var expenseType = new Domain.IncomeType.IncomeType(IncomeTypeId.CreateUniq(), "Test", "Test");
             var handler = new GetIncomeTypesQueryHandler(_repositoryMock.Object);
             var query = new GetIncomeTypesQuery();
 
@@ -127,8 +127,8 @@ namespace Task11.Tests
         public async Task UpdateExpenseTypeCommandHandler_ValidId_ReturnsResult()
         {
             //Arrange
-            var expenseTypeToUpdate = new IncomeType(IncomeTypeId.CreateUniq(), "Test", "Test");
-            var updatedExpenseType = new IncomeType(expenseTypeToUpdate.Id, "Test2", "Test2");
+            var expenseTypeToUpdate = new Domain.IncomeType.IncomeType(IncomeTypeId.CreateUniq(), "Test", "Test");
+            var updatedExpenseType = new Domain.IncomeType.IncomeType(expenseTypeToUpdate.Id, "Test2", "Test2");
             var expected = new IncomeTypesResult(updatedExpenseType);
             var handler = new UpdateIncomeTypeCommandHandler(_repositoryMock.Object);
             var command = new UpdateIncomeTypeCommand(expenseTypeToUpdate.Id.ToString(), expenseTypeToUpdate.Name, expenseTypeToUpdate.Description);
@@ -137,7 +137,7 @@ namespace Task11.Tests
             _repositoryMock.Setup(x => x.GetByIdAsync(It.IsAny<IncomeTypeId>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(expenseTypeToUpdate);
             _repositoryMock.Setup(x => x.GetAllAsAsyncEnumerable())
-                .Returns(Utilities.GetEmptyAsyncEnumerable<IncomeType>());
+                .Returns(Utilities.GetEmptyAsyncEnumerable<Domain.IncomeType.IncomeType>());
 
             //Act
             var result = await handler.Handle(command, CancellationToken.None);
@@ -156,7 +156,7 @@ namespace Task11.Tests
 
             //Setup
             _repositoryMock.Setup(x => x.GetByIdAsync(It.IsAny<IncomeTypeId>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync((IncomeType)null);
+                .ReturnsAsync((Domain.IncomeType.IncomeType)null);
 
             //Act
             var result = await handler.Handle(command, CancellationToken.None);
@@ -170,8 +170,8 @@ namespace Task11.Tests
         public async Task UpdateExpenseTypeCommandHandler_SameExpenseTypeExists_ReturnsError()
         {
             //Arrange
-            var expenseTypeToUpdate = new IncomeType(IncomeTypeId.CreateUniq(), "Test", "Test");
-            var updatedExpenseType = new IncomeType(expenseTypeToUpdate.Id, "Test2", "Test2");
+            var expenseTypeToUpdate = new Domain.IncomeType.IncomeType(IncomeTypeId.CreateUniq(), "Test", "Test");
+            var updatedExpenseType = new Domain.IncomeType.IncomeType(expenseTypeToUpdate.Id, "Test2", "Test2");
             var handler = new UpdateIncomeTypeCommandHandler(_repositoryMock.Object);
             var command = new UpdateIncomeTypeCommand(expenseTypeToUpdate.Id.ToString(), "Test2", "Test2");
 

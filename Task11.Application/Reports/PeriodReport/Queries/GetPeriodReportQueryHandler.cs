@@ -3,18 +3,16 @@ using MediatR;
 using Task11.Application.Common.DTOs;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.ExpenseFinanceOperationAggregate;
-using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeFinanceOperationAggregate;
-using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 
 namespace Task11.Application.Reports.PeriodReport.Queries
 {
     public sealed class GetPeriodReportQueryHandler(
-        IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> expenseRepository,
-        IRepository<IncomeFinanceOperation, IncomeFinanceOperationId> incomeRepository) : IRequestHandler<GetPeriodReportQuery, ErrorOr<PeriodReport>>
+        IExpenseFinanceOperationRepository expenseRepository,
+        IIncomeFinanceOperationRepository incomeRepository) : IRequestHandler<GetPeriodReportQuery, ErrorOr<PeriodReport>>
     {
-        private readonly IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> _expenseRepository = expenseRepository;
-        private readonly IRepository<IncomeFinanceOperation, IncomeFinanceOperationId> _incomeRepository = incomeRepository;
+        private readonly IExpenseFinanceOperationRepository _expenseRepository = expenseRepository;
+        private readonly IIncomeFinanceOperationRepository _incomeRepository = incomeRepository;
 
         public async Task<ErrorOr<PeriodReport>> Handle(GetPeriodReportQuery request, CancellationToken cancellationToken)
         {

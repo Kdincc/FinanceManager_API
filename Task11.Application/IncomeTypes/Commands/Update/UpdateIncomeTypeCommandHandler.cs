@@ -7,9 +7,9 @@ using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Application.IncomeTypes.Commands.Update
 {
-    public sealed class UpdateIncomeTypeCommandHandler(IRepository<IncomeType, IncomeTypeId> repository) : IRequestHandler<UpdateIncomeTypeCommand, ErrorOr<IncomeTypesResult>>
+    public sealed class UpdateIncomeTypeCommandHandler(IIncomeTypeRepository repository) : IRequestHandler<UpdateIncomeTypeCommand, ErrorOr<IncomeTypesResult>>
     {
-        private readonly IRepository<IncomeType, IncomeTypeId> _repository = repository;
+        private readonly IIncomeTypeRepository _repository = repository;
 
         public async Task<ErrorOr<IncomeTypesResult>> Handle(UpdateIncomeTypeCommand request, CancellationToken cancellationToken)
         {
@@ -34,7 +34,7 @@ namespace Task11.Application.IncomeTypes.Commands.Update
             return new IncomeTypesResult(incomeTypeToUpdate);
         }
 
-        private async Task<bool> HasSameIncomeType(IRepository<IncomeType, IncomeTypeId> repository, IncomeType incnomeTypeToCheck)
+        private async Task<bool> HasSameIncomeType(IIncomeTypeRepository repository, IncomeType incnomeTypeToCheck)
         {
             await foreach (var incomeType in repository.GetAllAsAsyncEnumerable())
             {

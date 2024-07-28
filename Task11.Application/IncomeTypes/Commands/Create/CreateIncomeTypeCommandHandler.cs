@@ -2,18 +2,17 @@
 using MediatR;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.Common.Errors;
-using Task11.Domain.IncomeType;
 using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Application.IncomeTypes.Commands.Create
 {
-    public sealed class CreateIncomeTypeCommandHandler(IRepository<IncomeType, IncomeTypeId> repository) : IRequestHandler<CreateIncomeTypeCommand, ErrorOr<IncomeTypesResult>>
+    public sealed class CreateIncomeTypeCommandHandler(Common.Persistance.IncomeType repository) : IRequestHandler<CreateIncomeTypeCommand, ErrorOr<IncomeTypesResult>>
     {
-        private readonly IRepository<IncomeType, IncomeTypeId> _repository = repository;
+        private readonly Common.Persistance.IncomeType _repository = repository;
 
         public async Task<ErrorOr<IncomeTypesResult>> Handle(CreateIncomeTypeCommand request, CancellationToken cancellationToken)
         {
-            IncomeType incomeTypeToCreate = new(IncomeTypeId.CreateUniq(), request.Name, request.Description);
+            Domain.IncomeType.IncomeType incomeTypeToCreate = new(IncomeTypeId.CreateUniq(), request.Name, request.Description);
 
             if (await HasSameIncomeType(_repository, incomeTypeToCreate))
             {
@@ -27,7 +26,7 @@ namespace Task11.Application.IncomeTypes.Commands.Create
             return result;
         }
 
-        private async Task<bool> HasSameIncomeType(IRepository<IncomeType, IncomeTypeId> repository, IncomeType incnomeTypeToCheck)
+        private async Task<bool> HasSameIncomeType(IRepository<Domain.IncomeType.IncomeType, IncomeTypeId> repository, Domain.IncomeType.IncomeType incnomeTypeToCheck)
         {
             await foreach (var incomeType in repository.GetAllAsAsyncEnumerable())
             {

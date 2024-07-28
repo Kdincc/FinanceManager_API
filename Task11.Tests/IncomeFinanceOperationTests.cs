@@ -18,14 +18,14 @@ namespace Task11.Tests
     public class IncomeFinanceOperationTests
     {
         private readonly Mock<IRepository<IncomeFinanceOperation, IncomeFinanceOperationId>> _incomesRepositoryMock;
-        private readonly Mock<IRepository<IncomeType, IncomeTypeId>> _incomeTypeRepositoryMock;
+        private readonly Mock<IRepository<Domain.IncomeType.IncomeType, IncomeTypeId>> _incomeTypeRepositoryMock;
         private IncomeTypeId _incomeTypeId = IncomeTypeId.CreateUniq();
         private IncomeFinanceOperationId _incomeFinanceOperationId = IncomeFinanceOperationId.CreateUniq();
 
         public IncomeFinanceOperationTests()
         {
             _incomesRepositoryMock = new Mock<IRepository<IncomeFinanceOperation, IncomeFinanceOperationId>>();
-            _incomeTypeRepositoryMock = new Mock<IRepository<IncomeType, IncomeTypeId>>();
+            _incomeTypeRepositoryMock = new Mock<IRepository<Domain.IncomeType.IncomeType, IncomeTypeId>>();
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Task11.Tests
 
             //Setup
             _incomeTypeRepositoryMock.Setup(x => x.GetByIdAsync(_incomeTypeId, It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new IncomeType(_incomeTypeId, "Test", "Test"));
+                .ReturnsAsync(new Domain.IncomeType.IncomeType(_incomeTypeId, "Test", "Test"));
 
             //Act
             ErrorOr<IncomeFinanceOperationResult> actual = await handler.Handle(command, CancellationToken.None);
@@ -64,7 +64,7 @@ namespace Task11.Tests
 
             //Setup
             _incomeTypeRepositoryMock.Setup(x => x.GetByIdAsync(_incomeTypeId, It.IsAny<CancellationToken>()))
-                .ReturnsAsync((IncomeType)null);
+                .ReturnsAsync((Domain.IncomeType.IncomeType)null);
 
             //Act
             ErrorOr<IncomeFinanceOperationResult> actual = await handler.Handle(command, CancellationToken.None);
@@ -129,7 +129,7 @@ namespace Task11.Tests
             _incomesRepositoryMock.Setup(x => x.GetByIdAsync(_incomeFinanceOperationId, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(operationToUpdate);
             _incomeTypeRepositoryMock.Setup(x => x.GetByIdAsync(_incomeTypeId, It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new IncomeType(_incomeTypeId, "Test", "Test"));
+                .ReturnsAsync(new Domain.IncomeType.IncomeType(_incomeTypeId, "Test", "Test"));
 
             //Act
             ErrorOr<IncomeFinanceOperationResult> actual = await handler.Handle(command, CancellationToken.None);
@@ -151,7 +151,7 @@ namespace Task11.Tests
             _incomesRepositoryMock.Setup(x => x.GetByIdAsync(_incomeFinanceOperationId, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(operationToUpdate);
             _incomeTypeRepositoryMock.Setup(x => x.GetByIdAsync(_incomeTypeId, It.IsAny<CancellationToken>()))
-                .ReturnsAsync((IncomeType)null);
+                .ReturnsAsync((Domain.IncomeType.IncomeType)null);
 
             //Act
             ErrorOr<IncomeFinanceOperationResult> actual = await handler.Handle(command, CancellationToken.None);
@@ -170,7 +170,7 @@ namespace Task11.Tests
 
             //Setup
             _incomeTypeRepositoryMock.Setup(x => x.GetByIdAsync(_incomeTypeId, It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new IncomeType(_incomeTypeId, "Test", "Test"));
+                .ReturnsAsync(new Domain.IncomeType.IncomeType(_incomeTypeId, "Test", "Test"));
             _incomesRepositoryMock.Setup(x => x.GetByIdAsync(_incomeFinanceOperationId, It.IsAny<CancellationToken>()))
                 .ReturnsAsync((IncomeFinanceOperation)null);
 

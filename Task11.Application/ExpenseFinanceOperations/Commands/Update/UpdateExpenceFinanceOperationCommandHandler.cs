@@ -10,10 +10,10 @@ using Task11.Domain.ExpenseType.ValueObjects;
 
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Update
 {
-    public sealed class UpdateExpenceFinanceOperationCommandHandler(IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> repository, IRepository<ExpenseType, ExpenseTypeId> expenseTypeRepository) : IRequestHandler<UpdateExpenceFinanceOperationCommand, ErrorOr<ExpenseFinanceOperationResult>>
+    public sealed class UpdateExpenceFinanceOperationCommandHandler(IExpenseFinanceOperationRepository repository, IExpenseTypeRepository expenseTypeRepository) : IRequestHandler<UpdateExpenceFinanceOperationCommand, ErrorOr<ExpenseFinanceOperationResult>>
     {
-        private readonly IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> _repository = repository;
-        private readonly IRepository<ExpenseType, ExpenseTypeId> _expenseTypeRepository = expenseTypeRepository;
+        private readonly IExpenseFinanceOperationRepository _repository = repository;
+        private readonly IExpenseTypeRepository _expenseTypeRepository = expenseTypeRepository;
 
         public async Task<ErrorOr<ExpenseFinanceOperationResult>> Handle(UpdateExpenceFinanceOperationCommand request, CancellationToken cancellationToken)
         {

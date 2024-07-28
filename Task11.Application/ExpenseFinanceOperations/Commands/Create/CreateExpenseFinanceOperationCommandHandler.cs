@@ -5,17 +5,16 @@ using Task11.Domain.Common.Errors;
 using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.ExpenseFinanceOperationAggregate;
 using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
-using Task11.Domain.ExpenseType;
 using Task11.Domain.ExpenseType.ValueObjects;
 
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Create
 {
     public sealed class CreateExpenseFinanceOperationCommandHandler(
-        IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> expenseFinanceOperationRepository,
-        IRepository<ExpenseType, ExpenseTypeId> expenseTypeRepository) : IRequestHandler<CreateExpenseFinanaceOperationCommand, ErrorOr<ExpenseFinanceOperationResult>>
+        IExpenseFinanceOperationRepository expenseFinanceOperationRepository,
+        IExpenseTypeRepository expenseTypeRepository) : IRequestHandler<CreateExpenseFinanaceOperationCommand, ErrorOr<ExpenseFinanceOperationResult>>
     {
-        private readonly IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> _expenseFinanceOperationRepository = expenseFinanceOperationRepository;
-        private readonly IRepository<ExpenseType, ExpenseTypeId> _expenseTypeRepository = expenseTypeRepository;
+        private readonly IExpenseFinanceOperationRepository _expenseFinanceOperationRepository = expenseFinanceOperationRepository;
+        private readonly IExpenseTypeRepository _expenseTypeRepository = expenseTypeRepository;
 
         public async Task<ErrorOr<ExpenseFinanceOperationResult>> Handle(CreateExpenseFinanaceOperationCommand request, CancellationToken cancellationToken)
         {

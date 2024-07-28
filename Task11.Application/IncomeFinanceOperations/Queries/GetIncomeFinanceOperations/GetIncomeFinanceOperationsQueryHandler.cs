@@ -1,13 +1,12 @@
 ﻿using MediatR;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.IncomeFinanceOperationAggregate;
-using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 
 namespace Task11.Application.IncomeFinanceOperations.Queries.GetIncomeFinanceOperations
 {
-    public sealed class GetIncomeFinanceOperationsQueryHandler(IRepository<IncomeFinanceOperation, IncomeFinanceOperationId> repository) : IRequestHandler<GetIncomeFinanceOperationsQuery, IEnumerable<IncomeFinanceOperationResult>>
+    public sealed class GetIncomeFinanceOperationsQueryHandler(IIncomeFinanceOperationRepository repository) : IRequestHandler<GetIncomeFinanceOperationsQuery, IEnumerable<IncomeFinanceOperationResult>>
     {
-        private readonly IRepository<IncomeFinanceOperation, IncomeFinanceOperationId> _repository = repository;
+        private readonly IIncomeFinanceOperationRepository _repository = repository;
 
         public async Task<IEnumerable<IncomeFinanceOperationResult>> Handle(GetIncomeFinanceOperationsQuery request, CancellationToken cancellationToken)
         {

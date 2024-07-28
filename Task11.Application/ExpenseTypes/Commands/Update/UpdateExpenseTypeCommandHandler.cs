@@ -7,9 +7,9 @@ using Task11.Domain.ExpenseType.ValueObjects;
 
 namespace Task11.Application.ExpenseTypes.Commands.Update
 {
-    public sealed class UpdateExpenseTypeCommandHandler(IRepository<ExpenseType, ExpenseTypeId> repository) : IRequestHandler<UpdateExpenseTypeCommand, ErrorOr<ExpenseTypesResult>>
+    public sealed class UpdateExpenseTypeCommandHandler(IExpenseTypeRepository repository) : IRequestHandler<UpdateExpenseTypeCommand, ErrorOr<ExpenseTypesResult>>
     {
-        private readonly IRepository<ExpenseType, ExpenseTypeId> _repository = repository;
+        private readonly IExpenseTypeRepository _repository = repository;
 
         public async Task<ErrorOr<ExpenseTypesResult>> Handle(UpdateExpenseTypeCommand request, CancellationToken cancellationToken)
         {

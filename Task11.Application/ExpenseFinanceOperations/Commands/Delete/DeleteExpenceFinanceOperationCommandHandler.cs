@@ -7,9 +7,9 @@ using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Delete
 {
-    public sealed class DeleteExpenceFinanceOperationCommandHandler(IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> repository) : IRequestHandler<DeleteExpenceFinanseOperationCommand, ErrorOr<ExpenseFinanceOperationResult>>
+    public sealed class DeleteExpenceFinanceOperationCommandHandler(IExpenseFinanceOperationRepository repository) : IRequestHandler<DeleteExpenceFinanseOperationCommand, ErrorOr<ExpenseFinanceOperationResult>>
     {
-        private readonly IRepository<ExpenseFinanceOperation, ExpenseFinanceOperationId> _repository = repository;
+        private readonly IExpenseFinanceOperationRepository _repository = repository;
 
         public async Task<ErrorOr<ExpenseFinanceOperationResult>> Handle(DeleteExpenceFinanseOperationCommand request, CancellationToken cancellationToken)
         {

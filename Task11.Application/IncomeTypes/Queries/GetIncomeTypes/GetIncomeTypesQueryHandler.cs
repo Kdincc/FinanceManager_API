@@ -1,13 +1,12 @@
 ﻿using MediatR;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.IncomeType;
-using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Application.IncomeTypes.Queries.GetIncomeTypes
 {
-    public sealed class GetIncomeTypesQueryHandler(IRepository<IncomeType, IncomeTypeId> repository) : IRequestHandler<GetIncomeTypesQuery, IEnumerable<IncomeTypesResult>>
+    public sealed class GetIncomeTypesQueryHandler(IIncomeTypeRepository repository) : IRequestHandler<GetIncomeTypesQuery, IEnumerable<IncomeTypesResult>>
     {
-        private readonly IRepository<IncomeType, IncomeTypeId> _repository = repository;
+        private readonly IIncomeTypeRepository _repository = repository;
 
         public async Task<IEnumerable<IncomeTypesResult>> Handle(GetIncomeTypesQuery request, CancellationToken cancellationToken)
         {

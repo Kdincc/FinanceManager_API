@@ -1,13 +1,12 @@
 ﻿using MediatR;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.ExpenseType;
-using Task11.Domain.ExpenseType.ValueObjects;
 
 namespace Task11.Application.ExpenseTypes.Queries.GetExpenseTypes
 {
-    public sealed class GetExpenseTypesQueryHandler(IRepository<ExpenseType, ExpenseTypeId> repository) : IRequestHandler<GetExpenseTypesQuery, IEnumerable<ExpenseTypesResult>>
+    public sealed class GetExpenseTypesQueryHandler(IExpenseTypeRepository repository) : IRequestHandler<GetExpenseTypesQuery, IEnumerable<ExpenseTypesResult>>
     {
-        private readonly IRepository<ExpenseType, ExpenseTypeId> _repository = repository;
+        private readonly IExpenseTypeRepository _repository = repository;
 
         public async Task<IEnumerable<ExpenseTypesResult>> Handle(GetExpenseTypesQuery request, CancellationToken cancellationToken)
         {

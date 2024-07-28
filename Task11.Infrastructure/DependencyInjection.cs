@@ -23,7 +23,7 @@ namespace Task11.Infrastructure
             options.UseSqlServer(configuration.GetConnectionString("DbString"),
             b => b.MigrationsAssembly("Task11.Infrastructure")));
 
-            services.AddScoped<IIncomeTypeRepository, IncomeTypeRepository>();
+            services.AddScoped<Application.Common.Persistance.IncomeType, IncomeTypeRepository>();
             services.AddScoped<IExpenseTypeRepository, ExpenseTypeRepository>();
             services.AddScoped<IExpenseFinanceOperationRepository, ExpenceFinanceOperationRepository>();
             services.AddScoped<IIncomeFinanceOperationRepository, IncomeFinanceOperationRepository>();

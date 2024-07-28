@@ -7,9 +7,9 @@ using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Application.IncomeTypes.Commands.Delete
 {
-    public sealed class DeleteIncomeTypeCommandHandler(IRepository<IncomeType, IncomeTypeId> repository) : IRequestHandler<DeleteIncomeTypeCommand, ErrorOr<IncomeTypesResult>>
+    public sealed class DeleteIncomeTypeCommandHandler(IIncomeTypeRepository repository) : IRequestHandler<DeleteIncomeTypeCommand, ErrorOr<IncomeTypesResult>>
     {
-        private readonly IRepository<IncomeType, IncomeTypeId> _repository = repository;
+        private readonly IIncomeTypeRepository _repository = repository;
 
         public async Task<ErrorOr<IncomeTypesResult>> Handle(DeleteIncomeTypeCommand request, CancellationToken cancellationToken)
         {
