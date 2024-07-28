@@ -7,16 +7,16 @@ using Task11.Application.IncomeFinanceOperations.Commands.Delete;
 using Task11.Application.IncomeFinanceOperations.Commands.Update;
 using Task11.Application.IncomeFinanceOperations.Queries.GetIncomeFinanceOperations;
 using Task11.Contracts.IncomeFinanceOperation;
+using Task11.Presentation.ApiRoutes;
 
 namespace Task11.Presentation.Controllers
 {
-    [Route("incomes/operations")]
     public class IncomeFinanceOperationsController(ISender sender, IMapper mapper) : ApiController
     {
         private readonly ISender _sender = sender;
         private readonly IMapper _mapper = mapper;
 
-        [HttpGet("all")]
+        [HttpGet(Routes.IncomeFinanceOperation.GetAll)]
         [ProducesResponseType<IEnumerable<IncomeFinanceOperationResult>>(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetIncomeFinanceOperations(CancellationToken cancellationToken)
         {
@@ -25,7 +25,7 @@ namespace Task11.Presentation.Controllers
             return Ok(results);
         }
 
-        [HttpPost("create")]
+        [HttpPost(Routes.IncomeFinanceOperation.Create)]
         [ProducesResponseType<IncomeFinanceOperationResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> CreateIncomeFinaseOperation(CreateIncomeFinanceOperationRequest request, CancellationToken cancellationToken)
@@ -37,7 +37,7 @@ namespace Task11.Presentation.Controllers
             return Ok(result);
         }
 
-        [HttpPut("update")]
+        [HttpPut(Routes.IncomeFinanceOperation.Update)]
         [ProducesResponseType<IncomeFinanceOperationResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateIncomeFinanceOperation(UpdateIncomeFinanceOperationRequest request, CancellationToken cancellationToken)
@@ -49,7 +49,7 @@ namespace Task11.Presentation.Controllers
             return result.Match(Ok, Problem);
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete(Routes.IncomeFinanceOperation.Delete)]
         [ProducesResponseType<IncomeFinanceOperationResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteIncomeFinanceOperation(DeleteIncomeFinanceOperationRequest request, CancellationToken cancellationToken)

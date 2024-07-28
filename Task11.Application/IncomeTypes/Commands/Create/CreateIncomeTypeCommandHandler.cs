@@ -2,6 +2,7 @@
 using MediatR;
 using Task11.Application.Common.Persistance;
 using Task11.Domain.Common.Errors;
+using Task11.Domain.IncomeType;
 using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Application.IncomeTypes.Commands.Create
@@ -12,7 +13,7 @@ namespace Task11.Application.IncomeTypes.Commands.Create
 
         public async Task<ErrorOr<IncomeTypesResult>> Handle(CreateIncomeTypeCommand request, CancellationToken cancellationToken)
         {
-            Domain.IncomeType.IncomeType incomeTypeToCreate = new(IncomeTypeId.CreateUniq(), request.Name, request.Description);
+            IncomeType incomeTypeToCreate = new(IncomeTypeId.CreateUniq(), request.Name, request.Description);
 
             if (await HasSameIncomeType(_repository, incomeTypeToCreate))
             {
@@ -26,7 +27,7 @@ namespace Task11.Application.IncomeTypes.Commands.Create
             return result;
         }
 
-        private async Task<bool> HasSameIncomeType(IRepository<Domain.IncomeType.IncomeType, IncomeTypeId> repository, Domain.IncomeType.IncomeType incnomeTypeToCheck)
+        private async Task<bool> HasSameIncomeType(IIncomeTypeRepository repository, IncomeType incnomeTypeToCheck)
         {
             await foreach (var incomeType in repository.GetAllAsAsyncEnumerable())
             {

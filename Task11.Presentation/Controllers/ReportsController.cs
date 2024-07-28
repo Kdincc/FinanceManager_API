@@ -5,6 +5,7 @@ using Task11.Application.Reports.DailyReport;
 using Task11.Application.Reports.DailyReport.Queries;
 using Task11.Application.Reports.PeriodReport;
 using Task11.Application.Reports.PeriodReport.Queries;
+using Task11.Presentation.ApiRoutes;
 
 namespace Task11.Presentation.Controllers
 {
@@ -14,10 +15,10 @@ namespace Task11.Presentation.Controllers
         private readonly ISender _sender = sender;
         private readonly IMapper _mapper = mapper;
 
-        [HttpGet("daily/{date}")]
+        [HttpGet(Routes.Reports.GetDailyReport)]
         [ProducesResponseType<DailyReport>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetDailyReport(string date)
+        public async Task<IActionResult> GetDailyReport()
         {
             var query = new GetDailyReportQuery(date);
 
@@ -26,10 +27,10 @@ namespace Task11.Presentation.Controllers
             return result.Match(Ok, Problem);
         }
 
-        [HttpGet("period/{startDate}/{endDate}")]
+        [HttpGet(Routes.Reports.GetPeriodReport)]
         [ProducesResponseType<PeriodReport>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetPeriodReport(string startDate, string endDate)
+        public async Task<IActionResult> GetPeriodReport()
         {
             var query = new GetPeriodReportQuery(startDate, endDate);
 

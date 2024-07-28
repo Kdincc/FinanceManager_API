@@ -7,16 +7,16 @@ using Task11.Application.ExpenseFinanceOperations.Commands.Delete;
 using Task11.Application.ExpenseFinanceOperations.Commands.Update;
 using Task11.Application.ExpenseFinanceOperations.Queries.GetExpenceFinanceOperations;
 using Task11.Contracts.ExpenseFinanceOperation;
+using Task11.Presentation.ApiRoutes;
 
 namespace Task11.Presentation.Controllers
 {
-    [Route("expenses/operations")]
     public class ExpenseFinanceOperationsController(ISender sender, IMapper mapper) : ApiController
     {
         private readonly ISender _sender = sender;
         private readonly IMapper _mapper = mapper;
 
-        [HttpGet("all")]
+        [HttpGet(Routes.ExpenseFinanceOperation.GetAll)]
         [ProducesResponseType<IEnumerable<ExpenseFinanceOperationResult>>(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetExpenseFinanceOperations(CancellationToken cancellationToken)
         {
@@ -25,7 +25,7 @@ namespace Task11.Presentation.Controllers
             return Ok(results);
         }
 
-        [HttpPost("create")]
+        [HttpPost(Routes.ExpenseFinanceOperation.Create)]
         [ProducesResponseType<ExpenseFinanceOperationResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
@@ -38,7 +38,7 @@ namespace Task11.Presentation.Controllers
             return result.Match(Ok, Problem);
         }
 
-        [HttpPut("update")]
+        [HttpPut(Routes.ExpenseFinanceOperation.Update)]
         [ProducesResponseType<ExpenseFinanceOperationResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
@@ -51,7 +51,7 @@ namespace Task11.Presentation.Controllers
             return result.Match(Ok, Problem);
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete(Routes.ExpenseFinanceOperation.Delete)]
         [ProducesResponseType<ExpenseFinanceOperationResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]

@@ -7,16 +7,16 @@ using Task11.Application.IncomeTypes.Commands.Delete;
 using Task11.Application.IncomeTypes.Commands.Update;
 using Task11.Application.IncomeTypes.Queries.GetIncomeTypes;
 using Task11.Contracts.IncomeType;
+using Task11.Presentation.ApiRoutes;
 
 namespace Task11.Presentation.Controllers
 {
-    [Route("incomes")]
     public class IncomeTypesController(ISender sender, IMapper mapper) : ApiController
     {
         private readonly ISender _sender = sender;
         private readonly IMapper _mapper = mapper;
 
-        [HttpGet("all")]
+        [HttpGet(Routes.IncomeType.GetAll)]
         [ProducesResponseType<IEnumerable<IncomeTypesResult>>(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetIncomeTypes(CancellationToken cancellationToken)
         {
@@ -25,7 +25,7 @@ namespace Task11.Presentation.Controllers
             return Ok(incomeTypes);
         }
 
-        [HttpPost("create")]
+        [HttpPost(Routes.IncomeType.Create)]
         [ProducesResponseType<IncomeTypesResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> CreateIncomeType(CreateIncomeTypeRequest request, CancellationToken cancellationToken)
@@ -37,7 +37,7 @@ namespace Task11.Presentation.Controllers
             return result.Match(Ok, Problem);
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete(Routes.IncomeType.Delete)]
         [ProducesResponseType<IncomeTypesResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> DeleteIncomeType(DeleteIncomeTypeRequest request, CancellationToken cancellationToken)
@@ -49,7 +49,7 @@ namespace Task11.Presentation.Controllers
             return result.Match(Ok, Problem);
         }
 
-        [HttpPut("update")]
+        [HttpPut(Routes.IncomeType.Update)]
         [ProducesResponseType<IncomeTypesResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> UpdateIncomeType(UpdateIncomeTypeRequest request, CancellationToken cancellationToken)

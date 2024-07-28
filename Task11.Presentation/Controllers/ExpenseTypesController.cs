@@ -7,16 +7,16 @@ using Task11.Application.ExpenseTypes.Commands.Delete;
 using Task11.Application.ExpenseTypes.Commands.Update;
 using Task11.Application.ExpenseTypes.Queries.GetExpenseTypes;
 using Task11.Contracts.ExpenseType;
+using Task11.Presentation.ApiRoutes;
 
 namespace Task11.Presentation.Controllers
 {
-    [Route("expenses")]
     public sealed class ExpenseTypesController(ISender sender, IMapper mapper) : ApiController
     {
         private readonly ISender _sender = sender;
         private readonly IMapper _mapper = mapper;
 
-        [HttpGet("all")]
+        [HttpGet(Routes.ExpenseType.GetAll)]
         [ProducesResponseType<IEnumerable<ExpenseTypesResult>>(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
         {
@@ -25,7 +25,7 @@ namespace Task11.Presentation.Controllers
             return Ok(results);
         }
 
-        [HttpPost("create")]
+        [HttpPost(Routes.ExpenseType.Create)]
         [ProducesResponseType<ExpenseTypesResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> CreateExpenseType(CreateExpenseTypeRequest request, CancellationToken cancellationToken)
@@ -37,7 +37,7 @@ namespace Task11.Presentation.Controllers
             return result.Match(Ok, Problem);
         }
 
-        [HttpPut("update")]
+        [HttpPut(Routes.ExpenseType.Update)]
         [ProducesResponseType<ExpenseTypesResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> UpdateExpenseType(UpdateExpenseTypeRequest request, CancellationToken cancellationToken)
@@ -49,7 +49,7 @@ namespace Task11.Presentation.Controllers
             return result.Match(Ok, Problem);
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete(Routes.ExpenseType.Delete)]
         [ProducesResponseType<ExpenseTypesResult>(StatusCodes.Status200OK)]
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> DeleteExpenseType(DeleteExpenseTypeRequest request, CancellationToken cancellationToken)

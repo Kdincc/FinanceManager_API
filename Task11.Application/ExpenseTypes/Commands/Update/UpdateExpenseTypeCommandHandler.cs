@@ -32,7 +32,7 @@ namespace Task11.Application.ExpenseTypes.Commands.Update
             return new ExpenseTypesResult(expenseType);
         }
 
-        private async Task<bool> HasSameExpenseType(IRepository<ExpenseType, ExpenseTypeId> repository, ExpenseType expenseTypeToCheck)
+        private async Task<bool> HasSameExpenseType(IExpenseTypeRepository repository, ExpenseType expenseTypeToCheck)
         {
             await foreach (var expenseType in repository.GetAllAsAsyncEnumerable())
             {
