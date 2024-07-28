@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task11.Infrastructure", "Ta
 		{D07558B9-CFA9-4EFE-9519-C3DBE37D27CC} = {D07558B9-CFA9-4EFE-9519-C3DBE37D27CC}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task11.Tests", "Task11.Tests\Task11.Tests.csproj", "{D244973A-56DE-4F2C-BECB-8ACEA1E9C463}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task11.Tests", "Task11.Tests\Task11.Tests.csproj", "{D244973A-56DE-4F2C-BECB-8ACEA1E9C463}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
