@@ -7,7 +7,7 @@ namespace Task11.Application.IncomeTypes.Commands.Delete
     {
         public DeleteIncomeTypeCommandValidator()
         {
-            RuleFor(i => i.IncomeTypeId)
+            RuleFor(i => i.Id)
                 .NotEmpty()
                 .Must(x => Guid.TryParse(x, out _))
                 .WithMessage(ValidationErrorMessages.IncorrectIdFormatError);

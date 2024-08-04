@@ -1,4 +1,5 @@
-﻿using Task11.Domain.Common.Models;
+﻿using System.Text.Json.Serialization;
+using Task11.Domain.Common.Models;
 
 namespace Task11.Domain.IncomeType.ValueObjects
 {

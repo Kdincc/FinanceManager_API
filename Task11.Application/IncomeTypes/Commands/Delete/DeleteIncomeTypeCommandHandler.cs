@@ -13,7 +13,7 @@ namespace Task11.Application.IncomeTypes.Commands.Delete
 
         public async Task<ErrorOr<IncomeTypesResult>> Handle(DeleteIncomeTypeCommand request, CancellationToken cancellationToken)
         {
-            IncomeTypeId incomeTypeId = IncomeTypeId.Create(request.IncomeTypeId);
+            IncomeTypeId incomeTypeId = IncomeTypeId.Create(request.Id);
 
             IncomeType incomeType = await _repository.GetByIdAsync(incomeTypeId, cancellationToken);
 
