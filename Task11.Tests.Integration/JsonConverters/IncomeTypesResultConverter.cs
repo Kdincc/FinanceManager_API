@@ -11,7 +11,7 @@ using Task11.Domain.IncomeType.ValueObjects;
 
 namespace Task11.Tests.Integration.JsonConverters
 {
-    public class IncomeTypesResultConverter : JsonConverter<IncomeTypesResult>
+    public sealed class IncomeTypesResultConverter : JsonConverter<IncomeTypesResult>
     {
         public override IncomeTypesResult Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

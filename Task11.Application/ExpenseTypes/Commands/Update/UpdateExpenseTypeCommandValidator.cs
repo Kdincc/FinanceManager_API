@@ -16,7 +16,7 @@ namespace Task11.Application.ExpenseTypes.Commands.Update
                 .NotEmpty()
                 .MaximumLength(ValidationConstants.OperationType.MaxDescriptionLength);
 
-            RuleFor(p => p.ExpenseTypeId)
+            RuleFor(p => p.Id)
                 .NotEmpty()
                 .Must(x => Guid.TryParse(x, out _))
                 .WithMessage(ValidationErrorMessages.IncorrectIdFormatError);
