@@ -1,20 +1,26 @@
 ﻿using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
+using Task11.Application.Common.DTOs;
+using Task11.Application.ExpenseFinanceOperations;
 using Task11.Application.ExpenseTypes;
 using Task11.Application.IncomeFinanceOperations;
 using Task11.Application.IncomeTypes;
+using Task11.Application.Reports.DailyReport;
+using Task11.Application.Reports.PeriodReport;
+using Task11.Contracts.ExpenseFinanceOperation;
 using Task11.Contracts.ExpenseType;
 using Task11.Contracts.IncomeFinanceOperation;
 using Task11.Contracts.IncomeType;
+using Task11.Contracts.Reports;
 using Task11.Domain.Common.Errors;
 using Task11.Domain.Common.ValueObjects;
+using Task11.Domain.Common.Сonstants;
+using Task11.Domain.ExpenseFinanceOperationAggregate;
+using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.ExpenseType;
 using Task11.Domain.ExpenseType.ValueObjects;
 using Task11.Domain.IncomeFinanceOperationAggregate;
@@ -22,19 +28,8 @@ using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;
 using Task11.Domain.IncomeType;
 using Task11.Domain.IncomeType.ValueObjects;
 using Task11.Infrastructure.Persistence;
-using Task11.Presentation;
 using Task11.Presentation.ApiRoutes;
 using Task11.Tests.Integration.JsonConverters;
-using Task11.Domain.Common.Сonstants;
-using Task11.Contracts.ExpenseFinanceOperation;
-using Task11.Domain.ExpenseFinanceOperationAggregate;
-using Task11.Domain.ExpenseFinanceOperationAggregate.ValueObjects;
-using Task11.Application.ExpenseFinanceOperations;
-using Task11.Application.Reports.DailyReport;
-using Task11.Application.Common.DTOs;
-using Task11.Contracts.Reports;
-using System.Globalization;
-using Task11.Application.Reports.PeriodReport;
 
 namespace Task11.Tests.Integration
 {
@@ -42,9 +37,9 @@ namespace Task11.Tests.Integration
     {
         private readonly JsonSerializerOptions _jsonOptions = new()
         {
-            Converters = 
-            { 
-                new IncomeTypesResultConverter(), 
+            Converters =
+            {
+                new IncomeTypesResultConverter(),
                 new ExpenseTypesResultConverter(),
                 new IncomeFinanceOperationResultConverter(),
                 new ExpenseFinanceOperationConverter(),
@@ -1064,6 +1059,7 @@ namespace Task11.Tests.Integration
             //Assert
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
+
 
         #endregion
     }

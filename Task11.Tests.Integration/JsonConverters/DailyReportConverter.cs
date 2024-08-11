@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using Task11.Application.Common.DTOs;
 using Task11.Application.Reports.DailyReport;
 using Task11.Domain.Common.ValueObjects;
@@ -24,7 +19,7 @@ namespace Task11.Tests.Integration.JsonConverters
             using JsonDocument doc = JsonDocument.ParseValue(ref reader);
 
             var root = doc.RootElement;
-            
+
             var date = root.GetProperty("date").GetDateTime();
 
             var incomeFinanceOperationsElement = root.GetProperty("incomes");
@@ -41,7 +36,7 @@ namespace Task11.Tests.Integration.JsonConverters
                     IncomeFinanceOperationId.Create(id.ToString()),
                     DateOnly.FromDateTime(date),
                     IncomeTypeId.Create(incomeTypeId.ToString()),
-                    Amount.Create(amount), 
+                    Amount.Create(amount),
                     name
                 );
 

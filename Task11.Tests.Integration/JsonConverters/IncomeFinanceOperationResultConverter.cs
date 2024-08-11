@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using Task11.Application.IncomeFinanceOperations;
-using Task11.Application.IncomeTypes;
 using Task11.Domain.Common.ValueObjects;
 using Task11.Domain.IncomeFinanceOperationAggregate;
 using Task11.Domain.IncomeFinanceOperationAggregate.ValueObjects;

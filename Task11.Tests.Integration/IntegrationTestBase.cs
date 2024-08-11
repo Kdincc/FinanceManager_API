@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Task11.Tests.Integration
+﻿namespace Task11.Tests.Integration
 {
     public class IntegrationTestBase : IClassFixture<FinanceWebApplicationFactory>
     {
