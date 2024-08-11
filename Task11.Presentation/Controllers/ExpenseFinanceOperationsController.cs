@@ -57,7 +57,7 @@ namespace Task11.Presentation.Controllers
         [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> DeleteExpenseFinanceOperation(DeleteExpenseFinanceOperationRequest request, CancellationToken cancellationToken)
         {
-            var command = _mapper.Map<DeleteExpenceFinanseOperationCommand>(request);
+            var command = _mapper.Map<DeleteExpenceFinanceOperationCommand>(request);
 
             var result = await _sender.Send(command, cancellationToken);
 

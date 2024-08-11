@@ -3,7 +3,7 @@ using Task11.Application.Properties;
 
 namespace Task11.Application.ExpenseFinanceOperations.Commands.Delete
 {
-    public sealed class DeleteExpenceFinanceOperationCommandValidator : AbstractValidator<DeleteExpenceFinanseOperationCommand>
+    public sealed class DeleteExpenceFinanceOperationCommandValidator : AbstractValidator<DeleteExpenceFinanceOperationCommand>
     {
         public DeleteExpenceFinanceOperationCommandValidator()
         {

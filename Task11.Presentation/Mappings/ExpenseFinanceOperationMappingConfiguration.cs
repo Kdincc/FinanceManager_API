@@ -14,7 +14,7 @@ namespace Task11.Presentation.Mappings
 
             config.NewConfig<UpdateExpenseFinanceOperationRequest, UpdateExpenceFinanceOperationCommand>();
 
-            config.NewConfig<DeleteExpenseFinanceOperationRequest, DeleteExpenceFinanseOperationCommand>();
+            config.NewConfig<DeleteExpenseFinanceOperationRequest, DeleteExpenceFinanceOperationCommand>();
         }
     }
 }

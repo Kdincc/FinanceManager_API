@@ -80,7 +80,7 @@ namespace Task11.Tests
             //Arrange
             var operationToDelete = new ExpenseFinanceOperation(_expenseFinanceOperationId, DateOnly.Parse("2011-11-11"), _expenseTypeId, Amount.Create(100), "test");
             ExpenseFinanceOperationResult expected = new(operationToDelete);
-            DeleteExpenceFinanseOperationCommand command = new(_expenseFinanceOperationId.ToString());
+            DeleteExpenceFinanceOperationCommand command = new(_expenseFinanceOperationId.ToString());
             DeleteExpenceFinanceOperationCommandHandler handler = new(_expensesRepositoryMock.Object);
 
             //Setup
@@ -91,7 +91,7 @@ namespace Task11.Tests
             ErrorOr<ExpenseFinanceOperationResult> actual = await handler.Handle(command, CancellationToken.None);
 
             //Assert
-            Assert.Equal(expected.FinanceOperation, actual.Value.FinanceOperation);
+            Assert.Equal(expected.ExpenseFinanceOperation, actual.Value.ExpenseFinanceOperation);
             Assert.False(actual.IsError);
         }
 
@@ -99,7 +99,7 @@ namespace Task11.Tests
         public async Task DeleteExpenseFinanceOperationHandler_InvalidId_ReturnsError()
         {
             //Arrange
-            DeleteExpenceFinanseOperationCommand command = new(_expenseFinanceOperationId.ToString());
+            DeleteExpenceFinanceOperationCommand command = new(_expenseFinanceOperationId.ToString());
             DeleteExpenceFinanceOperationCommandHandler handler = new(_expensesRepositoryMock.Object);
 
             //Setup
@@ -135,7 +135,7 @@ namespace Task11.Tests
             ErrorOr<ExpenseFinanceOperationResult> actual = await handler.Handle(command, CancellationToken.None);
 
             //Assert
-            Assert.Equal(expected.FinanceOperation, actual.Value.FinanceOperation);
+            Assert.Equal(expected.ExpenseFinanceOperation, actual.Value.ExpenseFinanceOperation);
             Assert.False(actual.IsError);
         }
 
@@ -282,7 +282,7 @@ namespace Task11.Tests
         public void DeleteExpenseFinanceOperationCommandValidator_ValidData_IsValid()
         {
             //Arrange
-            DeleteExpenceFinanseOperationCommand command = new(_expenseFinanceOperationId.ToString());
+            DeleteExpenceFinanceOperationCommand command = new(_expenseFinanceOperationId.ToString());
             DeleteExpenceFinanceOperationCommandValidator validator = new();
 
             //Act

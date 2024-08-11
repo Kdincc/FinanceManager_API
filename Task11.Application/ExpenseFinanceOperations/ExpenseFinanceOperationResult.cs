@@ -2,5 +2,5 @@
 
 namespace Task11.Application.ExpenseFinanceOperations
 {
-    public record ExpenseFinanceOperationResult(ExpenseFinanceOperation FinanceOperation);
+    public record ExpenseFinanceOperationResult(ExpenseFinanceOperation ExpenseFinanceOperation);
 }

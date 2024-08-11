@@ -34,7 +34,7 @@ namespace Task11.Presentation.Controllers
 
             var result = await _sender.Send(command, cancellationToken);
 
-            return Ok(result);
+            return result.Match(Ok, Problem);
         }
 
         [HttpPut(Routes.IncomeFinanceOperation.Update)]
@@ -58,7 +58,7 @@ namespace Task11.Presentation.Controllers
 
             var result = await _sender.Send(command, cancellationToken);
 
-            return Ok(result);
+            return result.Match(Ok, Problem);
         }
     }
 }

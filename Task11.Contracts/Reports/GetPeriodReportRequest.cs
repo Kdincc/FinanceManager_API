@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Task11.Contracts.Reports
 {
-    public record GetPeriodReportRequest(DateOnly StartDate, DateOnly EndDate);
+    public record GetPeriodReportRequest(string StartDate, string EndDate);
 }
